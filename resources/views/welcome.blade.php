@@ -416,14 +416,13 @@
                             AI-powered CV optimization tool to stand out in the job market.
                         </p>
                         <ul class="list-disc ml-5 mb-[2.25rem]">
-                            <li class="mb-2">Akses tidak terbatas ke lebih dari 27.000 kursus terpopuler Udemy, kapan
-                                saja, di mana
-                                saja
+                            <li class="mb-2">Unlimited access to all of CodeCareer's most popular courses, anytime,
+                                anywhere
                             </li>
-                            <li class="mb-2">Sertifikasi teratas dalam teknologi dan bisnis</li>
+                            <li class="mb-2">Get certified in technology</li>
                             <li>AI-Powered CV Enhancements</li>
                         </ul>
-                        <a href="{{ route('login') }}"
+                        <a href="{{ url('/pricing') }}"
                             class="bg-blue-500 text-white w-max py-3 px-6 rounded font-semibold hover:bg-blue-600 transition duration-300">
                             Subscribe Now
                         </a>
