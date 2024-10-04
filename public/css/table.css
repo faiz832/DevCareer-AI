@@ -1,0 +1,11 @@
+div.col-start-2.justify-self-end {
+    justify-self: end;
+}
+#dataTable_wrapper .grid .justify-self-start .dt-length #dt-length-0 {
+    padding-right: 2rem !important;
+}
+
+div.justify-self-start {
+    display: flex;
+    align-items: center;
+}
