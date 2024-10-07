@@ -87,7 +87,7 @@
 
                         <!-- Activity -->
                         <div class="text-xl">Activity</div>
-                        <div class="rounded-lg px-6 pt-6 pb-2 shadow-lg border border-gray-200">
+                        <div class="bg-white rounded-lg px-6 pt-6 pb-2 shadow border border-gray-200">
                             <table id="dataTable" class="min-w-full divide-y divide-gray-200">
                                 <thead class="bg-gray-50">
                                     <tr>

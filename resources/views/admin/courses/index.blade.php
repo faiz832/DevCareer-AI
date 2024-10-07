@@ -25,7 +25,7 @@
                             <span class="block sm:inline">{{ session('error') }}</span>
                         </div>
                     @endif
-                    <div class="rounded-lg px-6 pt-6 pb-2 shadow-lg border border-gray-200">
+                    <div class="bg-white rounded-lg px-6 pt-6 pb-2 shadow border border-gray-200">
                         <table id="dataTable" class="display" style="width:100%">
                             <thead class="bg-gray-50">
                                 <tr>
