@@ -443,7 +443,7 @@
                             inspire the next
                             generation of learners with your knowledge and passion.</p>
                     </div>
-                    <a href="{{ route('login') }}"
+                    <a href="{{ url('https://api.whatsapp.com/') }}" target="_blank"
                         class="bg-blue-500 text-white px-6 py-3 rounded font-semibold hover:bg-blue-600 transition duration-300">
                         Contact Us
                     </a>
