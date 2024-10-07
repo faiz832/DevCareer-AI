@@ -100,15 +100,14 @@
                                     d="M22.6667 10.668C19.7211 10.668 17.3333 13.0558 17.3333 16.0013C17.3333 17.2891 17.7898 18.4703 18.5497 19.392L17.3467 27.8127C17.2814 28.2702 17.4576 28.7289 17.8123 29.025C18.1671 29.3211 18.6499 29.4123 19.0883 29.2662L22.6667 28.0734L26.245 29.2662C26.6834 29.4123 27.1662 29.3211 27.521 29.025C27.8758 28.7289 28.052 28.2702 27.9866 27.8127L26.7836 19.392C27.5436 18.4703 28 17.2891 28 16.0013C28 13.0558 25.6122 10.668 22.6667 10.668ZM20 16.0013C20 14.5285 21.1939 13.3346 22.6667 13.3346C24.1394 13.3346 25.3333 14.5285 25.3333 16.0013C25.3333 17.4741 24.1394 18.668 22.6667 18.668C21.1939 18.668 20 17.4741 20 16.0013ZM20.2917 26.0542L21.0037 21.0703C21.527 21.2418 22.086 21.3346 22.6667 21.3346C23.2473 21.3346 23.8063 21.2418 24.3296 21.0703L25.0416 26.0542L23.0883 25.4031C22.8146 25.3118 22.5187 25.3118 22.245 25.4031L20.2917 26.0542Z"
                                     fill="#3F3F46"></path>
                                 <path d="M9.33333 21.3346H16V18.668H9.33333V21.3346Z" fill="#3F3F46"></path>
-                                <path d="M14.6667 16.0013H9.33333V13.3346H14.6667V16.0013Z" fill="#3F3F46"></path>
+                                <path d="M14.6667 16.0013H9.33333V13.3346H14.6667V16.0013Z" fill="#3F3F46">
+                                </path>
                                 <path d="M9.33333 10.668H17.3333V8.0013H9.33333V10.668Z" fill="#3F3F46"></path>
                             </svg>
                         </div>
                         <div>
-                            <p class="font-semibold mb-1">Sertifikat</p>
-                            <span class="text-gray-400">Dapatkan sertifikat standar industri setelah
-                                menyelesaikan
-                                kelas ini.</span>
+                            <p class="font-semibold mb-1">Certificate</p>
+                            <span class="text-gray-400">Get your certificate after finishing the course.</span>
                         </div>
                     </div>
                 </div>
@@ -130,15 +129,16 @@
                             </svg>
                         </div>
                         <div>
-                            <p class="font-semibold mb-1">Sertifikat</p>
-                            <span class="text-gray-400">Dapatkan sertifikat standar industri setelah
-                                menyelesaikan
-                                kelas ini.</span>
+                            <p class="font-semibold mb-1">Tutorial</p>
+                            <span class="text-gray-400 leading-7">Get video tutorial for this course from our
+                                teacher.</span>
                         </div>
                     </div>
                 </div>
                 <div
-                    class="border rounded-lg h-[120px] p-5 hover:shadow-lg hover:-translate-y-2 transition duration-300 ease-in-out">
+                    class="border
+                                rounded-lg h-[120px] p-5 hover:shadow-lg hover:-translate-y-2 transition duration-300
+                                ease-in-out">
                     <div class="flex flex-col lg:flex-row">
                         <div class="mr-3 mb-2 lg:mb-0">
                             <svg width="32" height="32" viewBox="0 0 32 32" fill="none"
@@ -150,15 +150,16 @@
                                     d="M22.6667 10.668C19.7211 10.668 17.3333 13.0558 17.3333 16.0013C17.3333 17.2891 17.7898 18.4703 18.5497 19.392L17.3467 27.8127C17.2814 28.2702 17.4576 28.7289 17.8123 29.025C18.1671 29.3211 18.6499 29.4123 19.0883 29.2662L22.6667 28.0734L26.245 29.2662C26.6834 29.4123 27.1662 29.3211 27.521 29.025C27.8758 28.7289 28.052 28.2702 27.9866 27.8127L26.7836 19.392C27.5436 18.4703 28 17.2891 28 16.0013C28 13.0558 25.6122 10.668 22.6667 10.668ZM20 16.0013C20 14.5285 21.1939 13.3346 22.6667 13.3346C24.1394 13.3346 25.3333 14.5285 25.3333 16.0013C25.3333 17.4741 24.1394 18.668 22.6667 18.668C21.1939 18.668 20 17.4741 20 16.0013ZM20.2917 26.0542L21.0037 21.0703C21.527 21.2418 22.086 21.3346 22.6667 21.3346C23.2473 21.3346 23.8063 21.2418 24.3296 21.0703L25.0416 26.0542L23.0883 25.4031C22.8146 25.3118 22.5187 25.3118 22.245 25.4031L20.2917 26.0542Z"
                                     fill="#3F3F46"></path>
                                 <path d="M9.33333 21.3346H16V18.668H9.33333V21.3346Z" fill="#3F3F46"></path>
-                                <path d="M14.6667 16.0013H9.33333V13.3346H14.6667V16.0013Z" fill="#3F3F46"></path>
-                                <path d="M9.33333 10.668H17.3333V8.0013H9.33333V10.668Z" fill="#3F3F46"></path>
+                                <path d="M14.6667 16.0013H9.33333V13.3346H14.6667V16.0013Z" fill="#3F3F46">
+                                </path>
+                                <path d="M9.33333 10.668H17.3333V8.0013H9.33333V10.668Z" fill="#3F3F46">
+                                </path>
                             </svg>
                         </div>
                         <div>
-                            <p class="font-semibold mb-1">Sertifikat</p>
-                            <span class="text-gray-400">Dapatkan sertifikat standar industri setelah
-                                menyelesaikan
-                                kelas ini.</span>
+                            <p class="font-semibold mb-1">Project</p>
+                            <span class="text-gray-400 leading-7">Build your own project from learning the
+                                course.</span>
                         </div>
                     </div>
                 </div>
