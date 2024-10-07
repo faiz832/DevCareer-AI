@@ -9,7 +9,7 @@
                         {{ __('Profile') }}
                     </h2>
 
-                    <div class="bg-white p-6 rounded-lg shadow">
+                    <div class="bg-white p-4 sm:p-8 rounded-lg shadow">
                         <div class="max-w-xl">
                             @include('profile.partials.update-profile-information-form')
                         </div>
