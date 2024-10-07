@@ -34,8 +34,8 @@
                     AI-Powered CV
                     Enhancements
                 </h1>
-                <div class="flex flex-col md:flex-row w-7/12 mt-20 h-[500px] border-2 rounded-lg">
-                    <div class="p-6 space-y-6 border-r-2">
+                <div class="flex flex-col md:flex-row w-7/12 mt-20 h-[400px] border-2 rounded-lg">
+                    <div class="lg:w-1/2 p-6 space-y-6">
                         <div class="relative flex flex-col">
                             <div class="flex flex-col gap-1">
                                 <p class="flex items-center gap-2 text-xl font-semibold">
@@ -60,7 +60,7 @@
                                         <path fill-rule="evenodd" clip-rule="evenodd"
                                             d="M18.0633 5.67387C18.5196 5.98499 18.6374 6.60712 18.3262 7.06343L10.8262 18.0634C10.6585 18.3095 10.3898 18.4679 10.0934 18.4957C9.79688 18.5235 9.50345 18.4178 9.29289 18.2072L4.79289 13.7072C4.40237 13.3167 4.40237 12.6835 4.79289 12.293C5.18342 11.9025 5.81658 11.9025 6.20711 12.293L9.85368 15.9396L16.6738 5.93676C16.9849 5.48045 17.607 5.36275 18.0633 5.67387Z"
                                             fill="currentColor"></path>
-                                    </svg><span>Assistance with writing, problem solving and more</span></div>
+                                    </svg><span>Access to free courses for improve basic coding skills</span></div>
                             </div>
                             <div class="relative">
                                 <div class="text-l flex justify-start gap-2"><svg width="24" height="24"
@@ -69,39 +69,11 @@
                                         <path fill-rule="evenodd" clip-rule="evenodd"
                                             d="M18.0633 5.67387C18.5196 5.98499 18.6374 6.60712 18.3262 7.06343L10.8262 18.0634C10.6585 18.3095 10.3898 18.4679 10.0934 18.4957C9.79688 18.5235 9.50345 18.4178 9.29289 18.2072L4.79289 13.7072C4.40237 13.3167 4.40237 12.6835 4.79289 12.293C5.18342 11.9025 5.81658 11.9025 6.20711 12.293L9.85368 15.9396L16.6738 5.93676C16.9849 5.48045 17.607 5.36275 18.0633 5.67387Z"
                                             fill="currentColor"></path>
-                                    </svg><span>Access to GPT-4o mini</span></div>
-                            </div>
-                            <div class="relative">
-                                <div class="text-l flex justify-start gap-2"><svg width="24" height="24"
-                                        viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
-                                        class="mt-0.5 h-4 w-4 shrink-0">
-                                        <path fill-rule="evenodd" clip-rule="evenodd"
-                                            d="M18.0633 5.67387C18.5196 5.98499 18.6374 6.60712 18.3262 7.06343L10.8262 18.0634C10.6585 18.3095 10.3898 18.4679 10.0934 18.4957C9.79688 18.5235 9.50345 18.4178 9.29289 18.2072L4.79289 13.7072C4.40237 13.3167 4.40237 12.6835 4.79289 12.293C5.18342 11.9025 5.81658 11.9025 6.20711 12.293L9.85368 15.9396L16.6738 5.93676C16.9849 5.48045 17.607 5.36275 18.0633 5.67387Z"
-                                            fill="currentColor"></path>
-                                    </svg><span>Limited access to GPT‑4o</span></div>
-                            </div>
-                            <div class="relative">
-                                <div class="text-l flex justify-start gap-2"><svg width="24" height="24"
-                                        viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
-                                        class="mt-0.5 h-4 w-4 shrink-0">
-                                        <path fill-rule="evenodd" clip-rule="evenodd"
-                                            d="M18.0633 5.67387C18.5196 5.98499 18.6374 6.60712 18.3262 7.06343L10.8262 18.0634C10.6585 18.3095 10.3898 18.4679 10.0934 18.4957C9.79688 18.5235 9.50345 18.4178 9.29289 18.2072L4.79289 13.7072C4.40237 13.3167 4.40237 12.6835 4.79289 12.293C5.18342 11.9025 5.81658 11.9025 6.20711 12.293L9.85368 15.9396L16.6738 5.93676C16.9849 5.48045 17.607 5.36275 18.0633 5.67387Z"
-                                            fill="currentColor"></path>
-                                    </svg><span>Limited access to data analysis, file uploads, vision, web browsing, and
-                                        image generation</span></div>
-                            </div>
-                            <div class="relative">
-                                <div class="text-l flex justify-start gap-2"><svg width="24" height="24"
-                                        viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
-                                        class="mt-0.5 h-4 w-4 shrink-0">
-                                        <path fill-rule="evenodd" clip-rule="evenodd"
-                                            d="M18.0633 5.67387C18.5196 5.98499 18.6374 6.60712 18.3262 7.06343L10.8262 18.0634C10.6585 18.3095 10.3898 18.4679 10.0934 18.4957C9.79688 18.5235 9.50345 18.4178 9.29289 18.2072L4.79289 13.7072C4.40237 13.3167 4.40237 12.6835 4.79289 12.293C5.18342 11.9025 5.81658 11.9025 6.20711 12.293L9.85368 15.9396L16.6738 5.93676C16.9849 5.48045 17.607 5.36275 18.0633 5.67387Z"
-                                            fill="currentColor"></path>
-                                    </svg><span>Use custom GPTs</span></div>
+                                    </svg><span>Limited access to AI CV Optimization</span></div>
                             </div>
                         </div>
                     </div>
-                    <div class="p-6 space-y-6">
+                    <div class="lg:w-1/2 p-6 space-y-6 border-l-2">
                         <div class="relative flex flex-col">
                             <div class="flex flex-col gap-1">
                                 <p class="flex items-center gap-2 text-xl font-semibold">
@@ -128,7 +100,7 @@
                                         <path fill-rule="evenodd" clip-rule="evenodd"
                                             d="M18.0633 5.67387C18.5196 5.98499 18.6374 6.60712 18.3262 7.06343L10.8262 18.0634C10.6585 18.3095 10.3898 18.4679 10.0934 18.4957C9.79688 18.5235 9.50345 18.4178 9.29289 18.2072L4.79289 13.7072C4.40237 13.3167 4.40237 12.6835 4.79289 12.293C5.18342 11.9025 5.81658 11.9025 6.20711 12.293L9.85368 15.9396L16.6738 5.93676C16.9849 5.48045 17.607 5.36275 18.0633 5.67387Z"
                                             fill="currentColor"></path>
-                                    </svg><span>Assistance with writing, problem solving and more</span></div>
+                                    </svg><span>Unlimited course access from basic to advanced levels</span></div>
                             </div>
                             <div class="relative">
                                 <div class="text-l flex justify-start gap-2"><svg width="24" height="24"
@@ -137,7 +109,7 @@
                                         <path fill-rule="evenodd" clip-rule="evenodd"
                                             d="M18.0633 5.67387C18.5196 5.98499 18.6374 6.60712 18.3262 7.06343L10.8262 18.0634C10.6585 18.3095 10.3898 18.4679 10.0934 18.4957C9.79688 18.5235 9.50345 18.4178 9.29289 18.2072L4.79289 13.7072C4.40237 13.3167 4.40237 12.6835 4.79289 12.293C5.18342 11.9025 5.81658 11.9025 6.20711 12.293L9.85368 15.9396L16.6738 5.93676C16.9849 5.48045 17.607 5.36275 18.0633 5.67387Z"
                                             fill="currentColor"></path>
-                                    </svg><span>Access to GPT-4o mini</span></div>
+                                    </svg><span>Priority support</span></div>
                             </div>
                             <div class="relative">
                                 <div class="text-l flex justify-start gap-2"><svg width="24" height="24"
@@ -146,7 +118,7 @@
                                         <path fill-rule="evenodd" clip-rule="evenodd"
                                             d="M18.0633 5.67387C18.5196 5.98499 18.6374 6.60712 18.3262 7.06343L10.8262 18.0634C10.6585 18.3095 10.3898 18.4679 10.0934 18.4957C9.79688 18.5235 9.50345 18.4178 9.29289 18.2072L4.79289 13.7072C4.40237 13.3167 4.40237 12.6835 4.79289 12.293C5.18342 11.9025 5.81658 11.9025 6.20711 12.293L9.85368 15.9396L16.6738 5.93676C16.9849 5.48045 17.607 5.36275 18.0633 5.67387Z"
                                             fill="currentColor"></path>
-                                    </svg><span>Limited access to GPT‑4o</span></div>
+                                    </svg><span>5 CV Optimization tokens</span></div>
                             </div>
                             <div class="relative">
                                 <div class="text-l flex justify-start gap-2"><svg width="24" height="24"
@@ -155,35 +127,7 @@
                                         <path fill-rule="evenodd" clip-rule="evenodd"
                                             d="M18.0633 5.67387C18.5196 5.98499 18.6374 6.60712 18.3262 7.06343L10.8262 18.0634C10.6585 18.3095 10.3898 18.4679 10.0934 18.4957C9.79688 18.5235 9.50345 18.4178 9.29289 18.2072L4.79289 13.7072C4.40237 13.3167 4.40237 12.6835 4.79289 12.293C5.18342 11.9025 5.81658 11.9025 6.20711 12.293L9.85368 15.9396L16.6738 5.93676C16.9849 5.48045 17.607 5.36275 18.0633 5.67387Z"
                                             fill="currentColor"></path>
-                                    </svg><span>Limited access to data analysis, file uploads, vision, web browsing, and
-                                        image generation</span></div>
-                            </div>
-                            <div class="relative">
-                                <div class="text-l flex justify-start gap-2"><svg width="24" height="24"
-                                        viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
-                                        class="mt-0.5 h-4 w-4 shrink-0">
-                                        <path fill-rule="evenodd" clip-rule="evenodd"
-                                            d="M18.0633 5.67387C18.5196 5.98499 18.6374 6.60712 18.3262 7.06343L10.8262 18.0634C10.6585 18.3095 10.3898 18.4679 10.0934 18.4957C9.79688 18.5235 9.50345 18.4178 9.29289 18.2072L4.79289 13.7072C4.40237 13.3167 4.40237 12.6835 4.79289 12.293C5.18342 11.9025 5.81658 11.9025 6.20711 12.293L9.85368 15.9396L16.6738 5.93676C16.9849 5.48045 17.607 5.36275 18.0633 5.67387Z"
-                                            fill="currentColor"></path>
-                                    </svg><span>Access to Advanced Voice Mode</span></div>
-                            </div>
-                            <div class="relative">
-                                <div class="text-l flex justify-start gap-2"><svg width="24" height="24"
-                                        viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
-                                        class="mt-0.5 h-4 w-4 shrink-0">
-                                        <path fill-rule="evenodd" clip-rule="evenodd"
-                                            d="M18.0633 5.67387C18.5196 5.98499 18.6374 6.60712 18.3262 7.06343L10.8262 18.0634C10.6585 18.3095 10.3898 18.4679 10.0934 18.4957C9.79688 18.5235 9.50345 18.4178 9.29289 18.2072L4.79289 13.7072C4.40237 13.3167 4.40237 12.6835 4.79289 12.293C5.18342 11.9025 5.81658 11.9025 6.20711 12.293L9.85368 15.9396L16.6738 5.93676C16.9849 5.48045 17.607 5.36275 18.0633 5.67387Z"
-                                            fill="currentColor"></path>
-                                    </svg><span>Create and use custom GPTs</span></div>
-                            </div>
-                            <div class="relative">
-                                <div class="text-l flex justify-start gap-2"><svg width="24" height="24"
-                                        viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
-                                        class="mt-0.5 h-4 w-4 shrink-0">
-                                        <path fill-rule="evenodd" clip-rule="evenodd"
-                                            d="M18.0633 5.67387C18.5196 5.98499 18.6374 6.60712 18.3262 7.06343L10.8262 18.0634C10.6585 18.3095 10.3898 18.4679 10.0934 18.4957C9.79688 18.5235 9.50345 18.4178 9.29289 18.2072L4.79289 13.7072C4.40237 13.3167 4.40237 12.6835 4.79289 12.293C5.18342 11.9025 5.81658 11.9025 6.20711 12.293L9.85368 15.9396L16.6738 5.93676C16.9849 5.48045 17.607 5.36275 18.0633 5.67387Z"
-                                            fill="currentColor"></path>
-                                    </svg><span>Early access to new features</span></div>
+                                    </svg><span>Certificate of completion</span></div>
                             </div>
                         </div>
                     </div>
