@@ -6,7 +6,7 @@
             <div class="w-full lg:w-5/6 h-screen">
                 <div class="space-y-6">
                     <div class="flex gap-4">
-                        <div class="text-2xl font-semibold">Add Course</div>
+                        <div class="text-2xl font-semibold">Course</div>
                         <a href="{{ route('admin.courses.create') }}"
                             class="rounded-lg bg-blue-500 hover:bg-blue-600 text-white font-semibold py-1 px-3 duration-300 ease-in-out">
                             +
