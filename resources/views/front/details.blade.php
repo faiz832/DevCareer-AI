@@ -197,6 +197,21 @@
                         harum ratione. Laboriosam? Lorem ipsum dolor sit amet consectetur. Lorem ipsum dolor sit, amet
                         consectetur adipisicing elit. Maxime, itaque!
                     </p>
+                    <h1 class="text-3xl mt-12 mb-4">Teacher</h1>
+                    <div class="flex items-center mb-12">
+                        <div class="flex-shrink-0 h-10 w-10">
+                            <img class="h-10 w-10 rounded-full" src="https://via.placeholder.com/35x35"
+                                alt="">
+                        </div>
+                        <div class="ml-4">
+                            <div class="text-sm font-semibold text-gray-900">
+                                Sandika Galih
+                            </div>
+                            <div class="text-sm text-gray-500">
+                                Lecturer at Pasundan University
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="w-full lg:w-4/12 relative">
                     <div class="p-4 sticky top-24">
