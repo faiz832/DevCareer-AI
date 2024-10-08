@@ -28,9 +28,10 @@
         @include('layouts.navbar')
 
         <!-- Content -->
-        <div class="max-w-md mx-auto mt-24 min-h-screen p-4">
+        <div class="max-w-md mx-auto mt-20 min-h-screen p-4">
             <div class="flex flex-col justify-center items-center gap-6 mx-1 sm:mx-6">
-                <h3 class="font-display font-bold text-typo m-0 text-4xl text-center">Upload an image to optimize your
+                <h3 class="font-display font-semibold text-typo m-0 text-4xl text-center">Upload an image to optimize
+                    your
                     resume
                 </h3>
 
