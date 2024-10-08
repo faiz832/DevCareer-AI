@@ -198,6 +198,35 @@
                                 </div>
                             </div>
                         </div>
+
+                        <!-- Recent Activities -->
+                        <div
+                            class="bg-white bg-opacity-20 backdrop-filter backdrop-blur-sm rounded-lg p-4 sm:p-8 shadow-xl">
+                            <div class="text-lg font-semibold text-gray-800 mb-4">Teaching Activities</div>
+                            <div class="space-y-6 mt-8">
+                                <div class="flex border rounded justify-between items-center p-4">
+                                    <div class="flex-col">
+                                        <div class="text-sm font-semibold text-gray-800">Teaching</div>
+                                        <div class="mt-2">HTML & CSS</div>
+                                    </div>
+                                    <a href="#" class="text-sm font-semibold text-red-500">Stop Teaching</a>
+                                </div>
+                                <div class="flex border rounded justify-between items-center p-4">
+                                    <div class="flex-col">
+                                        <div class="text-sm font-semibold text-gray-800">Teaching</div>
+                                        <div class="mt-2">Javascript for Beginer</div>
+                                    </div>
+                                    <a href="#" class="text-sm font-semibold text-red-500">Stop Teaching</a>
+                                </div>
+                                <div class="flex border rounded justify-between items-center p-4">
+                                    <div class="flex-col">
+                                        <div class="text-sm font-semibold text-gray-800">Teaching</div>
+                                        <div class="mt-2">Laravel for Beginer</div>
+                                    </div>
+                                    <a href="#" class="text-sm font-semibold text-red-500">Stop Teaching</a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 @endrole
 
