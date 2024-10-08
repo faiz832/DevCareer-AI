@@ -202,8 +202,8 @@
                         <!-- Recent Activities -->
                         <div
                             class="bg-white bg-opacity-20 backdrop-filter backdrop-blur-sm rounded-lg p-4 sm:p-8 shadow-xl">
-                            <div class="text-lg font-semibold text-gray-800 mb-4">Teaching Activities</div>
-                            <div class="space-y-6 mt-8">
+                            <div class="text-lg font-semibold text-gray-800">Teaching Activities</div>
+                            <div class="space-y-6 mt-6">
                                 <div class="flex border rounded justify-between items-center p-4">
                                     <div class="flex-col">
                                         <div class="text-sm font-semibold text-gray-800">Teaching</div>
@@ -231,6 +231,58 @@
                 @endrole
 
                 @role('student')
+                    <div class="space-y-6">
+                        <div class="">
+                            <div class="text-2xl font-semibold">Hello {{ Auth::user()->name }}</div>
+                            <h1 class="text-sm text-gray-500">Welcome Back!</h1>
+                        </div>
+
+                        <!-- Subscription -->
+                        <div class="bg-gradient-to-br from-blue-700 to-blue-400 rounded-lg p-4 sm:p-8 shadow-xl">
+                            <div class="text-lg font-semibold text-white mb-4">Subscription</div>
+                            <div
+                                class="bg-white bg-opacity-20 backdrop-filter backdrop-blur-sm rounded-lg p-3 md:p-5 text-center">
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center gap-4">
+                                        <div class="p-2">
+                                            <svg class="h-8 w-8 text-white" xmlns="http://www.w3.org/2000/svg"
+                                                fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z" />
+                                            </svg>
+                                        </div>
+                                        <div class="text-start text-sm w-3/4 text-white">
+                                            You haven't subscribed to codecareer yet. Choose a subscription and start your
+                                            journey to becoming a professional developer.
+                                        </div>
+                                    </div>
+                                    <a href="{{ url('/pricing') }}"
+                                        class="bg-white rounded px-4 py-2 font-semibold text-sm text-blue-500">Subscribe</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- My Courses -->
+                        <div class="w-full rounded-lg bg-white shadow p-4 sm:p-8">
+                            <div class="text-lg font-semibold text-gray-800">My Courses</div>
+                            <div class="space-y-6 mt-6">
+                                <div class="flex border rounded justify-between items-center p-4">
+                                    <div class="flex-col">
+                                        <div class="text-sm font-semibold text-gray-800">Learning</div>
+                                        <div class="mt-2">HTML & CSS</div>
+                                    </div>
+                                    <a href="#" class="text-sm font-semibold text-blue-500 px-4 py-2">Continue</a>
+                                </div>
+                                <div class="flex border rounded justify-between items-center p-4">
+                                    <div class="flex-col">
+                                        <div class="text-sm font-semibold text-gray-800">Learning</div>
+                                        <div class="mt-2">Javascript for Beginer</div>
+                                    </div>
+                                    <a href="#" class="text-sm font-semibold text-blue-500 px-4 py-2">Continue</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 @endrole
             </div>
         </div>
