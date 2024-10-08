@@ -5,6 +5,10 @@ div.col-start-2.justify-self-end {
     padding-right: 2rem !important;
 }
 
+#dataTable_wrapper .grid-cols-1 {
+    overflow: scroll;
+}
+
 div.justify-self-start {
     display: flex;
     align-items: center;
