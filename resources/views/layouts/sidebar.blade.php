@@ -148,7 +148,7 @@
 
 <div class="absolute left-0 top-12" x-data="{ open: false }" @click.away="open = false">
     <!-- Menu Button (visible on lg and smaller screens) -->
-    <button @click="open = !open" class="lg:hidden">
+    <button @click="open = !open" class="lg:hidden fixed z-10">
         <div class="bg-white p-4 cursor-pointer rounded-r shadow-lg">
             <svg class="h-5 w-5 text-slate-900" xmlns="http://www.w3.org/2000/svg" fill="none"
                 viewBox="0 0 24 24" stroke="currentColor">
@@ -156,6 +156,14 @@
             </svg>
         </div>
     </button>
+
+    <!-- Backdrop -->
+    <div x-show="open" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0"
+        x-transition:enter-end="opacity-100" x-transition:leave="transition ease-in duration-200"
+        x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0" @click="open = false"
+        class="fixed inset-0 bg-black bg-opacity-50 z-40 lg:hidden">
+    </div>
+
     <!-- Sidebar -->
     <div x-show="open" x-transition:enter="transition ease-out duration-200"
         x-transition:enter-start="transform opacity-0 -translate-x-full"
