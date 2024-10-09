@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Laravel</title>
+    <title>CodeCareer - FAQ</title>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
@@ -28,13 +28,118 @@
         @include('layouts.navbar')
 
         <!-- Hero Section -->
-        <div class="max-w-[1200px] mx-auto p-4 py-6 lg:py-8">
-            <div class="bg-gradient-to-br from-blue-700 to-blue-400 rounded-lg h-[400px]">
-                <div class="flex items-center h-full">
-                    <div class="p-12">
-                        <h1 class="text-4xl font-semibold mb-4 text-white">Faq</h1>
-                        <p class="text-white">Lorem Ipsum</p>
-                    </div>
+        <div class="bg-white py-12 my-12">
+            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+                <div class="text-center mb-24">
+                    <h1 class="text-3xl font-semibold text-gray-900 sm:text-4xl">Frequently Asked Questions</h1>
+                    <p class="mt-4 text-lg text-gray-600">Find answers to common questions about our services.</p>
+                </div>
+
+                @php
+                    $faqs = [
+                        [
+                            'question' => 'What is DEVCAREER AI and CodeCareer?',
+                            'answer' =>
+                                'DEVCAREER AI is a career empowerment platform offering skill courses and AI-powered CV optimization to help you succeed in the job market.',
+                        ],
+                        [
+                            'question' => 'How does the CV optimization feature work?',
+                            'answer' =>
+                                'Our AI analyzes your CV and provides improvement suggestions for layout, content, and key highlights to make it stand out.',
+                        ],
+                        [
+                            'question' => 'Are the courses free?',
+                            'answer' =>
+                                'Some courses are free, but full access to all courses and advanced features requires a premium subscription.',
+                        ],
+                        [
+                            'question' => 'What are the benefits of a premium subscription?',
+                            'answer' => '<ul class="list-disc pl-4">
+                        <li>Unlimited course access</li>
+                        <li>5 AI CV optimization tokens per month</li>
+                        <li>Exclusive content and features</li>
+                        <li>Priority support</li>
+                    </ul>',
+                        ],
+                        [
+                            'question' => 'How do I subscribe to the premium plan?',
+                            'answer' =>
+                                'Visit our Pricing page, choose a plan, and complete the payment to unlock premium features.',
+                        ],
+                        [
+                            'question' => 'How many tokens do I get with a subscription?',
+                            'answer' => 'Premium members get 5 tokens per month to optimize their CVs using AI.',
+                        ],
+                        [
+                            'question' => 'Can unused tokens roll over?',
+                            'answer' => 'No, tokens reset monthly, so be sure to use them before the month ends.',
+                        ],
+                        [
+                            'question' => 'Does completing courses guarantee a job?',
+                            'answer' =>
+                                'While we provide valuable skills and guidance, job outcomes depend on your effort. We help make you more competitive but can\'t guarantee employment.',
+                        ],
+                        [
+                            'question' => 'How do I contact support?',
+                            'answer' => 'Reach our support team through email or the Contact Us page on the website.',
+                        ],
+                        [
+                            'question' => 'Do courses come with certificates?',
+                            'answer' =>
+                                'Yes, some courses offer certifications to enhance your professional credibility.',
+                        ],
+                        [
+                            'question' => 'How do I use CV optimization tokens?',
+                            'answer' =>
+                                'Upload your CV, and the AI will provide feedback. Each CV analysis consumes one token.',
+                        ],
+                        [
+                            'question' => 'What payment methods are accepted?',
+                            'answer' => 'We accept credit/debit cards, PayPal, and local payment options.',
+                        ],
+                    ];
+                @endphp
+
+                <div x-data="{
+                    activeAccordion: null,
+                    setActiveAccordion(id) {
+                        this.activeAccordion = this.activeAccordion === id ? null : id
+                    }
+                }" class="space-y-4">
+                    @foreach ($faqs as $index => $faq)
+                        <div
+                            class="bg-white rounded-lg border overflow-hidden hover:shadow-lg transition duration-300 ease-in-out transform hover:-translate-y-1">
+                            <button @click="setActiveAccordion({{ $index }})" class="w-full p-6 text-left">
+                                <h3 class="text-lg font-semibold flex items-center justify-between">
+                                    <span>{{ $faq['question'] }}</span>
+                                    <svg class="w-6 h-6 text-gray-400 transform transition-transform duration-300"
+                                        :class="{ 'rotate-180': activeAccordion === {{ $index }} }"
+                                        fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M19 9l-7 7-7-7"></path>
+                                    </svg>
+                                </h3>
+                            </button>
+                            <div x-ref="container{{ $index }}"
+                                x-bind:style="activeAccordion === {{ $index }} ?
+                                    'max-height: ' + $refs.container{{ $index }}.scrollHeight + 'px' :
+                                    'max-height: 0px'"
+                                class="overflow-hidden transition-all duration-300 ease-in-out">
+                                <div class="px-6 pb-6 text-gray-600">
+                                    {!! $faq['answer'] !!}
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+
+                <!-- Contact Section -->
+                <div class="mt-12 text-center">
+                    <p class="text-gray-600">Still have questions?</p>
+                    <a href="{{ url('https://api.whatsapp.com/') }}" target="_blank"
+                        class="mt-2 inline-block px-6 py-3 bg-blue-500 text-white rounded hover:bg-blue-600 transition duration-300">
+                        Contact Support
+                    </a>
                 </div>
             </div>
         </div>
