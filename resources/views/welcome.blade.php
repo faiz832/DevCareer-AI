@@ -256,7 +256,7 @@
             </div>
             <div class="flex flex-col lg:flex-row gap-12">
                 <div class="w-full lg:w-5/12 flex flex-col justify-center p-12 lg:p-0">
-                    <div class="space-y-2" x-data="{
+                    <div class="space-y-2 lg:mt-12" x-data="{
                         activeAccordion: null,
                         setActiveAccordion(id) {
                             this.activeAccordion = this.activeAccordion === id ? null : id
