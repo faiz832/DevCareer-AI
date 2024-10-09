@@ -31,33 +31,41 @@ class TeacherController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-    {
-        $request->validate([
-            'email' => 'required|email|exists:users,email'
-        ]);
+{
+    \Log::info('Teacher store method called with email: ' . $request->email);
 
-        DB::beginTransaction();
-        try {
-            $user = User::where('email', $request->email)->firstOrFail();
+    $request->validate([
+        'email' => 'required|email|exists:users,email'
+    ]);
 
-            if ($user->hasRole('teacher')) {
-                return redirect()->back()->with('error', 'User is already a teacher.');
-            }
+    DB::beginTransaction();
+    try {
+        $user = User::where('email', $request->email)->firstOrFail();
+        \Log::info('User found: ' . $user->id);
 
-            $teacher = Teacher::create([
-                'user_id' => $user->id,
-                'is_active' => true,
-            ]);
-
-            $user->assignRole('teacher');
-
-            DB::commit();
-            return redirect()->route('admin.teachers.index')->with('success', 'Teacher added successfully.');
-        } catch (\Exception $e) {
-            DB::rollback();
-            return redirect()->back()->with('error', 'An error occurred while adding the teacher.');
+        if ($user->hasRole('teacher')) {
+            \Log::info('User is already a teacher');
+            return redirect()->back()->with('error', 'User is already a teacher.');
         }
+
+        $teacher = Teacher::create([
+            'user_id' => $user->id,
+            'is_active' => true,
+        ]);
+        \Log::info('Teacher created: ' . $teacher->id);
+
+        $user->assignRole('teacher');
+        \Log::info('Role assigned');
+
+        DB::commit();
+        \Log::info('Transaction committed');
+        return redirect()->route('admin.teachers.index')->with('success', 'Teacher added successfully.');
+    } catch (\Exception $e) {
+        DB::rollback();
+        \Log::error('Error adding teacher: ' . $e->getMessage());
+        return redirect()->back()->with('error', 'An error occurred while adding the teacher: ' . $e->getMessage());
     }
+}
 
     /**
      * Display the specified resource.

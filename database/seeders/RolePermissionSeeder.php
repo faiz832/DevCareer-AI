@@ -45,6 +45,11 @@ class RolePermissionSeeder extends Seeder
 
         $userTeacher->assignRole($teacherRole);
 
+        \App\Models\Teacher::create([
+            'user_id' => $userTeacher->id,
+            'is_active' => true,
+        ]);
+
         $userStudent = User::create([
             'name' => 'student',
             'avatar' => 'images/default-avatar.png',

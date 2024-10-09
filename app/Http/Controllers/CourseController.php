@@ -39,7 +39,8 @@ class CourseController extends Controller
     public function create()
     {
         $categories = Category::all();
-        return view('admin.courses.create', compact('categories'));
+        $teachers = Teacher::with('user')->get();
+        return view('admin.courses.create', compact('categories', 'teachers'));
     }
 
     /**
@@ -47,40 +48,40 @@ class CourseController extends Controller
      */
     public function store(StoreCourseRequest $request)
     {
-        $teacher = Teacher::where('user_id', Auth::user()->id)->first();
+        $user = Auth::user();
 
-        if (!$teacher) {
-            return redirect()->route('admin.courses.index')->withErrors('Unauthorized or invalid teacher.');
-        }
-
-        DB::transaction(function () use ($request, $teacher){
-
+        DB::transaction(function () use ($request, $user) {
             $validated = $request->validated();
 
             if ($request->hasFile('thumbnail')) {
                 $thumbnailPath = $request->file('thumbnail')->store('thumbnails', 'public');
                 $validated['thumbnail'] = $thumbnailPath;
-            }else {
-                $thumbnailPath = 'images/thumbnail-default.png';
+            } else {
+                $validated['thumbnail'] = 'images/thumbnail-default.png';
             }
 
             $validated['slug'] = Str::slug($validated['name']);
 
-            $validated['teacher_id'] = $teacher->id;
+            if ($user->hasRole('owner')) {
+                // Jika owner, gunakan teacher_id dari input form
+                $validated['teacher_id'] = $request->input('teacher_id');
+            } else {
+                // Jika teacher, gunakan ID teacher yang terkait dengan user
+                $teacher = Teacher::where('user_id', $user->id)->firstOrFail();
+                $validated['teacher_id'] = $teacher->id;
+            }
 
             $course = Course::create($validated);
 
             // Log activity
             activity()
-                ->causedBy(Auth::user())
+                ->causedBy($user)
                 ->performedOn($course)
                 ->withProperties(['attributes' => $course->toArray()])
                 ->log('Course created');
-
         });
 
         return redirect()->route('admin.courses.index')->with('success', 'Course created successfully');
-
     }
 
     /**
