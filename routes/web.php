@@ -23,6 +23,7 @@ Route::get('/resume', [FrontController::class, 'resume'])->name('front.resume');
 Route::get('/course', [FrontController::class, 'course'])->name('front.course');
 Route::get('/faq', [FrontController::class, 'faq'])->name('front.faq');
 Route::get('/pricing', [FrontController::class, 'pricing'])->name('front.pricing');
+Route::get('/terms', [FrontController::class, 'terms'])->name('front.terms');
 Route::get('/404', [FrontController::class, '404'])->name('front.404');
 
 

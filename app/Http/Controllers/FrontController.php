@@ -55,6 +55,16 @@ class FrontController extends Controller
         return view('front.faq');
     }
 
+    public function terms()
+    {
+        return view('front.terms');
+    }
+
+    public function privacy()
+    {
+        return view('front.privacy');
+    }
+
     public function notfound()
     {
         return view('front.404');
