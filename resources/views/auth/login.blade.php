@@ -98,7 +98,7 @@
                     <div class="grow">
                         <hr>
                     </div>
-                    <div class="text-muted text-center pt-1 px-3">
+                    <div class="text-center px-3">
                         or
                     </div>
                     <div class="grow">
