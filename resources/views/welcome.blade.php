@@ -256,7 +256,7 @@
             </div>
             <div class="flex flex-col lg:flex-row gap-12">
                 <div class="w-full lg:w-5/12 flex flex-col justify-center p-12 lg:p-0">
-                    <div x-data="{
+                    <div class="space-y-2" x-data="{
                         activeAccordion: null,
                         setActiveAccordion(id) {
                             this.activeAccordion = this.activeAccordion === id ? null : id
@@ -264,7 +264,7 @@
                     }">
                         <!-- Accordion Item 1 -->
                         <div
-                            class="lg:mt-16 bg-white rounded-lg border overflow-hidden hover:shadow-lg transition duration-300 ease-in-out transform hover:-translate-y-2">
+                            class="bg-white rounded-lg border overflow-hidden hover:shadow-lg transition duration-300 ease-in-out transform hover:-translate-y-2">
                             <button @click="setActiveAccordion(1)" class="w-full p-6 text-left">
                                 <h3 class="text-lg font-semibold flex items-center justify-between">
                                     <span>CV Optimization with AI</span>
