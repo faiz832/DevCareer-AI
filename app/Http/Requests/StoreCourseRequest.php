@@ -11,7 +11,7 @@ class StoreCourseRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return $this->user()->hasRole('owner') || $this->user()->hasRole('teacher');
+        return $this->user()->hasAnyRole(['owner', 'teacher']);
     }
 
     /**
@@ -21,12 +21,18 @@ class StoreCourseRequest extends FormRequest
      */
     public function rules(): array
     {
-        return [
+        $rules = [
             'name' => ['required', 'string', 'max:255'],
             'path_trailer' => ['required', 'string', 'max:255'],
             'about' => ['required', 'string'],
             'category_id' => ['required', 'integer'],
             'thumbnail' => ['required', 'image', 'mimes:png,jpg,jpeg,svg'],
         ];
+
+        if (auth()->user()->hasRole('owner')) {
+            $rules['teacher_id'] = ['required', 'integer', 'exists:teachers,id'];
+        }
+
+        return $rules;
     }
 }
