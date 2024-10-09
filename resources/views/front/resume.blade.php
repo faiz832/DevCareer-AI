@@ -388,11 +388,10 @@
 
                 <div class="max-w-md">
                     <p class="text-2xs text-typo-secondary !mt-4 text-center">By uploading an image you agree
-                        to our <a target="_blank" class="text-typo-secondary underline" draggable="false"
+                        to our <a target="_blank" class="underline" draggable="false"
                             href="{{ url('/terms') }}">Terms of Service</a>.
-                        To learn more about how devcareer.ai handles your personal data, check our <a target="_blank"
-                            rel="noopener" class="underline" style="color: inherit;"
-                            href="{{ url('/privacy') }}}">Privacy
+                        To learn more about how CodeCareer handles your personal data, check our <a target="_blank"
+                            class="underline" style="color: inherit;" href="{{ url('/privacy') }}">Privacy
                             Policy
                         </a>.
                     </p>

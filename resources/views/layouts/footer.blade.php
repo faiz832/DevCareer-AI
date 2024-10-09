@@ -106,9 +106,11 @@
                 <span class="text-sm text-gray-500 text-center">© 2024 <a href="{{ url('/') }}"
                         class="hover:underline">DevCareer AI™</a>. All Rights Reserved.</span>
                 <div class="flex items-center">
-                    <a href="#" class="text-sm text-gray-500 text-center hover:underline">Terms</a>
+                    <a href="{{ url('/terms') }}" target="_blank"
+                        class="text-sm text-gray-500 text-center hover:underline">Terms</a>
                     <span class="mx-2 text-gray-500 text-center">•</span>
-                    <a href="#" class="text-sm text-gray-500 text-center hover:underline">Privacy</a>
+                    <a href="{{ url('/privacy') }}" target="_blank"
+                        class="text-sm text-gray-500 text-center hover:underline">Privacy</a>
                 </div>
             </div>
         </div>

@@ -30,7 +30,8 @@
         <!-- Hero Section -->
         <div class="py-12 bg-gray-100">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                <h1 class="text-4xl text-center font-semibold text-gray-900 mb-8">Terms and Conditions</h1>
+                <h1 class="text-6xl text-center font-bold text-gray-900 mb-8 mt-12">Terms of Service</h1>
+                <p class="text-center text-gray-500 mb-24">Last updated: {{ date('F d, Y') }}</p>
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                     <div class="p-6 lg:p-8">
                         @php
@@ -86,10 +87,6 @@
                                     <p class="text-gray-600">{{ $term['content'] }}</p>
                                 </div>
                             @endforeach
-                        </div>
-
-                        <div class="mt-8 pt-6 border-t border-gray-200">
-                            <p class="text-sm text-gray-500">Last updated: {{ date('F d, Y') }}</p>
                         </div>
                     </div>
                 </div>
