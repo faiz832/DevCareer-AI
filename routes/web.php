@@ -21,18 +21,9 @@ Route::get('/details', [FrontController::class, 'details'])->name('front.details
 Route::get('/pricing', [FrontController::class, 'pricing'])->name('front.pricing');
 Route::get('/resume', [FrontController::class, 'resume'])->name('front.resume');
 Route::get('/course', [FrontController::class, 'course'])->name('front.course');
-
-Route::get('/about-us', [FrontController::class, 'aboutUs'])->name('front.about-us');
-Route::get('/contact', [FrontController::class, 'contact'])->name('front.contact');
-Route::get('/blog', [FrontController::class, 'program'])->name('front.program');
 Route::get('/faq', [FrontController::class, 'faq'])->name('front.faq');
-Route::get('/become-teacher', [FrontController::class, 'becomeTeacher'])->name('front.become-teacher');
-Route::get('/rules-requirements', [FrontController::class, 'rulesRequirements'])->name('front.rules-requirements');
-Route::get('/help-center', [FrontController::class, 'helpCenter'])->name('front.help-center');
-Route::get('/terms', [FrontController::class, 'terms'])->name('front.terms');
-Route::get('/privacy', [FrontController::class, 'privacy'])->name('front.privacy');
 Route::get('/pricing', [FrontController::class, 'pricing'])->name('front.pricing');
-
+Route::get('/404', [FrontController::class, '404'])->name('front.404');
 
 
 // Route::get('/dashboard', function () {

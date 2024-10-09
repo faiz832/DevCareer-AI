@@ -244,7 +244,7 @@
         </section>
 
         <!-- Advantages section -->
-        <section class="max-w-[1200px] mx-auto p-4 py-6 lg:py-8 mt-12 mb-12 lg:mb-24">
+        <section class="max-w-[1200px] mx-auto p-4 py-6 lg:py-8 my-12 lg:mb-24">
             <h1 class="text-3xl font-bold text-center mb-4">The Advantages of Our Program</h1>
             <div class="flex justify-center">
                 <p class="text-center text-gray-500 mb-4 w-3/4 lg:w-2/4">Unlock personalized learning paths and
@@ -432,7 +432,7 @@
         </section>
 
         <!--Become a Teacher CTA Section -->
-        <section class="max-w-[1200px] mx-auto p-4 py-6 lg:py-8">
+        <section class="max-w-[1200px] mx-auto p-4 py-6 lg:py-8 mb-12">
             <div class="rounded-lg h-max md:h-[400px] overflow-hidden bg-gradient-to-br from-cyan-200 to-blue-400">
                 <div class="flex flex-col md:flex-row items-center h-full w-full justify-between gap-8 p-12 lg:p-24">
                     <div class="w-full md:w-[500px] lg:w-[570px]">
