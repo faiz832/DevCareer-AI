@@ -3,7 +3,7 @@
         <div class="w-[1200px] relative flex items-start mx-auto p-4 py-6 lg:py-8 gap-8">
             @include('layouts.sidebar')
             <!-- Main Content -->
-            <div class="w-full lg:w-5/6">
+            <div class="w-full min-h-screen lg:w-5/6">
                 <div class="bg-white overflow-hidden p-4 sm:p-8 shadow-sm sm:rounded-lg">
                     <h2 class="font-semibold text-2xl text-gray-800 leading-tight mb-4">
                         {{ __('Edit Course') }}
