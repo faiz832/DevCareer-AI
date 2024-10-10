@@ -9,6 +9,7 @@ use App\Http\Controllers\FrontController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SubscribeTransactionController;
 use App\Http\Controllers\TeacherController;
+use App\Http\Controllers\SearchController;
 use Illuminate\Support\Facades\Route;
 
 // Route::get('/', function () {
@@ -26,6 +27,9 @@ Route::get('/pricing', [FrontController::class, 'pricing'])->name('front.pricing
 Route::get('/terms', [FrontController::class, 'terms'])->name('front.terms');
 Route::get('/privacy', [FrontController::class, 'privacy'])->name('front.privacy');
 Route::get('/404', [FrontController::class, '404'])->name('front.404');
+Route::get('/search', [SearchController::class, 'search'])->name('search');
+// Route::get('/categories/{category}', [CategoryController::class, 'show'])->name('category.show');
+// Route::get('/courses/{course}', [CourseController::class, 'show'])->name('course.show');
 
 
 // Route::get('/dashboard', function () {

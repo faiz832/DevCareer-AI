@@ -35,17 +35,11 @@
                 </div>
 
                 <!-- Brand Name -->
-                <a href="{{ url('/') }}" class="text-2xl font-semibold">CodeCareer</a>
+                <a href="{{ url('/') }}" class="text-2xl font-semibold mr-4">CodeCareer</a>
             </div>
 
             <!-- Search Input (visible on larger screens) -->
-            <div class="hidden md:flex relative flex-1 max-w-xl ml-4 lg:mx-4">
-                <input class="DocSearch-Input search-wrap rounded-full border border-slate-300 w-full px-4 py-2"
-                    aria-autocomplete="both" aria-labelledby="docsearch-label" id="docsearch-input" autocomplete="off"
-                    autocorrect="off" autocapitalize="off" enterkeyhint="go" spellcheck="false" maxlength="64"
-                    type="search" placeholder="Pencarian pelatihan kursus..." aria-activedescendant="docsearch-item-0"
-                    aria-controls="docsearch-list">
-            </div>
+            <x-search-bar />
 
             <!-- Desktop Navigation (hidden on md and smaller screens) -->
             <div class="hidden md:flex gap-4 lg:gap-8 mx-4">
