@@ -14,6 +14,15 @@
                                     stroke-linecap="round" stroke-linejoin="round" />
                             </svg>
                         </button>
+
+                        <!-- Backdrop -->
+                        <div x-show="open" x-transition:enter="transition ease-out duration-300"
+                            x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100"
+                            x-transition:leave="transition ease-in duration-200" x-transition:leave-start="opacity-100"
+                            x-transition:leave-end="opacity-0" @click="open = false"
+                            class="fixed h-screen inset-0 bg-gray-500 bg-opacity-75 transition-opacity z-40 lg:hidden"
+                            style="display: none;"></div>
+
                         <!-- Sidebar -->
                         <div x-show="open" x-transition:enter="transition ease-out duration-200"
                             x-transition:enter-start="transform opacity-0 -translate-x-full"
@@ -21,14 +30,14 @@
                             x-transition:leave="transition ease-in duration-75"
                             x-transition:leave-start="transform opacity-100 translate-x-0"
                             x-transition:leave-end="transform opacity-0 -translate-x-full" style="display: none;"
-                            class="fixed top-0 left-0 h-screen w-2/4 max-w-[212px] bg-white shadow-lg z-40 md:hidden">
+                            class="fixed top-0 left-0 h-screen w-2/4 max-w-[212px] bg-white shadow-lg z-50 md:hidden">
                             <div class="py-6 px-4">
-                                <input
-                                    class="DocSearch-Input search-wrap border rounded w-full px-4 py-2 focus:ring-0 text-sm"
-                                    type="search" placeholder="Pencarian pelatihan kursus...">
+                                <x-search-bar />
                                 <div class="border-t border-slate-300 my-4"></div>
-                                <a href="#" class="text-slate-900 block px-4 py-2" role="menuitem">Course</a>
-                                <a href="#" class="text-slate-900 block px-4 py-2" role="menuitem">Resume</a>
+                                <a href="{{ url('/course') }}" class="text-slate-900 block px-4 py-2"
+                                    role="menuitem">Course</a>
+                                <a href="{{ url('/resume') }}" class="text-slate-900 block px-4 py-2"
+                                    role="menuitem">Resume</a>
                             </div>
                         </div>
                     </div>
@@ -39,7 +48,9 @@
             </div>
 
             <!-- Search Input (visible on larger screens) -->
-            <x-search-bar />
+            <div class="hidden md:block">
+                <x-search-bar />
+            </div>
 
             <!-- Desktop Navigation (hidden on md and smaller screens) -->
             <div class="hidden md:flex gap-4 lg:gap-8 mx-4">
