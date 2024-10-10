@@ -39,11 +39,11 @@
 
                         <div class="flex items-center justify-end mt-4 gap-4">
                             <button type="button" onclick="window.history.back()"
-                                class="py-2 px-4 bg-gray-200 rounded hover:bg-gray-300 transition duration-300">
+                                class="py-2 px-4 bg-white text-gray-700 rounded border border-gray-300 hover:bg-gray-50 transition duration-300 ease-in-out">
                                 Cancel
                             </button>
                             <button type="submit"
-                                class="py-2 px-4 bg-blue-500 text-white rounded hover:bg-blue-600 transition duration-300">
+                                class="py-2 px-4 bg-blue-500 text-white rounded hover:bg-blue-600 transition duration-300 ease-in-out">
                                 Create
                             </button>
                         </div>
