@@ -1,5 +1,5 @@
 <!-- Sidebar -->
-<div class="bg-white w-1/6 hidden lg:block rounded-lg">
+<div class="bg-white w-1/6 hidden lg:block rounded-lg shadow">
     <div class="px-6 py-4">
         <h2 class="text-lg font-bold text-slate-900 mb-4">MENU</h2>
         <ul class="space-y-4">
