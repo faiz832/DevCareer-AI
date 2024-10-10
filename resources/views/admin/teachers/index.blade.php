@@ -176,22 +176,4 @@
             </div>
         </div>
     </div>
-
-    @push('scripts')
-        <script>
-            document.addEventListener('keydown', function(event) {
-                if (event.key === 'Escape') {
-                    Alpine.store('showDeleteModal', false);
-                }
-            });
-
-            // Optional: Close modal when clicking outside
-            document.addEventListener('click', function(event) {
-                const modal = document.querySelector('[role="dialog"]');
-                if (modal && !modal.contains(event.target) && !event.target.hasAttribute('data-modal-trigger')) {
-                    Alpine.store('showDeleteModal', false);
-                }
-            });
-        </script>
-    @endpush
 </x-app-layout>
