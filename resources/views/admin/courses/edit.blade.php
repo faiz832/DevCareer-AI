@@ -62,6 +62,22 @@
                             </select>
                         </div>
 
+                        @role('owner')
+                            <div class="mb-4">
+                                <x-input-label for="teacher_id" :value="__('Teacher')" />
+                                <select id="teacher_id" name="teacher_id"
+                                    class="block mt-1 w-full rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                                    required>
+                                    @foreach ($teachers as $teacher)
+                                        <option value="{{ $teacher->id }}"
+                                            {{ $course->teacher_id == $teacher->id ? 'selected' : '' }}>
+                                            {{ $teacher->user->name }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        @endrole
+
                         <div class="flex items-center justify-end mt-12 gap-4">
                             <a href="{{ route('admin.courses.index') }}"
                                 class="py-2 px-4 bg-gray-200 rounded hover:bg-gray-300 transition duration-300">Cancel</a>

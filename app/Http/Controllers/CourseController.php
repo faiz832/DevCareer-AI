@@ -23,7 +23,7 @@ class CourseController extends Controller
         $query = Course::with(['category', 'teacher', 'students'])->orderByDesc('id');
 
         if ($user->hasRole('teacher')) {
-            $query->whereHas('teacher', function ($query) use ($user){
+            $query->whereHas('teacher', function ($query) use ($user) {
                 $query->where('user_id', $user->id);
             });
         }
@@ -98,7 +98,8 @@ class CourseController extends Controller
     public function edit(Course $course)
     {
         $categories = Category::all();
-        return view('admin.courses.edit', compact('course', 'categories'));
+        $teachers = Teacher::with('user')->get();
+        return view('admin.courses.edit', compact('course', 'categories', 'teachers'));
     }
 
     /**
@@ -106,9 +107,17 @@ class CourseController extends Controller
      */
     public function update(Request $request, Course $course)
     {
-        DB::transaction(function () use ($request, $course){
+        DB::transaction(function () use ($request, $course) {
 
-            $validated = $request->validated();
+            // $validated = $request->validated();
+            $validated = $request->validate([
+                'name' => 'string|max:255',
+                'path_trailer' => 'string|max:255',
+                'about' => 'string',
+                'thumbnail' => 'image|mimes:png,jpg,jpeg,svg',
+                'category_id' => 'integer',
+                'teacher_id' => 'sometimes|exists:teachers,id',
+            ]);
 
             if ($request->hasFile('thumbnail')) {
                 $thumbnailPath = $request->file('thumbnail')->store('thumbnails', 'public');
@@ -132,7 +141,7 @@ class CourseController extends Controller
 
         });
 
-        return redirect()->route('admin.courses.show', $course);
+        return redirect()->route('admin.courses.index')->with('success', 'Course updated successfully');
     }
 
     /**
