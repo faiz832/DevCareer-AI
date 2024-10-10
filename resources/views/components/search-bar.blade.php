@@ -10,7 +10,7 @@
         x-transition:enter-start="opacity-0 transform scale-95" x-transition:enter-end="opacity-100 transform scale-100"
         x-transition:leave="transition ease-in duration-100" x-transition:leave-start="opacity-100 transform scale-100"
         x-transition:leave-end="opacity-0 transform scale-95" style="display: none;"
-        class="hidden md:block absolute z-50 w-full bg-white border border-gray-300 rounded-lg shadow-lg mt-1">
+        class="hidden md:block absolute z-50 w-full bg-white border border-gray-300 rounded-lg shadow-lg mt-1 max-h-[350px] overflow-auto">
         <div class="p-2">
             <!-- Loading indicator -->
             <div x-show="isSearching" class="text-center py-2">
