@@ -3,7 +3,7 @@
         <div class="w-[1200px] relative flex items-start mx-auto p-4 py-6 lg:py-8 gap-8">
             @include('layouts.sidebar')
             <!-- Main Content -->
-            <div class="w-full lg:w-5/6">
+            <div class="w-full lg:w-5/6 min-h-screen">
                 <div class="space-y-6">
                     <h2 class="text-2xl font-semibold text-gray-800">
                         {{ __('Profile') }}
