@@ -10,10 +10,26 @@ class FrontController extends Controller
 {
     public function index()
     {
+        $courses = Course::with(['category', 'teacher', 'students'])
+            ->orderByDesc('id');
 
-        $courses = Course::with(['category', 'teacher', 'students'])->orderByDesc('id')->get();
+        $user = Auth::user();
 
-        return view('welcome', compact('courses'));
+        // Check if user is authenticated and has teacher role
+        if ($user && $user->hasRole('teacher')) {
+            $courses->whereHas('teacher', function ($query) use ($user) {
+                $query->where('user_id', $user->id);
+            });
+        }
+
+        // Get the final courses collection
+        $courses = $courses->take(4)->get();
+
+        $studentCount = $courses->sum(function ($course) {
+            return $course->students->count();
+        });
+
+        return view('welcome', compact('courses', 'studentCount'));
     }
 
     public function course()
