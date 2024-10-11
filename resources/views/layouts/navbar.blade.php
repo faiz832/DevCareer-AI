@@ -32,11 +32,14 @@
                             x-transition:leave-end="transform opacity-0 -translate-x-full" style="display: none;"
                             class="fixed top-0 left-0 h-screen w-2/4 max-w-[212px] bg-white shadow-lg z-50 md:hidden">
                             <div class="py-6 px-4">
-                                <x-search-bar />
+                                <a href="{{ url('/') }}" class="text-2xl font-semibold mr-4">CodeCareer</a>
                                 <div class="border-t border-slate-300 my-4"></div>
-                                <a href="{{ url('/course') }}" class="text-slate-900 block px-4 py-2"
+                                <div class="pt-1">
+                                    <x-search-bar />
+                                </div>
+                                <a href="{{ url('/course') }}" class="text-slate-900 block pt-4 px-4"
                                     role="menuitem">Course</a>
-                                <a href="{{ url('/resume') }}" class="text-slate-900 block px-4 py-2"
+                                <a href="{{ url('/resume') }}" class="text-slate-900 block pt-4 px-4"
                                     role="menuitem">Resume</a>
                             </div>
                         </div>
