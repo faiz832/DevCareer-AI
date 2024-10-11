@@ -181,16 +181,6 @@
                         harum ratione. Laboriosam? Lorem ipsum dolor sit amet consectetur. Lorem ipsum dolor sit, amet
                         consectetur adipisicing elit. Maxime, itaque!
                     </p>
-                    {{-- <h1 class="text-3xl mt-12 mb-4">Target and Goals</h1>
-                    <p class="text-gray-600 leading-10 text-justify">Lorem ipsum dolor sit amet consectetur adipisicing
-                        elit.
-                        Cupiditate
-                        veritatis eaque in maxime repudiandae incidunt non ex vero, veniam, obcaecati accusamus, sint
-                        doloribus officiis! Ea ullam est distinctio sapiente reprehenderit dolor animi facere ipsum
-                        debitis eos saepe itaque mollitia aperiam nesciunt magni inventore, fugit, eveniet velit nostrum
-                        harum ratione. Laboriosam? Lorem ipsum dolor sit amet consectetur. Lorem ipsum dolor sit, amet
-                        consectetur adipisicing elit. Maxime, itaque!
-                    </p> --}}
                     <h1 class="text-2xl font-semibold mt-12 mb-4">Teacher</h1>
                     <div class="flex items-center">
                         <div class="flex-shrink-0 h-10 w-10">
@@ -202,7 +192,7 @@
                                 {{ $course->teacher->user->name }}
                             </div>
                             <div class="text-sm text-gray-500">
-                                Lecturer at Pasundan University
+                                {{ $course->teacher->user->email }}
                             </div>
                         </div>
                     </div>
