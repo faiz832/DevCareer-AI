@@ -93,8 +93,7 @@
                                                 Students</span>
                                         </div>
 
-                                        {{-- <a href="{{ route('course.details', $course->id) }}" --}}
-                                        <a href="#"
+                                        <a href="{{ route('front.details', $course->id) }}"
                                             class="text-center bg-white text-sm hover:bg-blue-500 text-blue-500 hover:text-white border border-blue-500 px-4 py-2 rounded transition duration-300 ease-in-out w-1/2">
                                             Start Learning
                                         </a>
