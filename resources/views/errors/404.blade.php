@@ -1,10 +1,9 @@
+<title>404 - Not Found</title>
 <x-app-layout>
     <div class="w-full max-w-[1200px] min-h-screen relative flex items-start mx-auto p-4 py-6 lg:py-8 gap-8">
-        @section('title', 'Page Not Found')
-
-        <div class="flex flex-col items-center w-full py-16">
-            <svg width="584" height="490" viewBox="0 0 584 490" fill="none" xmlns="http://www.w3.org/2000/svg"
-                style="width: 30%; height: 30%;">
+        <div class="flex flex-col items-center w-full pb-16">
+            <svg width="100" height="100" viewBox="0 0 584 490" fill="none" xmlns="http://www.w3.org/2000/svg"
+                class="w-1/2 h-1/2 lg:w-4/12 lg:h-4/12">
                 <g clip-path="url(#clip0_35_1269)">
                     <path
                         d="M446.608 325.091L468.177 341.027C479.033 326.657 493.186 308.33 503.715 292.216C504.641 290.799 503.241 289.004 501.645 289.569C491.525 293.15 482.046 299.188 475.762 295.951C473.539 294.806 471.243 292.719 468.917 293.64C467.898 294.043 467.186 294.956 466.524 295.829C458.569 306.326 450.614 316.823 446.606 325.091H446.608Z"
@@ -127,10 +126,10 @@
                     </clipPath>
                 </defs>
             </svg>
-            <h1 class="text-6xl font-bold text-gray-800 mt-12">404</h1>
-            <p class="text-2xl mt-4">Oops! Halaman yang Anda cari tidak ditemukan.</p>
+            <h1 class="text-5xl md:text-6xl font-bold text-gray-800 mt-4">404</h1>
+            <p class="text-xl md:text-2xl mt-4 text-center w-3/4">Oops! The page you are looking for was not found.</p>
             <a href="{{ route('front.index') }}" class="mt-8 inline-block bg-blue-500 text-white py-2 px-4 rounded">
-                Kembali ke Beranda
+                Back to Home
             </a>
         </div>
     </div>
