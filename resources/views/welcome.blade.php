@@ -33,7 +33,7 @@
 
         <!-- Hero Section -->
         <section class="max-w-[1200px] mx-auto p-4 py-6 lg:py-8">
-            <div class="relative rounded-lg h-[400px] overflow-hidden">
+            <div class="relative rounded-lg h-[400px] overflow-hidden shadow-lg">
                 <!-- Background Image -->
                 <img src="{{ asset('assets/images/thumbnail.jpg') }}" alt="image by freepick"
                     class="absolute inset-0 w-full h-full object-cover object-center" loading="lazy">
@@ -132,7 +132,7 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
                 @foreach ($courses as $course)
                     <div
-                        class="bg-white border rounded-lg p-3 hover:shadow-lg transition duration-300 ease-in-out transform flex flex-col justify-between">
+                        class="bg-white border rounded-lg p-3 hover:shadow-lg transition duration-300 ease-in-out flex flex-col justify-between">
                         <img src="{{ Storage::url($course->thumbnail) }}" alt="{{ $course->name }}"
                             class="w-full h-48 shadow-md object-cover rounded-lg mb-4" loading="lazy">
                         <div class="flex flex-col flex-grow">
@@ -351,7 +351,8 @@
 
         <!--Become a Teacher CTA Section -->
         <section class="max-w-[1200px] mx-auto p-4 py-6 lg:py-8 mb-12">
-            <div class="rounded-lg h-max md:h-[400px] overflow-hidden bg-gradient-to-br from-cyan-200 to-blue-400">
+            <div
+                class="rounded-lg h-max md:h-[400px] overflow-hidden bg-gradient-to-br from-cyan-200 to-blue-400 shadow-lg">
                 <div class="flex flex-col md:flex-row items-center h-full w-full justify-between gap-8 p-12 lg:p-24">
                     <div class="w-full md:w-[500px] lg:w-[570px]">
                         <h1 class="text-center md:text-left text-4xl lg:text-5xl font-bold mb-8">Become a teacher,
@@ -371,7 +372,7 @@
 
         <!-- Up Button -->
         <div id="scrollToTopBtn" onclick="scrollToTop()"
-            class="fixed bottom-7 right-7 cursor-pointer opacity-0 transform translate-y-10 transition-all duration-300 rounded-lg p-4 bg-blue-500 hover:bg-blue-700 text-white shadow-lg">
+            class="fixed bottom-7 right-7 cursor-pointer opacity-0 transform translate-y-10 transition-all duration-300 rounded-lg p-4 bg-blue-500 hover:bg-blue-700 text-white shadow-lg hover:-translate-y-2">
             <!-- SVG Icon for Up Arrow -->
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
                 stroke="currentColor" class="w-6 h-6">
