@@ -29,13 +29,13 @@
 
         <!-- Hero Section -->
         <div class="max-w-[1200px] mx-auto p-4 py-6 lg:py-8">
-            <div class="bg-gradient-to-br from-blue-700 to-blue-400 rounded-lg h-[400px]">
-                <div class="flex items-center gap-12 w-full h-full p-12">
+            <div class="bg-gradient-to-br from-blue-700 to-blue-400 rounded-lg h-max md:h-[400px]">
+                <div class="flex flex-col md:flex-row md:items-center gap-8 md:gap-12 w-full h-full p-8 md:p-12">
                     <div class="relative overflow-hidden rounded-lg flex" x-data="{ open: false, videoSrc: '{{ $course->path_trailer ?? 'https://www.youtube.com/embed/T1TR-RGf2Pw' }}' }"
                         @click.away="open = false">
                         <button
                             @click="open = !open; if (!open) { videoSrc = ''; } else { videoSrc = '{{ $course->path_trailer ?? 'https://www.youtube.com/embed/T1TR-RGf2Pw' }}'; }"
-                            class="relative overflow-hidden rounded-lg w-[400px] h-[250px] hover:scale-105 transition duration-300">
+                            class="relative overflow-hidden rounded-lg md:w-[400px] md:h-[250px] hover:scale-105 transition duration-300">
                             <div class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-20">
                                 <div
                                     class="w-24 h-16 bg-red-500 rounded-xl flex items-center justify-center transition-transform duration-300 group-hover:scale-110">
@@ -60,7 +60,7 @@
                             <!-- Modal Content -->
                             <div class="bg-white flex flex-col items-center rounded-lg shadow-lg p-6"
                                 @click.away="open = false; videoSrc = ''">
-                                <iframe width="560" height="315" :src="videoSrc"
+                                <iframe class="w-full h-full md:w-[560px] md:h-[315px]" :src="videoSrc"
                                     title="YouTube video player" frameborder="0"
                                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                                     allowfullscreen></iframe>
@@ -69,7 +69,16 @@
                     </div>
                     <div class="flex flex-col gap-4 text-white">
                         <h1 class="text-3xl font-semibold">{{ $course->name }}</h1>
-                        <p class="text-lg">{{ $course->about }}</p>
+                        <!-- Category -->
+                        <div class="flex gap-2 items-center">
+                            <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                            </svg>
+                            <span class="text-sm">{{ $course->category->name }}</span>
+                        </div>
+                        <!-- Students -->
                         <div class="flex gap-2 items-center">
                             <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                 stroke="currentColor">
@@ -78,7 +87,8 @@
                             </svg>
                             <span class="text-sm">{{ $course->students->count() }} Students</span>
                         </div>
-                        <p class="text-sm">By {{ $course->teacher->user->name }}</p>
+                        <p class="">By {{ $course->teacher->user->name }}</p>
+                        <p class="">{{ $course->about }}</p>
                     </div>
                 </div>
             </div>
@@ -89,7 +99,7 @@
             <h1 class="text-2xl font-semibold mb-8">What you will get?</h1>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 <div
-                    class="border rounded-lg h-[120px] p-5 hover:shadow-lg hover:-translate-y-2 transition duration-300 ease-in-out">
+                    class="border rounded-lg h-max md:h-[120px] p-5 hover:shadow-lg hover:-translate-y-2 transition duration-300 ease-in-out">
                     <div class="flex flex-col lg:flex-row">
                         <div class="mr-3 mb-2 lg:mb-0">
                             <svg width="32" height="32" viewBox="0 0 32 32" fill="none"
@@ -101,8 +111,7 @@
                                     d="M22.6667 10.668C19.7211 10.668 17.3333 13.0558 17.3333 16.0013C17.3333 17.2891 17.7898 18.4703 18.5497 19.392L17.3467 27.8127C17.2814 28.2702 17.4576 28.7289 17.8123 29.025C18.1671 29.3211 18.6499 29.4123 19.0883 29.2662L22.6667 28.0734L26.245 29.2662C26.6834 29.4123 27.1662 29.3211 27.521 29.025C27.8758 28.7289 28.052 28.2702 27.9866 27.8127L26.7836 19.392C27.5436 18.4703 28 17.2891 28 16.0013C28 13.0558 25.6122 10.668 22.6667 10.668ZM20 16.0013C20 14.5285 21.1939 13.3346 22.6667 13.3346C24.1394 13.3346 25.3333 14.5285 25.3333 16.0013C25.3333 17.4741 24.1394 18.668 22.6667 18.668C21.1939 18.668 20 17.4741 20 16.0013ZM20.2917 26.0542L21.0037 21.0703C21.527 21.2418 22.086 21.3346 22.6667 21.3346C23.2473 21.3346 23.8063 21.2418 24.3296 21.0703L25.0416 26.0542L23.0883 25.4031C22.8146 25.3118 22.5187 25.3118 22.245 25.4031L20.2917 26.0542Z"
                                     fill="#3F3F46"></path>
                                 <path d="M9.33333 21.3346H16V18.668H9.33333V21.3346Z" fill="#3F3F46"></path>
-                                <path d="M14.6667 16.0013H9.33333V13.3346H14.6667V16.0013Z" fill="#3F3F46">
-                                </path>
+                                <path d="M14.6667 16.0013H9.33333V13.3346H14.6667V16.0013Z" fill="#3F3F46"></path>
                                 <path d="M9.33333 10.668H17.3333V8.0013H9.33333V10.668Z" fill="#3F3F46"></path>
                             </svg>
                         </div>
@@ -113,7 +122,7 @@
                     </div>
                 </div>
                 <div
-                    class="border rounded-lg h-[120px] p-5 hover:shadow-lg hover:-translate-y-2 transition duration-300 ease-in-out">
+                    class="border rounded-lg h-max md:h-[120px] p-5 hover:shadow-lg hover:-translate-y-2 transition duration-300 ease-in-out">
                     <div class="flex flex-col lg:flex-row">
                         <div class="mr-3 mb-2 lg:mb-0">
                             <svg width="32" height="32" viewBox="0 0 32 32" fill="none"
@@ -137,9 +146,7 @@
                     </div>
                 </div>
                 <div
-                    class="border
-                                rounded-lg h-[120px] p-5 hover:shadow-lg hover:-translate-y-2 transition duration-300
-                                ease-in-out">
+                    class="border rounded-lg h-max md:h-[120px] p-5 hover:shadow-lg hover:-translate-y-2 transition duration-300 ease-in-out">
                     <div class="flex flex-col lg:flex-row">
                         <div class="mr-3 mb-2 lg:mb-0">
                             <svg width="32" height="32" viewBox="0 0 32 32" fill="none"
@@ -185,7 +192,7 @@
                     <div class="flex items-center">
                         <div class="flex-shrink-0 h-10 w-10">
                             <img class="h-10 w-10 rounded-full" src="https://via.placeholder.com/35x35"
-                                alt="">
+                                alt="" loading="lazy">
                         </div>
                         <div class="ml-4">
                             <div class="text-sm font-semibold text-gray-900">
@@ -196,7 +203,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="text-2xl font-semibold mt-16 mb-4">What you will learn</div>
+                    <div class="text-2xl font-semibold mt-16 mb-4">What you will learn?</div>
                     <div class="rounded border w-full px-4 flex flex-col mb-12">
                         <div class="flex justify-between py-4">
                             <h1>Introduction</h1>
@@ -219,7 +226,7 @@
                                     <!-- Modal Content -->
                                     <div class="bg-white flex flex-col items-center rounded-lg shadow-lg p-6"
                                         @click.away="open = false; videoSrc = ''">
-                                        <iframe width="560" height="315" :src="videoSrc"
+                                        <iframe class="w-full h-full md:w-[560px] md:h-[315px]" :src="videoSrc"
                                             title="YouTube video player" frameborder="0"
                                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                                             allowfullscreen></iframe>
@@ -241,11 +248,15 @@
                     </div>
                 </div>
                 <div class="w-full lg:w-4/12 relative">
-                    <div class="p-4 sticky top-24">
+                    <div class="pb-8 md:p-4 sticky top-24">
                         <div class="rounded-lg border p-4 space-y-4">
-                            <div class="overflow-hidden rounded w-full h-[200px]">
+                            <div class="overflow-hidden rounded w-full h-[200px] shadow-md">
                                 <img src="{{ Storage::url($course->thumbnail) ?? asset('assets/images/thumbnail.jpg') }}"
-                                    alt="{{ $course->name }}" class="shadow-md">
+                                    alt="{{ $course->name }}" class="w-full h-full object-cover object-center"
+                                    loading="lazy">
+                            </div>
+                            <div class="py-2">
+                                <hr>
                             </div>
                             <a href="{{ url('/pricing') }}"
                                 class="flex w-full justify-center bg-blue-500 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded transition duration-300">Learn
