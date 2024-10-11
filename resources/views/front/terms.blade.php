@@ -29,12 +29,12 @@
 
         <!-- Hero Section -->
         <div class="py-12 bg-white">
-            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="max-w-7xl mx-auto p-4 sm:px-6 lg:px-8">
                 <h1
                     class="text-6xl text-center font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-700 to-blue-400 mb-8 mt-12">
                     Terms of Service</h1>
                 <p class="text-center text-gray-500 mb-24">Last updated: {{ date('F d, Y') }}</p>
-                <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg border border-gray-200">
+                <div class="bg-white overflow-hidden shadow-sm rounded-lg border border-gray-200">
                     <div class="p-6 lg:p-8">
                         @php
                             $terms = [

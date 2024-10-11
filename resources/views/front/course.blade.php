@@ -58,7 +58,7 @@
             <div class="flex justify-center mb-8 space-x-4">
                 @foreach ($categories as $index => $category)
                     <button
-                        class="tab-btn {{ $index === 0 ? 'active' : '' }} px-4 py-2 text-gray-600 border-b-2 border-transparent hover:text-blue-600 hover:border-blue-600"
+                        class="tab-btn {{ $index === 0 ? 'active' : '' }} px-4 py-2 text-sm sm:text-base text-gray-600 border-b-2 border-transparent hover:text-blue-600 hover:border-blue-600"
                         data-target="tab{{ $category->id }}">{{ $category->name }}</button>
                 @endforeach
             </div>

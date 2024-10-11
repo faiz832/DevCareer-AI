@@ -28,19 +28,21 @@
         @include('layouts.navbar')
 
         <!-- Hero Section -->
-        <div class="bg-white py-12 my-12">
-            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                <div class="text-center mb-24">
-                    <h1 class="text-3xl font-semibold text-gray-900 sm:text-4xl">Frequently Asked Questions</h1>
-                    <p class="mt-4 text-lg text-gray-600">Find answers to common questions about our services.</p>
-                </div>
+        <div class="bg-white py-12 mb-12">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h1
+                    class="text-6xl text-center font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-700 to-blue-400 mb-8 mt-12">
+                    Frequently Asked Questions</h1>
+                <p class="text-center text-gray-500 mb-24 text-xl">Find answers to common questions about our
+                    services.
+                </p>
 
                 @php
                     $faqs = [
                         [
-                            'question' => 'What is DEVCAREER AI and CodeCareer?',
+                            'question' => 'What is CodeCareer?',
                             'answer' =>
-                                'DEVCAREER AI is a career empowerment platform offering skill courses and AI-powered CV optimization to help you succeed in the job market.',
+                                'CodeCareer is a career empowerment platform offering skill courses and AI-powered CV optimization to help you succeed in the job market.',
                         ],
                         [
                             'question' => 'How does the CV optimization feature work?',
@@ -95,7 +97,7 @@
                         ],
                         [
                             'question' => 'What payment methods are accepted?',
-                            'answer' => 'We accept credit/debit cards, PayPal, and local payment options.',
+                            'answer' => 'We accept credit/debit cards, and local payment options.',
                         ],
                     ];
                 @endphp
