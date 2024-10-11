@@ -211,7 +211,7 @@
                                 @click.away="open = false">
                                 <button
                                     @click="open = !open; if (!open) { videoSrc = ''; } else { videoSrc = '{{ $course->path_trailer ?? 'https://www.youtube.com/embed/T1TR-RGf2Pw' }}'; }"
-                                    class="hover:underline">Preview
+                                    class="hover:underline text-blue-500">Preview
                                 </button>
                                 <div x-show="open" x-transition:enter="transition ease-out duration-200"
                                     x-transition:enter-start="transform opacity-0 -translate-x-full"
