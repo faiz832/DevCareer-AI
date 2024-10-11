@@ -69,7 +69,7 @@
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
                         @foreach ($coursesByCategory[$category->id] as $course)
                             <div
-                                class="bg-white border rounded-lg p-3 hover:cursor-pointer hover:shadow-lg transition duration-300 ease-in-out transform hover:-translate-y-2 flex flex-col justify-between">
+                                class="bg-white border rounded-lg p-3 hover:shadow-lg transition duration-300 ease-in-out transform flex flex-col justify-between">
                                 <img src="{{ Storage::url($course->thumbnail) ?? 'https://via.placeholder.com/400x200' }}"
                                     alt="{{ $course->name }}" class="w-full h-48 shadow-md object-cover rounded-lg mb-4"
                                     loading="lazy">
@@ -94,8 +94,8 @@
                                         </div>
 
                                         <a href="{{ route('front.details', $course->id) }}"
-                                            class="text-center bg-white text-sm hover:bg-blue-500 text-blue-500 hover:text-white border border-blue-500 px-4 py-2 rounded transition duration-300 ease-in-out w-1/2">
-                                            Start Learning
+                                            class="text-center font-semibold bg-blue-500 text-sm hover:bg-blue-600 text-white px-4 py-2 rounded transition duration-300 ease-in-out w-1/2">
+                                            Learn Now
                                         </a>
                                     </div>
                                 </div>
