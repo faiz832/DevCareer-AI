@@ -133,8 +133,9 @@
                 @foreach ($courses as $course)
                     <div
                         class="bg-white border rounded-lg p-3 hover:shadow-lg transition duration-300 ease-in-out flex flex-col justify-between">
-                        <img src="{{ Storage::url($course->thumbnail) }}" alt="{{ $course->name }}"
-                            class="w-full h-48 shadow-md object-cover rounded-lg mb-4" loading="lazy">
+                        <img src="{{ Storage::url($course->thumbnail) ?? 'https://via.placeholder.com/400x200' }}"
+                            alt="{{ $course->name }}" class="w-full h-48 shadow-md object-cover rounded-lg mb-4"
+                            loading="lazy">
                         <div class="flex flex-col flex-grow">
                             <h3 class="font-semibold text-xl mb-2">{{ $course->name }}</h3>
                             <div class="flex flex-col justify-between h-full">
