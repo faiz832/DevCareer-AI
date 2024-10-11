@@ -6,7 +6,7 @@
     </div>
 
     <!-- Search Results Dropdown -->
-    <div x-show="isSearching || results.length > 0" x-transition:enter="transition ease-out duration-200"
+    <div x-show="isSearching || query.length >= 1" x-transition:enter="transition ease-out duration-200"
         x-transition:enter-start="opacity-0 transform scale-95" x-transition:enter-end="opacity-100 transform scale-100"
         x-transition:leave="transition ease-in duration-100" x-transition:leave-start="opacity-100 transform scale-100"
         x-transition:leave-end="opacity-0 transform scale-95" style="display: none;"
@@ -25,18 +25,20 @@
             </div>
 
             <!-- Results list -->
+            {{-- <template x-if="!isSearching && results.length > 0"> --}}
             <template x-for="result in results" :key="result.id">
-                <a :href="'/course/' + result.id"
-                    class="flex w-full items-center px-4 py-2 hover:bg-gray-100 rounded transition-colors">
+                <a :href="'/course/' + result.id + '/details/'"
+                    class="flex w-full items-center px-4 py-2 hover:bg-blue-100 rounded transition-colors">
                     <div>
                         <div class="text-sm font-medium" x-text="result.name"></div>
                         <div class="text-xs text-gray-500" x-text="'in ' + result.category.name"></div>
                     </div>
                 </a>
             </template>
+            {{-- </template> --}}
 
             <!-- No results message -->
-            <div x-show="!isSearching && query.length >= 2 && results.length === 0"
+            <div x-show="!isSearching && query.length >= 1 && results.length === 0"
                 class="text-center py-2 text-gray-500">
                 No results found
             </div>
@@ -63,16 +65,21 @@
                     .then(response => response.json())
                     .then(data => {
                         this.results = data;
-                        this.isSearching = false;
                     })
                     .catch(error => {
                         console.error('Error fetching search results:', error);
+                        this.results = [];
+                    })
+                    .finally(() => {
                         this.isSearching = false;
                     });
             },
 
             closeSearch() {
-                this.results = [];
+                if (!this.$refs.searchInput.contains(event.target)) {
+                    this.results = [];
+                    this.query = '';
+                }
             }
         }
     }
