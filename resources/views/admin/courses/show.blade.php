@@ -116,8 +116,8 @@
                             <div class="flex flex-row gap-y-10 justify-between items-center mt-8">
                                 <div class="flex flex-row items-center gap-x-3">
                                     <iframe width="560" class="rounded object-cover w-[120px] h-[90px]"
-                                        height="315" src="https://www.youtube.com/embed/{{ $video->path_video }}"
-                                        title="YouTube video player" frameborder="0"
+                                        height="315" src="{{ $video->path_video }}" title="YouTube video player"
+                                        frameborder="0"
                                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                                         referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                                     <div class="flex flex-col">

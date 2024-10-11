@@ -68,8 +68,11 @@ class FrontController extends Controller
         return view('front.course', compact('categories', 'coursesByCategory', 'studentCount'));
     }
 
-    public function details(Course $course)
+    public function details($id)
     {
+        $course = Course::with(['category', 'teacher', 'students', 'course_videos'])
+            ->findOrFail($id);
+
         return view('front.details', compact('course'));
     }
 

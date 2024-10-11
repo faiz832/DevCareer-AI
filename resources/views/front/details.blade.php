@@ -31,21 +31,22 @@
         <div class="max-w-[1200px] mx-auto p-4 py-6 lg:py-8">
             <div class="bg-gradient-to-br from-blue-700 to-blue-400 rounded-lg h-[400px]">
                 <div class="flex items-center gap-12 w-full h-full p-12">
-                    <div class="relative overflow-hidden rounded-lg flex" x-data="{ open: false, videoSrc: 'https://www.youtube.com/embed/T1TR-RGf2Pw' }"
+                    <div class="relative overflow-hidden rounded-lg flex" x-data="{ open: false, videoSrc: '{{ $course->path_trailer ?? 'https://www.youtube.com/embed/T1TR-RGf2Pw' }}' }"
                         @click.away="open = false">
                         <button
-                            @click="open = !open; if (!open) { videoSrc = ''; } else { videoSrc = 'https://www.youtube.com/embed/T1TR-RGf2Pw'; }"
+                            @click="open = !open; if (!open) { videoSrc = ''; } else { videoSrc = '{{ $course->path_trailer ?? 'https://www.youtube.com/embed/T1TR-RGf2Pw' }}'; }"
                             class="relative overflow-hidden rounded-lg w-[400px] h-[250px] hover:scale-105 transition duration-300">
                             <div class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-20">
                                 <div
-                                    class="w-24 h-16 bg-red-600 rounded-xl flex items-center justify-center transition-transform duration-300 group-hover:scale-110">
+                                    class="w-24 h-16 bg-red-500 rounded-xl flex items-center justify-center transition-transform duration-300 group-hover:scale-110">
                                     <div
                                         class="w-0 h-0 border-t-[12px] border-t-transparent border-l-[24px] border-l-white border-b-[12px] border-b-transparent ml-1">
                                     </div>
                                 </div>
                             </div>
-                            <img src="{{ asset('assets/images/thumbnail.jpg') }}" alt="image by freepick"
-                                class="w-full h-full object-cover object-center" loading="lazy">
+                            <img src="{{ Storage::url($course->thumbnail) ?? asset('assets/images/thumbnail.jpg') }}"
+                                alt="{{ $course->name }}" class="w-full h-full object-cover object-center"
+                                loading="lazy">
                         </button>
                         <div x-show="open" x-transition:enter="transition ease-out duration-200"
                             x-transition:enter-start="transform opacity-0 -translate-x-full"
@@ -67,17 +68,17 @@
                         </div>
                     </div>
                     <div class="flex flex-col gap-4 text-white">
-                        <h1 class="text-3xl font-semibold">Learn HTML & CSS</h1>
-                        <p class="text-lg">Learn the basics of web development.</p>
-                        <div class="flex gap-4 items-center">
+                        <h1 class="text-3xl font-semibold">{{ $course->name }}</h1>
+                        <p class="text-lg">{{ $course->about }}</p>
+                        <div class="flex gap-2 items-center">
                             <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                 stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                             </svg>
-                            <span class="text-sm">100+ Students</span>
+                            <span class="text-sm">{{ $course->students->count() }} Students</span>
                         </div>
-                        <p class="text-sm">By Sandika Galih</p>
+                        <p class="text-sm">By {{ $course->teacher->user->name }}</p>
                     </div>
                 </div>
             </div>
@@ -180,14 +181,7 @@
                         harum ratione. Laboriosam? Lorem ipsum dolor sit amet consectetur. Lorem ipsum dolor sit, amet
                         consectetur adipisicing elit. Maxime, itaque!
                     </p>
-                    <ul class="list-disc ml-12 mt-4 space-y-4">
-                        <li>Lorem ipsum dolor sit amet.</li>
-                        <li>Lorem ipsum dolor sit amet.</li>
-                        <li>Lorem ipsum dolor sit amet.</li>
-                        <li>Lorem ipsum dolor sit amet.</li>
-                        <li>Lorem ipsum dolor sit amet.</li>
-                    </ul>
-                    <h1 class="text-3xl mt-12 mb-4">Target and Goals</h1>
+                    {{-- <h1 class="text-3xl mt-12 mb-4">Target and Goals</h1>
                     <p class="text-gray-600 leading-10 text-justify">Lorem ipsum dolor sit amet consectetur adipisicing
                         elit.
                         Cupiditate
@@ -196,28 +190,72 @@
                         debitis eos saepe itaque mollitia aperiam nesciunt magni inventore, fugit, eveniet velit nostrum
                         harum ratione. Laboriosam? Lorem ipsum dolor sit amet consectetur. Lorem ipsum dolor sit, amet
                         consectetur adipisicing elit. Maxime, itaque!
-                    </p>
-                    <h1 class="text-3xl mt-12 mb-4">Teacher</h1>
-                    <div class="flex items-center mb-12">
+                    </p> --}}
+                    <h1 class="text-2xl font-semibold mt-12 mb-4">Teacher</h1>
+                    <div class="flex items-center">
                         <div class="flex-shrink-0 h-10 w-10">
                             <img class="h-10 w-10 rounded-full" src="https://via.placeholder.com/35x35"
                                 alt="">
                         </div>
                         <div class="ml-4">
                             <div class="text-sm font-semibold text-gray-900">
-                                Sandika Galih
+                                {{ $course->teacher->user->name }}
                             </div>
                             <div class="text-sm text-gray-500">
                                 Lecturer at Pasundan University
                             </div>
                         </div>
                     </div>
+                    <div class="text-2xl font-semibold mt-16 mb-4">What you will learn</div>
+                    <div class="rounded border w-full px-4 flex flex-col mb-12">
+                        <div class="flex justify-between py-4">
+                            <h1>Introduction</h1>
+                            <div class="relative overflow-hidden rounded-lg flex" x-data="{ open: false, videoSrc: '{{ $course->path_trailer ?? 'https://www.youtube.com/embed/T1TR-RGf2Pw' }}' }"
+                                @click.away="open = false">
+                                <button
+                                    @click="open = !open; if (!open) { videoSrc = ''; } else { videoSrc = '{{ $course->path_trailer ?? 'https://www.youtube.com/embed/T1TR-RGf2Pw' }}'; }"
+                                    class="hover:underline">Preview
+                                </button>
+                                <div x-show="open" x-transition:enter="transition ease-out duration-200"
+                                    x-transition:enter-start="transform opacity-0 -translate-x-full"
+                                    x-transition:enter-end="transform opacity-100 translate-x-0"
+                                    x-transition:leave="transition ease-in duration-75"
+                                    x-transition:leave-start="transform opacity-100 translate-x-0"
+                                    x-transition:leave-end="transform opacity-0 -translate-x-full"
+                                    style="display: none;"
+                                    class="fixed inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center z-50 transition-opacity duration-300 ease-in-out"
+                                    @click.away="open = false; videoSrc = ''">
+
+                                    <!-- Modal Content -->
+                                    <div class="bg-white flex flex-col items-center rounded-lg shadow-lg p-6"
+                                        @click.away="open = false; videoSrc = ''">
+                                        <iframe width="560" height="315" :src="videoSrc"
+                                            title="YouTube video player" frameborder="0"
+                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                            allowfullscreen></iframe>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        @if ($course->course_videos && $course->course_videos->count() > 0)
+                            @foreach ($course->course_videos as $index => $video)
+                                <div class="flex justify-between items-center py-4 border-t border-gray-200">
+                                    <h1>Lesson {{ $index + 1 }}. {{ $video->name }}</h1>
+                                </div>
+                            @endforeach
+                        @else
+                            <div class="text-gray-500 italic py-4 border-t border-gray-200">
+                                No lessons available for this course yet.
+                            </div>
+                        @endif
+                    </div>
                 </div>
                 <div class="w-full lg:w-4/12 relative">
                     <div class="p-4 sticky top-24">
                         <div class="rounded-lg border p-4 space-y-4">
                             <div class="overflow-hidden rounded w-full h-[200px]">
-                                <img src="{{ asset('assets/images/thumbnail.jpg') }}" alt="image freepick">
+                                <img src="{{ Storage::url($course->thumbnail) ?? asset('assets/images/thumbnail.jpg') }}"
+                                    alt="{{ $course->name }}" class="shadow-md">
                             </div>
                             <a href="{{ url('/pricing') }}"
                                 class="flex w-full justify-center bg-blue-500 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded transition duration-300">Learn
