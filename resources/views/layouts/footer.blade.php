@@ -44,7 +44,7 @@
                         <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase">Company</h2>
                         <ul class="text-gray-600">
                             <li class="mb-4">
-                                <a href="{{ url('/') }}" target="_blank"
+                                <a href="{{ url('/about-us') }}"
                                     class="text-sm hover:text-blue-500 transition duration-300 ease-in-out">About
                                     Us</a>
                             </li>
@@ -53,7 +53,7 @@
                                     class="text-sm hover:text-blue-500 transition duration-300 ease-in-out">Contact</a>
                             </li>
                             <li>
-                                <a href="{{ url('/course') }}" target="_blank"
+                                <a href="{{ url('/course') }}"
                                     class="text-sm hover:text-blue-500 transition duration-300 ease-in-out">Our
                                     Course</a>
                             </li>
@@ -63,11 +63,11 @@
                         <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase">Information</h2>
                         <ul class="text-gray-600">
                             <li class="mb-4">
-                                <a href="{{ url('/') }}" target="_blank"
+                                <a href="{{ url('/blog') }}" target="_blank"
                                     class="text-sm hover:text-blue-500 transition duration-300 ease-in-out">Blog</a>
                             </li>
                             <li class="mb-4">
-                                <a href="{{ url('/') }}" target="_blank"
+                                <a href="{{ url('/program') }}" target="_blank"
                                     class="text-sm hover:text-blue-500 transition duration-300 ease-in-out">Program</a>
                             </li>
                             <li class="">
@@ -80,17 +80,17 @@
                         <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase">Teaching</h2>
                         <ul class="text-gray-600">
                             <li class="mb-4">
-                                <a href="{{ url('/') }}" target="_blank"
+                                <a href="{{ url('/become-teacher') }}" target="_blank"
                                     class="text-sm hover:text-blue-500 transition duration-300 ease-in-out">Become a
                                     Teacher</a>
                             </li>
                             <li class="mb-4">
-                                <a href="{{ url('/') }}" target="_blank"
+                                <a href="{{ url('/rules-requirements') }}" target="_blank"
                                     class="text-sm hover:text-blue-500 transition duration-300 ease-in-out">Rules &
                                     Requirements</a>
                             </li>
                             <li class="">
-                                <a href="{{ url('/') }}" target="_blank"
+                                <a href="{{ url('/help-center') }}" target="_blank"
                                     class="text-sm hover:text-blue-500 transition duration-300 ease-in-out">Help
                                     Center</a>
                             </li>
