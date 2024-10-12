@@ -73,10 +73,20 @@
                             <div class="relative gap-2 py-2 cursor-pointer" x-data="{ open: false }">
                                 <button @click="open = !open" @click.away="open = false" class="flex items-center">
                                     <div class="avatar">
-                                        {{-- <img src="{{ Auth::user()->avatar ?? asset('assets/images/profile1.png') }}" --}}
-                                        <img src="{{ Auth::user()->avatar ? Storage::url(Auth::user()->avatar) : asset('assets/images/profile1.png') }}"
-                                            alt="user_photo" class="rounded-full h-[36px] w-[36px] object-cover"
-                                            loading="lazy">
+                                        @php
+                                            $avatarUrl = asset('assets/images/profile1.png'); // Default avatar URL
+
+                                            if (Auth::user()->avatar) {
+                                                if (Str::startsWith(Auth::user()->avatar, 'https://')) {
+                                                    $avatarUrl = Auth::user()->avatar;
+                                                } elseif (Str::startsWith(Auth::user()->avatar, 'avatars/')) {
+                                                    $avatarUrl = Storage::url(Auth::user()->avatar);
+                                                }
+                                            }
+                                        @endphp
+
+                                        <img id="avatar-preview" class="h-[36px] w-[36px] object-cover rounded-full"
+                                            src="{{ $avatarUrl }}" alt="User Avatar" />
                                     </div>
                                     <div class="hidden md:flex items-center">
                                         <span class="flex items-center font-semibold text-sm uppercase ms-2">

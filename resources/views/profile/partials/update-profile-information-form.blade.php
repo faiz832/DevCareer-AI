@@ -19,8 +19,20 @@
 
         <div class="flex items-center space-x-6">
             <div class="shrink-0">
-                <img id="avatar-preview" class="h-16 w-16 object-cover rounded-full"
-                    src="{{ Auth::user()->avatar ? Storage::url(Auth::user()->avatar) : asset('assets/images/default-avatar.png') }}" />
+                @php
+                    $avatarUrl = asset('assets/images/profile1.png'); // Default avatar URL
+
+                    if (Auth::user()->avatar) {
+                        if (Str::startsWith(Auth::user()->avatar, 'https://')) {
+                            $avatarUrl = Auth::user()->avatar;
+                        } elseif (Str::startsWith(Auth::user()->avatar, 'avatars/')) {
+                            $avatarUrl = Storage::url(Auth::user()->avatar);
+                        }
+                    }
+                @endphp
+
+                <img id="avatar-preview" class="h-16 w-16 object-cover rounded-full" src="{{ $avatarUrl }}"
+                    alt="User Avatar" />
             </div>
             <label class="block">
                 <span class="sr-only">Choose profile photo</span>
