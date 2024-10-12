@@ -75,7 +75,8 @@
                                     <div class="avatar">
                                         {{-- <img src="{{ Auth::user()->avatar ?? asset('assets/images/profile1.png') }}" --}}
                                         <img src="{{ Auth::user()->avatar ? Storage::url(Auth::user()->avatar) : asset('assets/images/profile1.png') }}"
-                                            alt="user_photo" class="rounded-full object-contain w-[36px]" loading="lazy">
+                                            alt="user_photo" class="rounded-full h-[36px] w-[36px] object-cover"
+                                            loading="lazy">
                                     </div>
                                     <div class="hidden md:flex items-center">
                                         <span class="flex items-center font-semibold text-sm uppercase ms-2">
