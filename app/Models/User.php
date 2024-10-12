@@ -27,6 +27,7 @@ class User extends Authenticatable
         'email',
         'password',
         'avatar',
+        'google_id',
     ];
 
     /**
@@ -62,12 +63,14 @@ class User extends Authenticatable
 
     // user memiliki banyak courses
     // pada model course berada di pivotable course_students
-    public function courses(){
+    public function courses()
+    {
         return $this->belongsToMany(Course::class, 'course_students');
     }
 
     // satu pengguna dapat langganan berkali-kali
-    public function subscribe_transactions(){
+    public function subscribe_transactions()
+    {
         return $this->hasMany(SubscribeTransaction::class);
     }
 

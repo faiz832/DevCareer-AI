@@ -107,7 +107,7 @@
                     </div>
                 </div>
                 <div class="mt-4">
-                    <a href=""
+                    <a href="{{ route('auth.google') }}"
                         class="flex items-center justify-center gap-2 px-4 py-2 text-sm text-gray-600 border border-gray-300 rounded-lg hover:bg-gray-100 transition duration-300">
                         <svg class="w-5 h-5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path
