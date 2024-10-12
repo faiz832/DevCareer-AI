@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
@@ -38,16 +39,21 @@ class CategoryController extends Controller
     {
         $request->validate([
             'name' => 'required|string|max:255|unique:categories',
-            'icon' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            // 'icon' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
-        $iconPath = $request->file('icon')->store('categories', 'public');
+        // $iconPath = $request->file('icon')->store('categories', 'public');
 
-        Category::create([
+        $category = Category::create([
             'name' => $request->name,
             'slug' => Str::slug($request->name),
-            'icon' => $iconPath,
+            // 'icon' => $iconPath,
         ]);
+
+        activity()
+            ->causedBy(Auth::user())
+            ->performedOn($category)
+            ->log('Category created');
 
         return redirect()->route('admin.categories.index')->with('success', 'Category created successfully.');
     }
@@ -71,35 +77,60 @@ class CategoryController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Category $category)
-    {
-        $request->validate([
-            'name' => 'required|string|max:255|unique:categories,name,' . $category->id,
-            'icon' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-        ]);
 
-        $data = [
+     public function update(Request $request, Category $category)
+     {
+         $request->validate([
+             'name' => 'required|string|max:255|unique:categories,name,' . $category->id,
+             // 'icon' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+         ]);
+
+        $oldAttributes = $category->getAttributes();
+
+        $category->fill([
             'name' => $request->name,
             'slug' => Str::slug($request->name),
-        ];
+        ]);
 
-        if ($request->hasFile('icon')) {
-            Storage::disk('public')->delete($category->icon);
-            $data['icon'] = $request->file('icon')->store('categories', 'public');
-        }
+        $category->save();
 
-        $category->update($data);
+         // if ($request->hasFile('icon')) {
+        //     Storage::disk('public')->delete($category->icon);
+        //     $data['icon'] = $request->file('icon')->store('categories', 'public');
+        // }
 
-        return redirect()->route('admin.categories.index')->with('success', 'Category updated successfully.');
-    }
+        activity()
+            ->causedBy(Auth::user())
+            ->performedOn($category)
+            ->withProperties([
+                'old' => $oldAttributes,
+                'new' => $category->getAttributes(),
+            ])
+            ->log('Category updated');
+
+         return redirect()->route('admin.categories.index')->with('success', 'Category updated successfully.');
+     }
 
     /**
      * Remove the specified resource from storage.
      */
     public function destroy(Category $category)
     {
-        Storage::disk('public')->delete($category->icon);
+        // Storage::disk('public')->delete($category->icon);
+        if ($category->courses()->exists()) {
+            return back()->with('error', 'Cannot delete category with associated courses.');
+        }
+
+        $oldAttributes = $category->getAttributes();
         $category->delete();
-        return redirect()->route('admin.categories.index')->with('success', 'Category deleted successfully.');
+
+        activity()
+            ->causedBy(Auth::user())
+            ->performedOn($category)
+            ->withProperties(['old' => $oldAttributes])
+            ->log('Category deleted');
+
+        return back()->with('success', 'Category deleted successfully.');
+        return redirect()->route('admin.categories.index')->with('success', 'Category permanently deleted successfully.');
     }
 }

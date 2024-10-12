@@ -3,6 +3,8 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -71,18 +73,28 @@ class User extends Authenticatable
 
     // check, langganan terakhirnya masih active atau tidaa
     // case: dia sudah bayar atau belum, diambil dari data updated_at satu saja yang paling terakhir (first).
-    public function hasActiveSubscription(){
+    public function hasActiveSubscription()
+    {
         $latestSubscription = $this->subscribe_transactions()
-        ->where('is_paid', true)
-        ->latest('updated_at')
-        ->first();
+            ->where('is_paid', true)
+            ->orderBy('subscription_start_date', 'desc')
+            ->first();
 
         if (!$latestSubscription) {
-            return false;
+            return null;
         }
 
-        // dicheck apakah dia masih aktif atau tidak setelah 30 hari
-        $subscriptionEndDate = Carbon::parse($latestSubscription->subscription_start_date)->addMonths(1);
-        return Carbon::now()->lessThanOrEqualTo($subscriptionEndDate); // true == dia berlangganan
+        $subscriptionEndDate = Carbon::parse($latestSubscription->subscription_start_date)->addMonth();
+
+        if (Carbon::now()->lessThanOrEqualTo($subscriptionEndDate)) {
+            return $latestSubscription;
+        }
+
+        return null;
+    }
+
+    public function teacher()
+    {
+        return $this->hasOne(Teacher::class);
     }
 }

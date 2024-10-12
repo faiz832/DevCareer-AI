@@ -20,7 +20,7 @@
         <div class="flex items-center space-x-6">
             <div class="shrink-0">
                 <img id="avatar-preview" class="h-16 w-16 object-cover rounded-full"
-                    src="{{ Storage::disk('public')->exists(Auth::user()->avatar) ? Storage::url(Auth::user()->avatar) : asset('assets/images/default-avatar.png') }}"
+                    src="{{ Auth::user()->avatar ? Storage::url(Auth::user()->avatar) : asset('assets/images/default-avatar.png') }}"
                     alt="Current profile photo" />
             </div>
             <label class="block">

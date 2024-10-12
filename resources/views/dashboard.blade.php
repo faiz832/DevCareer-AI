@@ -78,7 +78,7 @@
                                         </div>
                                         <div class="text-white text-start">
                                             <div class="text-xl font-semibold">Transactions</div>
-                                            <div class="text-xs">{{ $revenueTotal }}</div>
+                                            <div class="text-xs">{{ $subscriptionCount }}</div>
                                         </div>
                                     </div>
                                 </div>
@@ -111,11 +111,6 @@
                                         <tr>
                                             <td class="px-6 py-4 whitespace-nowrap">
                                                 <div class="flex items-center">
-                                                    <div class="flex-shrink-0 h-10 w-10">
-                                                        <img class="h-10 w-10 rounded-full"
-                                                            src="{{ $activity->causer->avatar ?? asset('images/default-avatar.png') }}"
-                                                            alt="">
-                                                    </div>
                                                     <div class="ml-4">
                                                         <div class="text-sm font-medium text-gray-900">
                                                             {{ $activity->causer->name ?? 'System' }}</div>
@@ -176,7 +171,7 @@
                                         </div>
                                         <div class="text-white text-start">
                                             <div class="text-xl font-semibold">My Courses</div>
-                                            <div class="text-xs">100</div>
+                                            <div class="text-xs">{{ $courseCount }}</div>
                                         </div>
                                     </div>
                                 </div>
@@ -192,7 +187,7 @@
                                         </div>
                                         <div class="text-white text-start">
                                             <div class="text-xl font-semibold">My Students</div>
-                                            <div class="text-xs">100</div>
+                                            <div class="text-xs">{{ $totalStudents }}</div>
                                         </div>
                                     </div>
                                 </div>
@@ -204,27 +199,30 @@
                             class="bg-white bg-opacity-20 backdrop-filter backdrop-blur-sm rounded-lg p-4 sm:p-8 shadow-xl">
                             <div class="text-lg font-semibold text-gray-800">Teaching Activities</div>
                             <div class="space-y-6 mt-6">
-                                <div class="flex border rounded justify-between items-center p-4">
-                                    <div class="flex-col">
-                                        <div class="text-sm font-semibold text-gray-800">Teaching</div>
-                                        <div class="mt-2">HTML & CSS</div>
+                                @if($courses->isEmpty())
+                                    <div class="flex border rounded justify-between items-center p-4">
+                                        <div class="flex-col">
+                                            <div class="text-sm font-semibold text-gray-800">You are not teaching any courses.</div>
+                                        </div>
+                                        <div class="mt-2">
+                                            <a href="{{ route('admin.courses.create') }}" class="text-blue-500">Create a new course</a>
+                                        </div>
                                     </div>
-                                    <a href="#" class="text-sm font-semibold text-red-500">Stop Teaching</a>
-                                </div>
-                                <div class="flex border rounded justify-between items-center p-4">
-                                    <div class="flex-col">
-                                        <div class="text-sm font-semibold text-gray-800">Teaching</div>
-                                        <div class="mt-2">Javascript for Beginer</div>
-                                    </div>
-                                    <a href="#" class="text-sm font-semibold text-red-500">Stop Teaching</a>
-                                </div>
-                                <div class="flex border rounded justify-between items-center p-4">
-                                    <div class="flex-col">
-                                        <div class="text-sm font-semibold text-gray-800">Teaching</div>
-                                        <div class="mt-2">Laravel for Beginer</div>
-                                    </div>
-                                    <a href="#" class="text-sm font-semibold text-red-500">Stop Teaching</a>
-                                </div>
+                                @else
+                                    @foreach($courses as $course)
+                                        <div class="flex border rounded justify-between items-center p-4">
+                                            <div class="flex-col">
+                                                <div class="text-sm font-semibold text-gray-800">Teaching</div>
+                                                <div class="mt-2">{{ $course->name }}</div>
+                                            </div>
+                                            <form action="{{ route('admin.courses.destroy', $course) }}" method="POST">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="text-sm font-semibold text-red-500">Stop Teaching</button>
+                                            </form>
+                                        </div>
+                                    @endforeach
+                                @endif
                             </div>
                         </div>
                     </div>
@@ -252,12 +250,22 @@
                                             </svg>
                                         </div>
                                         <div class="text-start text-sm w-3/4 text-white">
-                                            You haven't subscribed to codecareer yet. Choose a subscription and start your
-                                            journey to becoming a professional developer.
+                                            @if($subscription)
+                                                @php
+                                                    // Hitung tanggal akhir langganan
+                                                    $endDate = \Carbon\Carbon::parse($subscription->subscription_start_date)->addMonth();
+                                                @endphp
+                                                Your subscription is active until {{ $endDate->format('d M Y') }}.
+                                            @else
+                                                You haven't subscribed to codecareer yet. Choose a subscription and start your journey to becoming a professional developer.
+                                            @endif
                                         </div>
                                     </div>
-                                    <a href="{{ url('/pricing') }}"
-                                        class="bg-white rounded px-4 py-2 font-semibold text-sm text-blue-500">Subscribe</a>
+                                    @if($subscription)
+                                        <span class="bg-white rounded px-4 py-2 font-semibold text-sm text-blue-500">Active</span>
+                                    @else
+                                        <a href="{{ url('/pricing') }}" class="bg-white rounded px-4 py-2 font-semibold text-sm text-blue-500">Subscribe</a>
+                                    @endif
                                 </div>
                             </div>
                         </div>

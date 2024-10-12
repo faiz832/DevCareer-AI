@@ -51,15 +51,16 @@
                             <img src="{{Storage::url($transaction->proof)}}" alt="{{Storage::url($transaction->proof)}}">
                         </div>
                     </div>
-
-                    <hr class="my-5">
-                    <form action="{{ route('admin.subscribe_transactions.update', $transaction) }}" method="POST">
-                        @csrf
-                        @method('PUT')
-                        <button type="submit" class="font-bold py-4 px-6 {{ $transaction->is_paid ? 'bg-red-700' : 'bg-indigo-700' }} text-white rounded-full">
-                            {{ $transaction->is_paid ? 'Unapprove Transaction' : 'Approve Transaction' }}
-                        </button>
-                    </form>
+                    @if (!$transaction->is_paid)
+                        <hr class="my-5">
+                        <form action="{{ route('admin.subscribe_transactions.update', $transaction) }}" method="POST">
+                            @csrf
+                            @method('PUT')
+                            <button type="submit" class="font-bold py-4 px-6 bg-indigo-700 text-white rounded-full">
+                                Approve Transaction
+                            </button>
+                        </form>
+                    @endif
                 </div>
             </div>
         </div>

@@ -114,6 +114,7 @@ class CourseController extends Controller
                 'name' => 'string|max:255',
                 'path_trailer' => 'string|max:255',
                 'about' => 'string',
+                'desc' => 'string',
                 'thumbnail' => 'image|mimes:png,jpg,jpeg,svg',
                 'category_id' => 'integer',
                 'teacher_id' => 'sometimes|exists:teachers,id',
@@ -152,12 +153,14 @@ class CourseController extends Controller
         DB::beginTransaction();
 
         try {
+            $courseAttributes = $course->toArray();
             $course->delete();
 
             // Log activity
             activity()
                 ->causedBy(Auth::user())
                 ->performedOn($course)
+                ->withProperties(['attributes' => $courseAttributes])
                 ->log('Course deleted');
 
             DB::commit();

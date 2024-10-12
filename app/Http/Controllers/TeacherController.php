@@ -41,10 +41,8 @@ class TeacherController extends Controller
     DB::beginTransaction();
     try {
         $user = User::where('email', $request->email)->firstOrFail();
-        \Log::info('User found: ' . $user->id);
 
         if ($user->hasRole('teacher')) {
-            \Log::info('User is already a teacher');
             return redirect()->back()->with('error', 'User is already a teacher.');
         }
 
@@ -52,17 +50,13 @@ class TeacherController extends Controller
             'user_id' => $user->id,
             'is_active' => true,
         ]);
-        \Log::info('Teacher created: ' . $teacher->id);
 
-        $user->assignRole('teacher');
-        \Log::info('Role assigned');
+        $user->syncRoles(['teacher']); // Ini akan menghapus semua role lain dan hanya menetapkan role 'teacher'
 
         DB::commit();
-        \Log::info('Transaction committed');
         return redirect()->route('admin.teachers.index')->with('success', 'Teacher added successfully.');
     } catch (\Exception $e) {
         DB::rollback();
-        \Log::error('Error adding teacher: ' . $e->getMessage());
         return redirect()->back()->with('error', 'An error occurred while adding the teacher: ' . $e->getMessage());
     }
 }
@@ -104,11 +98,14 @@ class TeacherController extends Controller
      */
     public function destroy(Teacher $teacher)
     {
+        if ($teacher->courses()->exists()) {
+            return redirect()->back()->with('error', 'Cannot delete teacher with associated courses.');
+        }
+
         DB::beginTransaction();
         try {
             $user = $teacher->user;
-            $user->removeRole('teacher');
-            $user->assignRole('student');
+            $user->syncRoles(['student']);
             $teacher->delete();
 
             DB::commit();

@@ -33,12 +33,12 @@
                             <x-input-error :messages="$errors->get('name')" class="mt-2" />
                         </div>
 
-                        <div class="mt-4">
+                        {{-- <div class="mt-4">
                             <x-input-label for="icon" :value="__('Icon')" />
                             <x-text-input id="icon" class="block mt-1 w-full" type="file" name="icon"
                                 required autofocus autocomplete="icon" />
                             <x-input-error :messages="$errors->get('icon')" class="mt-2" />
-                        </div>
+                        </div> --}}
 
                         <div class="flex items-center justify-end mt-12 gap-4">
                             <a href="{{ route('admin.categories.index') }}"

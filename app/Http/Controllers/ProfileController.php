@@ -7,6 +7,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\View\View;
 
 class ProfileController extends Controller
@@ -37,11 +38,16 @@ class ProfileController extends Controller
     public function update(ProfileUpdateRequest $request): RedirectResponse
     {
         $user = $request->user();
+        $oldAttributes = $user->getAttributes();
 
         if ($request->hasFile('avatar')) {
             $path = $request->file('avatar')->store('avatars', 'public');
             $user->avatar = $path;
+            $url = Storage::url($path);
+            \Log::info('Avatar URL: ' . $url);
+
         }
+
 
         $user->fill($request->validated());
 
@@ -50,6 +56,15 @@ class ProfileController extends Controller
         }
 
         $user->save();
+
+        activity()
+            ->causedBy($user)
+            ->performedOn($user)
+            ->withProperties([
+                'old' => $oldAttributes,
+                'attributes' => $user->getAttributes()
+            ])
+            ->log('User profile updated');
 
         return Redirect::route('profile.edit')->with('status', 'profile-updated');
     }
@@ -66,6 +81,11 @@ class ProfileController extends Controller
         $user = $request->user();
 
         Auth::logout();
+
+        activity()
+            ->causedBy($user)
+            ->performedOn($user)
+            ->log('User account deleted');
 
         $user->delete();
 

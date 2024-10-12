@@ -25,6 +25,7 @@ class StoreCourseRequest extends FormRequest
             'name' => ['required', 'string', 'max:255'],
             'path_trailer' => ['required', 'string', 'max:255'],
             'about' => ['required', 'string'],
+            'desc' => ['required', 'string'],
             'category_id' => ['required', 'integer'],
             'thumbnail' => ['required', 'image', 'mimes:png,jpg,jpeg,svg'],
         ];

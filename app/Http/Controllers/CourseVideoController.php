@@ -6,6 +6,7 @@ use App\Http\Requests\StoreCourseVideoRequest;
 use App\Models\Course;
 use App\Models\CourseVideo;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class CourseVideoController extends Controller
@@ -24,6 +25,13 @@ class CourseVideoController extends Controller
             $validated['course_id'] = $course->id;
 
             $courseVideo = CourseVideo::create($validated);
+
+            // Log activity
+            activity()
+                ->causedBy(Auth::user())
+                ->performedOn($courseVideo)
+                ->withProperties(['attributes' => $courseVideo->toArray()])
+                ->log('Course video created by ' . Auth::user()->name);
         });
 
         return redirect()->route('admin.courses.show', $course->id)
@@ -41,7 +49,18 @@ class CourseVideoController extends Controller
 
             $validated = $request->validated();
 
+            $oldAttributes = $courseVideo->getAttributes();
             $courseVideo->update($validated);
+
+            // Log activity
+            activity()
+                ->causedBy(Auth::user())
+                ->performedOn($courseVideo)
+                ->withProperties([
+                    'old' => $oldAttributes,
+                    'attributes' => $courseVideo->getAttributes()
+                ])
+                ->log('Course video updated');
         });
 
         return redirect()->route('admin.courses.show', $courseVideo->course_id)
@@ -53,14 +72,24 @@ class CourseVideoController extends Controller
         DB::beginTransaction();
 
         try {
+            $courseVideoAttributes = $courseVideo->toArray();
             $courseVideo->delete();
+
+            activity()
+                ->causedBy(Auth::user())
+                ->performedOn($courseVideo)
+                ->withProperties(['attributes' => $courseVideoAttributes])
+                ->log('Course video deleted');
+
             DB::commit();
 
-            return redirect()->route('admin.courses.show', $courseVideo->course_id)->with('success', 'Course video deleted successfully.');
+            return redirect()->route('admin.courses.show', $courseVideo->course_id)
+                ->with('success', 'Course video deleted successfully.');
 
         } catch (\Exception $e) {
             DB::rollBack();
-            return redirect()->route('admin.courses.show', $courseVideo->course_id)->with('error', 'terjadinya sebuah error');
+            return redirect()->route('admin.courses.show', $courseVideo->course_id)
+                ->with('error', 'An error accured while deleting the course video.');
         }
     }
 }
