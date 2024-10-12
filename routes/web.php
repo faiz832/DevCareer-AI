@@ -44,8 +44,7 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/checkout', [FrontController::class, 'checkout'])->name('front.checkout')->middleware('role:student');
     Route::post('/checkout/store', [FrontController::class, 'checkout_store'])->name('front.checkout.store')->middleware('role:student');
-
-
+    Route::post('/enroll/{course}', [FrontController::class, 'enroll'])->name('enroll.course')->middleware('auth');
 });
 
 Route::get('/mycourses', [CourseStudentController::class, 'index'])

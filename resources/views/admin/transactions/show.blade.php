@@ -54,9 +54,8 @@
                             <div>
                                 <p class="text-slate-500 text-sm">Subscription Start At</p>
                                 <h3 class="text-indigo-950 text-xl font-bold">
-                                    @if($transaction->subscription_start_date)
-
-                                    {{ $transaction->subscription_start_date->format('Y-m-d') }}
+                                    @if ($transaction->subscription_start_date)
+                                        {{ $transaction->subscription_start_date->format('Y-m-d') }}
                                     @else
                                         Not started yet
                                     @endif
@@ -77,10 +76,10 @@
                             @csrf
                             @method('PUT')
                             <div class="flex justify-end gap-4 mt-12 border-t border-gray-300">
-                                <button type="button" onclick="window.history.back()"
-                                    class="py-2 px-4 mt-6 bg-white text-gray-700 rounded border border-gray-300 hover:bg-gray-50 transition duration-300 ease-in-out">
+                                <a href="{{ route('admin.subscribe_transactions.index') }}"
+                                    class="block py-2 px-4 mt-6 bg-white text-gray-700 rounded border border-gray-300 hover:bg-gray-50 transition duration-300 ease-in-out">
                                     Back
-                                </button>
+                                </a>
                                 <button type="submit"
                                     class="py-2 px-4 mt-6 bg-blue-500 text-white rounded hover:bg-blue-600 transition duration-300 ease-in-out">
                                     Approve Transaction
@@ -89,10 +88,10 @@
                         </form>
                     @else
                         <div class="flex justify-end mt-12 border-t border-gray-300">
-                            <button type="button" onclick="window.history.back()"
-                                class="py-2 px-4 mt-6 bg-white text-gray-700 rounded border border-gray-300 hover:bg-gray-50 transition duration-300 ease-in-out">
+                            <a href="{{ route('admin.subscribe_transactions.index') }}"
+                                class="block py-2 px-4 mt-6 bg-white text-gray-700 rounded border border-gray-300 hover:bg-gray-50 transition duration-300 ease-in-out">
                                 Back
-                            </button>
+                            </a>
                         </div>
                     @endif
                 </div>

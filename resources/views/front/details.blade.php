@@ -211,6 +211,34 @@
                             @foreach ($course->course_videos as $index => $video)
                                 <div class="flex justify-between items-center py-4 border-t border-gray-200">
                                     <h1>{{ $video->name }}</h1>
+
+                                    <!-- Play button for each video -->
+                                    <div class="relative overflow-hidden rounded-lg flex" x-data="{ open: false, videoSrc: '{{ $video->path_video ?? '' }}' }"
+                                        @click.away="open = false">
+                                        <button
+                                            @click="open = !open; if (!open) { videoSrc = ''; } else { videoSrc = '{{ $video->path_video ?? '' }}'; }"
+                                            class="hover:underline text-blue-500">Play
+                                        </button>
+                                        <div x-show="open" x-transition:enter="transition ease-out duration-200"
+                                            x-transition:enter-start="transform opacity-0 -translate-x-full"
+                                            x-transition:enter-end="transform opacity-100 translate-x-0"
+                                            x-transition:leave="transition ease-in duration-75"
+                                            x-transition:leave-start="transform opacity-100 translate-x-0"
+                                            x-transition:leave-end="transform opacity-0 -translate-x-full"
+                                            style="display: none;"
+                                            class="fixed inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center z-50 transition-opacity duration-300 ease-in-out"
+                                            @click.away="open = false; videoSrc = ''">
+
+                                            <!-- Modal Content -->
+                                            <div class="bg-white flex flex-col items-center rounded-lg shadow-lg p-6"
+                                                @click.away="open = false; videoSrc = ''">
+                                                <iframe class="w-full h-full md:w-[560px] md:h-[315px]"
+                                                    :src="videoSrc" title="Video player" frameborder="0"
+                                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                                    allowfullscreen></iframe>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             @endforeach
                         @else
@@ -231,9 +259,12 @@
                             <div class="py-2">
                                 <hr>
                             </div>
-                            <a href="{{ url('/pricing') }}"
-                                class="flex w-full justify-center bg-blue-500 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded transition duration-300">Learn
-                                Now</a>
+                            @if (!Auth::user()->hasActiveSubscription())
+                                <a href="{{ url('/pricing') }}"
+                                    class="flex w-full justify-center bg-blue-500 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded transition duration-300">
+                                    Learn Now
+                                </a>
+                            @endif
                         </div>
                     </div>
                 </div>
