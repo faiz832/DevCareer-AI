@@ -70,7 +70,7 @@
                         @foreach ($coursesByCategory[$category->id] as $course)
                             <div
                                 class="bg-white border rounded-lg p-3 hover:shadow-lg hover:-translate-y-2 transition duration-300 ease-in-out transform flex flex-col justify-between">
-                                <img src="{{ Storage::url($course->thumbnail) ?? 'https://via.placeholder.com/400x200' }}"
+                                <img src="{{ $course->thumbnail ? Storage::url($course->thumbnail) : asset('assets/images/thumbnail.jpg') }}"
                                     alt="{{ $course->name }}" class="w-full h-48 shadow-md object-cover rounded-lg mb-4"
                                     loading="lazy">
 
