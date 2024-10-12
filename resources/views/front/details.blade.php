@@ -44,7 +44,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <img src="{{ Storage::url($course->thumbnail) ?? asset('assets/images/thumbnail.jpg') }}"
+                            <img src="{{ $course->thumbnail ? Storage::url($course->thumbnail) : asset('assets/images/thumbnail.jpg') }}"
                                 alt="{{ $course->name }}" class="w-full h-full object-cover object-center"
                                 loading="lazy">
                         </button>
@@ -159,19 +159,12 @@
             <div class="flex flex-col-reverse md:flex-row gap-4">
                 <div class="w-full lg:w-8/12">
                     <h1 class="text-2xl font-semibold mb-4">Description</h1>
-                    <p class="text-gray-600 leading-10 text-justify">Lorem ipsum dolor sit amet consectetur adipisicing
-                        elit.
-                        Cupiditate
-                        veritatis eaque in maxime repudiandae incidunt non ex vero, veniam, obcaecati accusamus, sint
-                        doloribus officiis! Ea ullam est distinctio sapiente reprehenderit dolor animi facere ipsum
-                        debitis eos saepe itaque mollitia aperiam nesciunt magni inventore, fugit, eveniet velit nostrum
-                        harum ratione. Laboriosam? Lorem ipsum dolor sit amet consectetur. Lorem ipsum dolor sit, amet
-                        consectetur adipisicing elit. Maxime, itaque!
-                    </p>
+                    <p class="text-gray-600 leading-10 text-justify">{{ $course->desc }}</p>
                     <h1 class="text-2xl font-semibold mt-12 mb-4">Teacher</h1>
                     <div class="flex items-center">
                         <div class="flex-shrink-0 h-10 w-10">
-                            <img class="h-10 w-10 rounded-full" src="https://via.placeholder.com/35x35"
+                            <img class="h-10 w-10 rounded-full"
+                                src="{{ $course->teacher->user->avatar ?? asset('assets/images/profile1.png') }}"
                                 alt="" loading="lazy">
                         </div>
                         <div class="ml-4">
@@ -217,7 +210,7 @@
                         @if ($course->course_videos && $course->course_videos->count() > 0)
                             @foreach ($course->course_videos as $index => $video)
                                 <div class="flex justify-between items-center py-4 border-t border-gray-200">
-                                    <h1>Lesson {{ $index + 1 }}. {{ $video->name }}</h1>
+                                    <h1>{{ $video->name }}</h1>
                                 </div>
                             @endforeach
                         @else

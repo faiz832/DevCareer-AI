@@ -34,8 +34,8 @@ class CompleteDataSeeder extends Seeder
             [
                 'name' => 'Introduction to HTML and CSS',
                 'slug' => 'introduction-to-html-and-css',
+                'desc' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate veritatis eaque in maxime repudiandae incidunt non ex vero, veniam, obcaecati accusamus, sint doloribus officiis! Ea ullam est distinctio sapiente reprehenderit dolor animi facere ipsum debitis eos saepe itaque mollitia aperiam nesciunt magni inventore, fugit, eveniet velit nostrum harum ratione. Laboriosam? Lorem ipsum dolor sit amet consectetur. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Maxime, itaque!',
                 'about' => 'Learn the basics of web development with HTML and CSS',
-                'thumbnail' => 'courses/html-css-thumbnail.jpg',
                 'category_id' => 1,
                 'teacher_id' => $teacherId,
                 'path_trailer' => 'https://www.youtube.com/embed/qz0aGYrrlhU',
@@ -43,8 +43,8 @@ class CompleteDataSeeder extends Seeder
             [
                 'name' => 'Responsive Web Design',
                 'slug' => 'responsive-web-design',
+                'desc' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate veritatis eaque in maxime repudiandae incidunt non ex vero, veniam, obcaecati accusamus, sint doloribus officiis! Ea ullam est distinctio sapiente reprehenderit dolor animi facere ipsum debitis eos saepe itaque mollitia aperiam nesciunt magni inventore, fugit, eveniet velit nostrum harum ratione. Laboriosam? Lorem ipsum dolor sit amet consectetur. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Maxime, itaque!',
                 'about' => 'Create responsive web pages that look great on all devices',
-                'thumbnail' => 'courses/responsive-web-design-thumbnail.jpg',
                 'category_id' => 1,
                 'teacher_id' => $teacherId,
                 'path_trailer' => 'https://www.youtube.com/embed/0N7Xc84O-1M',
@@ -52,8 +52,8 @@ class CompleteDataSeeder extends Seeder
             [
                 'name' => 'CSS Grid and Flexbox',
                 'slug' => 'css-grid-and-flexbox',
+                'desc' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate veritatis eaque in maxime repudiandae incidunt non ex vero, veniam, obcaecati accusamus, sint doloribus officiis! Ea ullam est distinctio sapiente reprehenderit dolor animi facere ipsum debitis eos saepe itaque mollitia aperiam nesciunt magni inventore, fugit, eveniet velit nostrum harum ratione. Laboriosam? Lorem ipsum dolor sit amet consectetur. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Maxime, itaque!',
                 'about' => 'Learn advanced CSS layout techniques with Grid and Flexbox',
-                'thumbnail' => 'courses/css-grid-flexbox-thumbnail.jpg',
                 'category_id' => 1,
                 'teacher_id' => $teacherId,
                 'path_trailer' => 'https://www.youtube.com/embed/1Rs2ND1ryYc',
@@ -61,8 +61,8 @@ class CompleteDataSeeder extends Seeder
             [
                 'name' => 'JavaScript Fundamentals',
                 'slug' => 'javascript-fundamentals',
+                'desc' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate veritatis eaque in maxime repudiandae incidunt non ex vero, veniam, obcaecati accusamus, sint doloribus officiis! Ea ullam est distinctio sapiente reprehenderit dolor animi facere ipsum debitis eos saepe itaque mollitia aperiam nesciunt magni inventore, fugit, eveniet velit nostrum harum ratione. Laboriosam? Lorem ipsum dolor sit amet consectetur. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Maxime, itaque!',
                 'about' => 'Master the core concepts of JavaScript programming',
-                'thumbnail' => 'courses/javascript-thumbnail.jpg',
                 'category_id' => 1,
                 'teacher_id' => $teacherId,
                 'path_trailer' => 'https://www.youtube.com/embed/W6NZfCO5SIk',
@@ -70,8 +70,8 @@ class CompleteDataSeeder extends Seeder
             [
                 'name' => 'Python for Data Science',
                 'slug' => 'python-for-data-science',
+                'desc' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate veritatis eaque in maxime repudiandae incidunt non ex vero, veniam, obcaecati accusamus, sint doloribus officiis! Ea ullam est distinctio sapiente reprehenderit dolor animi facere ipsum debitis eos saepe itaque mollitia aperiam nesciunt magni inventore, fugit, eveniet velit nostrum harum ratione. Laboriosam? Lorem ipsum dolor sit amet consectetur. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Maxime, itaque!',
                 'about' => 'Learn Python programming for data analysis and visualization',
-                'thumbnail' => 'courses/python-ds-thumbnail.jpg',
                 'category_id' => 3,
                 'teacher_id' => $teacherId,
                 'path_trailer' => 'https://www.youtube.com/embed/LHBE6Q9XlzI',
@@ -79,8 +79,8 @@ class CompleteDataSeeder extends Seeder
             [
                 'name' => 'Statistics for Data Science',
                 'slug' => 'statistics-for-data-science',
+                'desc' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate veritatis eaque in maxime repudiandae incidunt non ex vero, veniam, obcaecati accusamus, sint doloribus officiis! Ea ullam est distinctio sapiente reprehenderit dolor animi facere ipsum debitis eos saepe itaque mollitia aperiam nesciunt magni inventore, fugit, eveniet velit nostrum harum ratione. Laboriosam? Lorem ipsum dolor sit amet consectetur. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Maxime, itaque!',
                 'about' => 'Understand statistics concepts for data analysis',
-                'thumbnail' => 'courses/statistics-ds-thumbnail.jpg',
                 'category_id' => 3,
                 'teacher_id' => $teacherId,
                 'path_trailer' => 'https://www.youtube.com/embed/3XfXUeD0M6E',
@@ -88,8 +88,8 @@ class CompleteDataSeeder extends Seeder
             [
                 'name' => 'Machine Learning with Python',
                 'slug' => 'machine-learning-with-python',
+                'desc' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate veritatis eaque in maxime repudiandae incidunt non ex vero, veniam, obcaecati accusamus, sint doloribus officiis! Ea ullam est distinctio sapiente reprehenderit dolor animi facere ipsum debitis eos saepe itaque mollitia aperiam nesciunt magni inventore, fugit, eveniet velit nostrum harum ratione. Laboriosam? Lorem ipsum dolor sit amet consectetur. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Maxime, itaque!',
                 'about' => 'Implement machine learning algorithms using Python',
-                'thumbnail' => 'courses/ml-python-thumbnail.jpg',
                 'category_id' => 3,
                 'teacher_id' => $teacherId,
                 'path_trailer' => 'https://www.youtube.com/embed/GwIo3gOz4M4',
@@ -97,8 +97,8 @@ class CompleteDataSeeder extends Seeder
             [
                 'name' => 'Data Visualization with Matplotlib',
                 'slug' => 'data-visualization-with-matplotlib',
+                'desc' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate veritatis eaque in maxime repudiandae incidunt non ex vero, veniam, obcaecati accusamus, sint doloribus officiis! Ea ullam est distinctio sapiente reprehenderit dolor animi facere ipsum debitis eos saepe itaque mollitia aperiam nesciunt magni inventore, fugit, eveniet velit nostrum harum ratione. Laboriosam? Lorem ipsum dolor sit amet consectetur. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Maxime, itaque!',
                 'about' => 'Create visualizations using Matplotlib in Python',
-                'thumbnail' => 'courses/matplotlib-thumbnail.jpg',
                 'category_id' => 3,
                 'teacher_id' => $teacherId,
                 'path_trailer' => 'https://www.youtube.com/embed/X6O8Y8GQ8Y0',
@@ -106,8 +106,8 @@ class CompleteDataSeeder extends Seeder
             [
                 'name' => 'Mobile App Development with React Native',
                 'slug' => 'mobile-app-development-with-react-native',
+                'desc' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate veritatis eaque in maxime repudiandae incidunt non ex vero, veniam, obcaecati accusamus, sint doloribus officiis! Ea ullam est distinctio sapiente reprehenderit dolor animi facere ipsum debitis eos saepe itaque mollitia aperiam nesciunt magni inventore, fugit, eveniet velit nostrum harum ratione. Laboriosam? Lorem ipsum dolor sit amet consectetur. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Maxime, itaque!',
                 'about' => 'Build cross-platform mobile apps using React Native',
-                'thumbnail' => 'courses/react-native-thumbnail.jpg',
                 'category_id' => 2,
                 'teacher_id' => $teacherId,
                 'path_trailer' => 'https://www.youtube.com/embed/0-S5a0eXPoc',
@@ -115,8 +115,8 @@ class CompleteDataSeeder extends Seeder
             [
                 'name' => 'Flutter for Beginners',
                 'slug' => 'flutter-for-beginners',
+                'desc' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate veritatis eaque in maxime repudiandae incidunt non ex vero, veniam, obcaecati accusamus, sint doloribus officiis! Ea ullam est distinctio sapiente reprehenderit dolor animi facere ipsum debitis eos saepe itaque mollitia aperiam nesciunt magni inventore, fugit, eveniet velit nostrum harum ratione. Laboriosam? Lorem ipsum dolor sit amet consectetur. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Maxime, itaque!',
                 'about' => 'Learn how to build beautiful apps with Flutter',
-                'thumbnail' => 'courses/flutter-beginners-thumbnail.jpg',
                 'category_id' => 2,
                 'teacher_id' => $teacherId,
                 'path_trailer' => 'https://www.youtube.com/embed/5WjPfYLo9G0',
@@ -124,8 +124,8 @@ class CompleteDataSeeder extends Seeder
             [
                 'name' => 'Kotlin for Android Development',
                 'slug' => 'kotlin-for-android-development',
+                'desc' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate veritatis eaque in maxime repudiandae incidunt non ex vero, veniam, obcaecati accusamus, sint doloribus officiis! Ea ullam est distinctio sapiente reprehenderit dolor animi facere ipsum debitis eos saepe itaque mollitia aperiam nesciunt magni inventore, fugit, eveniet velit nostrum harum ratione. Laboriosam? Lorem ipsum dolor sit amet consectetur. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Maxime, itaque!',
                 'about' => 'Master Android development with Kotlin programming language',
-                'thumbnail' => 'courses/kotlin-android-thumbnail.jpg',
                 'category_id' => 2,
                 'teacher_id' => $teacherId,
                 'path_trailer' => 'https://www.youtube.com/embed/Fj3x0qfFq44',
@@ -133,8 +133,8 @@ class CompleteDataSeeder extends Seeder
             [
                 'name' => 'iOS Development with Swift',
                 'slug' => 'ios-development-with-swift',
+                'desc' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate veritatis eaque in maxime repudiandae incidunt non ex vero, veniam, obcaecati accusamus, sint doloribus officiis! Ea ullam est distinctio sapiente reprehenderit dolor animi facere ipsum debitis eos saepe itaque mollitia aperiam nesciunt magni inventore, fugit, eveniet velit nostrum harum ratione. Laboriosam? Lorem ipsum dolor sit amet consectetur. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Maxime, itaque!',
                 'about' => 'Create iOS apps using Swift programming language',
-                'thumbnail' => 'courses/ios-swift-thumbnail.jpg',
                 'category_id' => 2,
                 'teacher_id' => $teacherId,
                 'path_trailer' => 'https://www.youtube.com/embed/9f6X2Wf0AAw',
@@ -142,8 +142,8 @@ class CompleteDataSeeder extends Seeder
             [
                 'name' => 'Introduction to Machine Learning',
                 'slug' => 'introduction-to-machine-learning',
+                'desc' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate veritatis eaque in maxime repudiandae incidunt non ex vero, veniam, obcaecati accusamus, sint doloribus officiis! Ea ullam est distinctio sapiente reprehenderit dolor animi facere ipsum debitis eos saepe itaque mollitia aperiam nesciunt magni inventore, fugit, eveniet velit nostrum harum ratione. Laboriosam? Lorem ipsum dolor sit amet consectetur. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Maxime, itaque!',
                 'about' => 'Get started with machine learning concepts and algorithms',
-                'thumbnail' => 'courses/introduction-ml-thumbnail.jpg',
                 'category_id' => 4,
                 'teacher_id' => $teacherId,
                 'path_trailer' => 'https://www.youtube.com/embed/0Lt9w-uB1N8',
@@ -151,8 +151,8 @@ class CompleteDataSeeder extends Seeder
             [
                 'name' => 'Deep Learning with TensorFlow',
                 'slug' => 'deep-learning-with-tensorflow',
+                'desc' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate veritatis eaque in maxime repudiandae incidunt non ex vero, veniam, obcaecati accusamus, sint doloribus officiis! Ea ullam est distinctio sapiente reprehenderit dolor animi facere ipsum debitis eos saepe itaque mollitia aperiam nesciunt magni inventore, fugit, eveniet velit nostrum harum ratione. Laboriosam? Lorem ipsum dolor sit amet consectetur. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Maxime, itaque!',
                 'about' => 'Learn to build deep learning models using TensorFlow',
-                'thumbnail' => 'courses/deep-learning-tf-thumbnail.jpg',
                 'category_id' => 4,
                 'teacher_id' => $teacherId,
                 'path_trailer' => 'https://www.youtube.com/embed/9w8tJjL5H3c',
@@ -160,8 +160,8 @@ class CompleteDataSeeder extends Seeder
             [
                 'name' => 'Natural Language Processing',
                 'slug' => 'natural-language-processing',
+                'desc' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate veritatis eaque in maxime repudiandae incidunt non ex vero, veniam, obcaecati accusamus, sint doloribus officiis! Ea ullam est distinctio sapiente reprehenderit dolor animi facere ipsum debitis eos saepe itaque mollitia aperiam nesciunt magni inventore, fugit, eveniet velit nostrum harum ratione. Laboriosam? Lorem ipsum dolor sit amet consectetur. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Maxime, itaque!',
                 'about' => 'Understand the basics of natural language processing',
-                'thumbnail' => 'courses/nlp-thumbnail.jpg',
                 'category_id' => 4,
                 'teacher_id' => $teacherId,
                 'path_trailer' => 'https://www.youtube.com/embed/Nw0-7r5Re3E',
@@ -169,8 +169,8 @@ class CompleteDataSeeder extends Seeder
             [
                 'name' => 'Reinforcement Learning',
                 'slug' => 'reinforcement-learning',
+                'desc' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate veritatis eaque in maxime repudiandae incidunt non ex vero, veniam, obcaecati accusamus, sint doloribus officiis! Ea ullam est distinctio sapiente reprehenderit dolor animi facere ipsum debitis eos saepe itaque mollitia aperiam nesciunt magni inventore, fugit, eveniet velit nostrum harum ratione. Laboriosam? Lorem ipsum dolor sit amet consectetur. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Maxime, itaque!',
                 'about' => 'Dive into reinforcement learning algorithms',
-                'thumbnail' => 'courses/reinforcement-learning-thumbnail.jpg',
                 'category_id' => 4,
                 'teacher_id' => $teacherId,
                 'path_trailer' => 'https://www.youtube.com/embed/2c2j54w4dMI',
