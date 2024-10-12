@@ -156,7 +156,7 @@
                         </div>
 
                         <!-- Statistic -->
-                        <div class="bg-gradient-to-br from-blue-700 to-blue-400 rounded-lg p-6 shadow-xl">
+                        <div class="bg-gradient-to-br from-blue-700 to-blue-400 rounded-lg p-4 sm:p-8 shadow-xl">
                             <div class="text-lg font-semibold text-white mb-4">Statistics</div>
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <div
