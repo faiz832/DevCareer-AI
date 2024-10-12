@@ -42,7 +42,7 @@
         @include('layouts.navbar')
 
         <!-- Hero Section -->
-        <section class="max-w-[1200px] mx-auto p-4 py-6 lg:py-8 mt-12 mb-20">
+        <section class="max-w-[1200px] mx-auto p-4 py-6 lg:py-8 mt-12 mb-20" data-aos="fade-up">
             <h1
                 class="text-6xl text-center font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-700 to-blue-400 my-12">
                 Courses</h1>
@@ -53,7 +53,7 @@
         </section>
 
         <!-- Course selection section -->
-        <section class="max-w-[1200px] mx-auto p-4 py-6 lg:py-8 mb-20">
+        <section class="max-w-[1200px] mx-auto p-4 py-6 lg:py-8 mb-20" data-aos="fade-up" data-aos-delay="400">
             <!-- Tabs -->
             <div class="flex justify-center mb-8 space-x-4">
                 @foreach ($categories as $index => $category)
