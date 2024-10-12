@@ -35,7 +35,7 @@
                         @click.away="open = false">
                         <button
                             @click="open = !open; if (!open) { videoSrc = ''; } else { videoSrc = '{{ $course->path_trailer ?? 'https://www.youtube.com/embed/T1TR-RGf2Pw' }}'; }"
-                            class="relative overflow-hidden rounded-lg md:w-[400px] md:h-[250px] hover:scale-105 transition duration-300">
+                            class="relative overflow-hidden rounded-lg w-full h-[250px] md:w-[400px] hover:scale-105 transition duration-300">
                             <div class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-20">
                                 <div
                                     class="w-24 h-16 bg-red-500 rounded-xl flex items-center justify-center transition-transform duration-300 group-hover:scale-110">
