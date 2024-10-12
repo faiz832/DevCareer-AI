@@ -224,7 +224,7 @@
                     <div class="pb-8 md:p-4 sticky top-24">
                         <div class="rounded-lg border p-4 space-y-4">
                             <div class="overflow-hidden rounded w-full h-[200px] shadow-md">
-                                <img src="{{ Storage::url($course->thumbnail) ?? asset('assets/images/thumbnail.jpg') }}"
+                                <img src="{{ $course->thumbnail ? Storage::url($course->thumbnail) : asset('assets/images/thumbnail.jpg') }}"
                                     alt="{{ $course->name }}" class="w-full h-full object-cover object-center"
                                     loading="lazy">
                             </div>
