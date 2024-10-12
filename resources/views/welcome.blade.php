@@ -33,7 +33,8 @@
 
         <!-- Hero Section -->
         <section class="max-w-[1200px] mx-auto p-4 py-6 lg:py-8">
-            <div class="relative rounded-lg h-[400px] overflow-hidden shadow-lg">
+            <div class="relative rounded-lg h-[400px] overflow-hidden shadow-lg" data-aos="fade-right"
+                data-aos-delay="200">
                 <!-- Background Image -->
                 <img src="{{ asset('assets/images/thumbnail.jpg') }}" alt="image by freepick"
                     class="absolute inset-0 w-full h-full object-cover object-center" loading="lazy">
@@ -54,35 +55,35 @@
         <!-- Features section -->
         <section class="max-w-[1200px] mx-auto p-4 py-6 lg:py-8">
             <div class="grid grid-cols-2 md:grid-cols-5 gap-8">
-                <a href="{{ url('/course') }}" class="text-center">
+                <a href="{{ url('/course') }}" class="text-center" data-aos="fade-up" data-aos-delay="0">
                     <div class="relative w-20 h-20 mx-auto mb-4 icon-container">
                         <img src="{{ asset('assets/icons/web.png') }}"
                             class="transition-transform duration-200 ease-out -mt-2 icon" alt="Icon">
                     </div>
                     <h3 class="mb-2">Web Developer</h3>
                 </a>
-                <a href="{{ url('/course') }}" class="text-center">
+                <a href="{{ url('/course') }}" class="text-center" data-aos="fade-up" data-aos-delay="200">
                     <div class="relative w-20 h-20 mx-auto mb-4 icon-container">
                         <img src="{{ asset('assets/icons/android.png') }}"
                             class="transition-transform duration-200 ease-out -mt-2 icon" alt="Icon">
                     </div>
                     <h3 class="mb-2">Android Developer</h3>
                 </a>
-                <a href="{{ url('/course') }}" class="text-center">
+                <a href="{{ url('/course') }}" class="text-center" data-aos="fade-up" data-aos-delay="400">
                     <div class="relative w-20 h-20 mx-auto mb-4 icon-container">
                         <img src="{{ asset('assets/icons/ml.png') }}"
                             class="transition-transform duration-200 ease-out -mt-2 icon" alt="Icon">
                     </div>
                     <h3 class="mb-2">Machine Learning</h3>
                 </a>
-                <a href="{{ url('/course') }}" class="text-center">
+                <a href="{{ url('/course') }}" class="text-center" data-aos="fade-up" data-aos-delay="600">
                     <div class="relative w-20 h-20 mx-auto mb-4 icon-container">
                         <img src="{{ asset('assets/icons/chart.png') }}"
                             class="transition-transform duration-200 ease-out -mt-2 icon" alt="Icon">
                     </div>
                     <h3 class="mb-2">Data Scientist</h3>
                 </a>
-                <a href="{{ url('/resume') }}" class="text-center">
+                <a href="{{ url('/resume') }}" class="text-center" data-aos="fade-up" data-aos-delay="800">
                     <div class="relative w-20 h-20 mx-auto mb-4 icon-container">
                         <img src="{{ asset('assets/icons/resume.png') }}"
                             class="transition-transform duration-200 ease-out -mt-2 icon" alt="Icon">
@@ -94,7 +95,7 @@
 
         <!-- CV CTA section -->
         <section class="relative max-w-[1200px] mx-auto p-4 py-6 lg:py-8 my-28">
-            <div class="relative rounded-lg p-8 lg:p-24 border shadow-lg bg-white w-3/4 mx-auto">
+            <div class="relative rounded-lg p-8 lg:p-24 border shadow-lg bg-white w-3/4 mx-auto" data-aos="fade-up">
                 <h2 class="text-3xl font-bold text-center mb-8">Optimize your CV with AI</h2>
                 <p class="text-center max-w-xl mx-auto text-gray-600 mb-12 lg:mb-20">
                     Upload your CV and let our AI analyze and provide recommendations that can increase your chances of
@@ -111,11 +112,11 @@
         <!-- Courses section -->
         <section class="max-w-[1200px] mx-auto p-4 py-6 lg:py-8 my-24">
             <div class="flex justify-between mb-8">
-                <div class="">
+                <div class="" data-aos="fade-right">
                     <h1 class="text-2xl font-semibold">Featured Courses</h1>
                     <p class="text-sm text-gray-600">Find the right course for you</p>
                 </div>
-                <a href="{{ url('/course') }}" class="flex items-center w-max group">
+                <a href="{{ url('/course') }}" class="flex items-center w-max group" data-aos="fade-left">
                     <span class="text-xl text-blue-500">More</span>
                     <svg class="w-6 transform transition-transform duration-300 group-hover:translate-x-1"
                         viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -128,7 +129,7 @@
                     </svg>
                 </a>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6" data-aos="fade-up">
                 @foreach ($courses as $course)
                     <div
                         class="bg-white border rounded-lg p-3 hover:shadow-lg hover:-translate-y-2 transition duration-300 ease-in-out flex flex-col justify-between">
@@ -163,8 +164,8 @@
 
         <!-- Advantages section -->
         <section class="max-w-[1200px] mx-auto p-4 py-6 lg:py-8 my-12 lg:mb-24">
-            <h1 class="text-3xl font-bold text-center mb-4">The Advantages of Our Program</h1>
-            <div class="flex justify-center">
+            <h1 class="text-3xl font-bold text-center mb-4" data-aos="fade-up">The Advantages of Our Program</h1>
+            <div class="flex justify-center" data-aos="fade-up">
                 <p class="text-center text-gray-500 mb-4 w-3/4 lg:w-2/4">Unlock personalized learning paths and
                     AI-driven
                     insights
@@ -173,7 +174,7 @@
                     job market.</p>
             </div>
             <div class="flex flex-col lg:flex-row gap-12">
-                <div class="w-full lg:w-5/12 flex flex-col justify-center p-12 lg:p-0">
+                <div class="w-full lg:w-5/12 flex flex-col justify-center p-12 lg:p-0" data-aos="fade-right">
                     <div class="space-y-2 lg:mt-12" x-data="{
                         activeAccordion: null,
                         setActiveAccordion(id) {
@@ -282,7 +283,7 @@
                     </div>
                 </div>
                 <div class="hidden lg:block w-full lg:w-7/12 relative">
-                    <div class="relative">
+                    <div class="relative" data-aos="fade-left">
                         <!-- Background gradient -->
                         <div
                             class="absolute bottom-0 left-12 right-12 h-3/4 bg-gradient-to-tr from-blue-500 via-blue-400 to-blue-100 rounded-3xl">
@@ -307,7 +308,7 @@
         <section class="max-w-[1200px] mx-auto p-4 py-6 lg:py-8 mt-12 mb-12 lg:mb-24">
             <div class="flex flex-col lg:flex-row">
                 <div class="hidden lg:block w-full lg:w-6/12 relative">
-                    <div class="relative">
+                    <div class="relative" data-aos="fade-right">
                         <!-- Background gradient -->
                         <div
                             class="absolute bottom-0 left-12 right-16 top-8 bg-gradient-to-tl from-cyan-500 via-cyan-400 to-blue-100 rounded-3xl">
@@ -326,7 +327,7 @@
                     </div>
                 </div>
                 <div class="w-full lg:w-6/12 flex flex-col justify-center p-12">
-                    <div class="w-10/12">
+                    <div class="w-10/12" data-aos="fade-left">
                         <h1 class="text-4xl font-bold mb-4">Unlock Courses & CV Optimization</h1>
                         <p class="text-gray-500 mb-6">
                             Subscribe now to unlock a wide range of courses designed to boost your career and utilize
@@ -351,8 +352,8 @@
 
         <!--Become a Teacher CTA Section -->
         <section class="max-w-[1200px] mx-auto p-4 py-6 lg:py-8 mb-12">
-            <div
-                class="rounded-lg h-max md:h-[400px] overflow-hidden bg-gradient-to-br from-cyan-200 to-blue-400 shadow-lg">
+            <div class="rounded-lg h-max md:h-[400px] overflow-hidden bg-gradient-to-br from-cyan-200 to-blue-400 shadow-lg"
+                data-aos="fade-up">
                 <div class="flex flex-col md:flex-row items-center h-full w-full justify-between gap-8 p-12 lg:p-24">
                     <div class="w-full md:w-[500px] lg:w-[570px]">
                         <h1 class="text-center md:text-left text-4xl lg:text-5xl font-bold mb-8">Become a teacher,
