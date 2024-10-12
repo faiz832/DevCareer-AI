@@ -89,7 +89,7 @@
                                 </div>
                             </div>
                         </div>
-                        <a href="#"
+                        <a href="{{ route('front.checkout') }}"
                             class="flex justify-center px-4 py-2 rounded w-full bg-blue-500 hover:bg-blue-600 text-white transition duration-300 ease-in-out">Subscribe
                             Now</a>
                         <div class="flex flex-col flex-grow gap-4">

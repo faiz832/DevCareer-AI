@@ -11,7 +11,7 @@ class StoreSubscribeTransactionRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return $this->user()->hasAnyRole(['student']);
     }
 
     /**
@@ -22,7 +22,7 @@ class StoreSubscribeTransactionRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'proof' => 'required|image|mimes:jpeg,png,jpg,gif|max:5120',
         ];
     }
 }

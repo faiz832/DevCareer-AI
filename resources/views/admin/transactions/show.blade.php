@@ -54,7 +54,13 @@
                             <div>
                                 <p class="text-slate-500 text-sm">Subscription Start At</p>
                                 <h3 class="text-indigo-950 text-xl font-bold">
-                                    {{ $transaction->subscription_start_date->format('Y-m-d') }}</h3>
+                                    @if($transaction->subscription_start_date)
+
+                                    {{ $transaction->subscription_start_date->format('Y-m-d') }}
+                                    @else
+                                        Not started yet
+                                    @endif
+                                </h3>
                             </div>
                             <div class="">
                                 <p class="text-slate-500 text-sm">Student</p>

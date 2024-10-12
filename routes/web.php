@@ -44,6 +44,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/settings', [ProfileController::class, 'settings'])->name('settings.edit');
 
     Route::get('/checkout', [FrontController::class, 'checkout'])->name('front.checkout')->middleware('role:student');
+    Route::post('/checkout/store', [FrontController::class, 'checkout_store'])->name('front.checkout.store')->middleware('role:student');
+
+
 });
 
 Route::get('/mycourses', [CourseStudentController::class, 'index'])
