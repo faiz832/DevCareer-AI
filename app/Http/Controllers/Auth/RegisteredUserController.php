@@ -32,14 +32,14 @@ class RegisteredUserController extends Controller
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'avatar' => ['nullable', 'image', 'mimes:png,jpg,jpeg'],
-            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
+            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:' . User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
         // Proses upload file photo kepada project laravel kita
         if ($request->hasFile('avatar')) {
             $avatarPath = $request->file('avatar')->store('avatars', 'public');
-        }else {
+        } else {
             $avatarPath = 'images/avatar-default.png';
         }
 
