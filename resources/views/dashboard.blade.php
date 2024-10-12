@@ -274,20 +274,23 @@
                         <div class="w-full rounded-lg bg-white shadow p-4 sm:p-8">
                             <div class="text-lg font-semibold text-gray-800">My Courses</div>
                             <div class="space-y-6 mt-6">
-                                <div class="flex border rounded justify-between items-center p-4">
-                                    <div class="flex-col">
-                                        <div class="text-sm font-semibold text-gray-800">Learning</div>
-                                        <div class="mt-2">HTML & CSS</div>
+                                @if($courses->isEmpty())
+                                    <div class="flex border rounded justify-between items-center p-4">
+                                        <div class="flex-col">
+                                            <div class="text-sm font-semibold text-gray-800">You are not subscribed to any courses.</div>
+                                        </div>
                                     </div>
-                                    <a href="#" class="text-sm font-semibold text-blue-500 px-4 py-2">Continue</a>
-                                </div>
-                                <div class="flex border rounded justify-between items-center p-4">
-                                    <div class="flex-col">
-                                        <div class="text-sm font-semibold text-gray-800">Learning</div>
-                                        <div class="mt-2">Javascript for Beginer</div>
+                                @else
+                                @foreach($courses as $course)
+                                    <div class="flex border rounded justify-between items-center p-4">
+                                        <div class="flex-col">
+                                            <div class="text-sm font-semibold text-gray-800">Learning</div>
+                                            <div class="mt-2">{{ $course->name }}</div>
+                                        </div>
+                                        <a href="{{ route('front.details', $course->id) }}" class="text-sm font-semibold text-blue-500 px-4 py-2">Continue</a>
                                     </div>
-                                    <a href="#" class="text-sm font-semibold text-blue-500 px-4 py-2">Continue</a>
-                                </div>
+                                @endforeach
+                                @endif
                             </div>
                         </div>
                     </div>
