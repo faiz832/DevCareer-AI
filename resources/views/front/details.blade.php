@@ -164,7 +164,7 @@
                     <div class="flex items-center">
                         <div class="flex-shrink-0 h-10 w-10">
                             <img class="h-10 w-10 rounded-full"
-                                src="{{ $course->teacher->user->avatar ? Storage::url($course->teacher->user->avatar) : asset('assets/images/profile1.png') }}"
+                                src="{{ $course->teacher->user->avatar ?? asset('assets/images/profile1.png') }}"
                                 alt="" loading="lazy">
                         </div>
                         <div class="ml-4">
