@@ -29,7 +29,6 @@ class RolePermissionSeeder extends Seeder
 
         $userOwner = User::create([
             'name' => 'admin',
-            'avatar' => 'images/default-avatar.png',
             'email' => 'admin@gmail.com',
             'password' => bcrypt('password')
         ]);
@@ -38,7 +37,6 @@ class RolePermissionSeeder extends Seeder
 
         $userTeacher = User::create([
             'name' => 'teacher',
-            'avatar' => 'images/default-avatar.png',
             'email' => 'teacher@gmail.com',
             'password' => bcrypt('password')
         ]);
@@ -52,7 +50,6 @@ class RolePermissionSeeder extends Seeder
 
         $userStudent = User::create([
             'name' => 'student',
-            'avatar' => 'images/default-avatar.png',
             'email' => 'student@gmail.com',
             'password' => bcrypt('password')
         ]);
