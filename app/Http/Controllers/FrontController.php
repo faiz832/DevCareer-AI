@@ -15,9 +15,9 @@ class FrontController extends Controller
     public function index()
     {
         $courses = Course::with(['category', 'teacher', 'students'])
-        ->orderByDesc('id')
-        ->take(4)
-        ->get();
+            ->orderByDesc('id')
+            ->take(4)
+            ->get();
 
         $studentCount = $courses->sum(function ($course) {
             return $course->students->count();
@@ -94,11 +94,6 @@ class FrontController extends Controller
         });
 
         return redirect()->route('dashboard');
-    }
-
-    public function resume()
-    {
-        return view('front.resume');
     }
 
     public function faq()

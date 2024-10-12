@@ -39,8 +39,6 @@
                                 </div>
                                 <a href="{{ url('/course') }}" class="text-slate-900 block pt-4 px-4"
                                     role="menuitem">Course</a>
-                                <a href="{{ url('/resume') }}" class="text-slate-900 block pt-4 px-4"
-                                    role="menuitem">Resume</a>
                             </div>
                         </div>
                     </div>
@@ -59,8 +57,6 @@
             <div class="hidden md:flex gap-4 lg:gap-8 mx-4">
                 <a href="{{ route('front.course') }}"
                     class="font-semibold hover:text-blue-500 transition duration-300 ease-in-out">Course</a>
-                <a href="{{ route('front.resume') }}"
-                    class="font-semibold hover:text-blue-500 transition duration-300 ease-in-out">Resume</a>
             </div>
 
             <!-- Search and Login Buttons -->

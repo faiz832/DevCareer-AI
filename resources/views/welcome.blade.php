@@ -93,22 +93,6 @@
 
         </section>
 
-        <!-- CV CTA section -->
-        <section class="relative max-w-[1200px] mx-auto p-4 py-6 lg:py-8 my-28">
-            <div class="relative rounded-lg p-8 lg:p-24 border shadow-lg bg-white w-3/4 mx-auto">
-                <h2 class="text-3xl font-bold text-center mb-8">Optimize your CV with AI</h2>
-                <p class="text-center max-w-xl mx-auto text-gray-600 mb-12 lg:mb-20">
-                    Upload your CV and let our AI analyze and provide recommendations that can increase your chances of
-                    getting your dream job.
-                </p>
-                <div class="text-center">
-                    <a href="{{ url('/resume') }}"
-                        class="px-6 py-3 bg-blue-500 text-white rounded hover:bg-blue-600 transition duration-300">Optimize
-                        Now</a>
-                </div>
-            </div>
-        </section>
-
         <!-- Courses section -->
         <section class="max-w-[1200px] mx-auto p-4 py-6 lg:py-8 my-24">
             <div class="flex justify-between mb-8">

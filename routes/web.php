@@ -20,7 +20,6 @@ Route::get('/', [FrontController::class, 'index'])->name('front.index');
 Route::get('/course/{id}/details', [FrontController::class, 'details'])->name('front.details');
 // Route::get('/category/{category:slug}', [FrontController::class, 'category'])->name('front.category');
 Route::get('/pricing', [FrontController::class, 'pricing'])->name('front.pricing');
-Route::get('/resume', [FrontController::class, 'resume'])->name('front.resume');
 Route::get('/course', [FrontController::class, 'course'])->name('front.course');
 Route::get('/faq', [FrontController::class, 'faq'])->name('front.faq');
 Route::get('/pricing', [FrontController::class, 'pricing'])->name('front.pricing');
