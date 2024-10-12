@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\View\View;
+use Illuminate\Support\Facades\DB;
 
 class ProfileController extends Controller
 {
@@ -35,38 +36,43 @@ class ProfileController extends Controller
     /**
      * Update the user's profile information.
      */
-    public function update(ProfileUpdateRequest $request): RedirectResponse
+    public function update(Request $request)
     {
-        $user = $request->user();
-        $oldAttributes = $user->getAttributes();
+        DB::transaction(function () use ($request) {
+            $user = $request->user();
 
-        if ($request->hasFile('avatar')) {
-            $path = $request->file('avatar')->store('avatars', 'public');
-            $user->avatar = $path;
-            $url = Storage::url($path);
-            \Log::info('Avatar URL: ' . $url);
+            $validated = $request->validate([
+                'name' => 'string|max:255',
+                'email' => 'string|email|max:255|unique:users,email,' . $user->id,
+                'avatar' => 'nullable|image|mimes:png,jpg,jpeg,svg|max:2048',
+                // Add other fields as needed
+            ]);
 
-        }
+            if ($request->hasFile('avatar')) {
+                $avatarPath = $request->file('avatar')->store('avatars', 'public');
+                $validated['avatar'] = $avatarPath;
+            }
 
+            $oldAttributes = $user->getAttributes();
 
-        $user->fill($request->validated());
+            if (isset($validated['email']) && $user->email !== $validated['email']) {
+                $validated['email_verified_at'] = null;
+            }
 
-        if ($request->user()->isDirty('email')) {
-            $request->user()->email_verified_at = null;
-        }
+            $user->update($validated);
 
-        $user->save();
+            // Log activity
+            activity()
+                ->causedBy($user)
+                ->performedOn($user)
+                ->withProperties([
+                    'old' => $oldAttributes,
+                    'attributes' => $user->getAttributes()
+                ])
+                ->log('User profile updated');
+        });
 
-        activity()
-            ->causedBy($user)
-            ->performedOn($user)
-            ->withProperties([
-                'old' => $oldAttributes,
-                'attributes' => $user->getAttributes()
-            ])
-            ->log('User profile updated');
-
-        return Redirect::route('profile.edit')->with('status', 'profile-updated');
+        return redirect()->route('profile.edit')->with('status', 'profile-updated');
     }
 
     /**
