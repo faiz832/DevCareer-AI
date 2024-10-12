@@ -50,6 +50,14 @@ class RegisteredUserController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
+        $user->assignRole('student');
+
+        activity()
+            ->causedBy($user)
+            ->performedOn($user)
+            ->withProperties(['attributes' => $user->toArray()])
+            ->log('User registered: ' . $user->name);
+
         event(new Registered($user));
 
         Auth::login($user);

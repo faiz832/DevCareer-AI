@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\SubscribeTransaction;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class SubscribeTransactionController extends Controller
 {
@@ -55,24 +57,27 @@ class SubscribeTransactionController extends Controller
      */
     public function update(Request $request, SubscribeTransaction $subscribeTransaction)
     {
-        if ($subscribeTransaction->is_paid) {
-            // If currently paid, change to unpaid
-            $subscribeTransaction->update([
-                'is_paid' => false,
-                'subscription_start_date' => null,
-            ]);
-            $message = 'Transaction unapproved successfully.';
-        } else {
-            // If currently unpaid, change to paid
+        DB::transaction(function () use ($request, $subscribeTransaction){
+
+            $oldAttributes = $subscribeTransaction->getAttributes();
+
             $subscribeTransaction->update([
                 'is_paid' => true,
-                'subscription_start_date' => Carbon::now(),
+                'subscription_start_date' => Carbon::now()
             ]);
-            $message = 'Transaction approved successfully. Subscription starts from now.';
-        }
 
-        return redirect()->route('admin.subscribe_transactions.show', $subscribeTransaction)
-            ->with('success', $message);
+            activity()
+                ->causedBy(Auth::user())
+                ->performedOn($subscribeTransaction)
+                ->withProperties([
+                    'old' => $oldAttributes,
+                    'attributes' => $subscribeTransaction->getAttributes()
+                ])
+                ->log('Subscription transaction approved: ' . $subscribeTransaction->id);
+        });
+
+        return redirect()->route('admin.subscribe_transactions.show', ['subscribe_transaction' => $subscribeTransaction])
+                ->with('success', 'Transaction approved successfully. Subscription starts from now.');
     }
 
     /**
@@ -80,6 +85,25 @@ class SubscribeTransactionController extends Controller
      */
     public function destroy(SubscribeTransaction $subscribeTransaction)
     {
-        //
+        DB::beginTransaction();
+
+        try {
+            $oldAttributes = $subscribeTransaction->getAttributes();
+
+            $subscribeTransaction->delete();
+
+            activity()
+                ->causedBy(Auth::user())
+                ->performedOn($subscribeTransaction)
+                ->withProperties(['old' => $oldAttributes])
+                ->log('Subscription transaction deleted: ' . $subscribeTransaction->id);
+
+            DB::commit();
+
+            return redirect()->route('admin.subscribe_transactions.index')->with('success', 'Transaction deleted successfully.');
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return redirect()->route('admin.subscribe_transactions.index')->with('error', 'An error occurred while deleting the transaction.');
+        }
     }
 }

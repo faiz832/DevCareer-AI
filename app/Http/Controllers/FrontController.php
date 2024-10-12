@@ -12,19 +12,9 @@ class FrontController extends Controller
     public function index()
     {
         $courses = Course::with(['category', 'teacher', 'students'])
-            ->orderByDesc('id');
-
-        $user = Auth::user();
-
-        // Check if user is authenticated and has teacher role
-        if ($user && $user->hasRole('teacher')) {
-            $courses->whereHas('teacher', function ($query) use ($user) {
-                $query->where('user_id', $user->id);
-            });
-        }
-
-        // Get the final courses collection
-        $courses = $courses->take(4)->get();
+        ->orderByDesc('id')
+        ->take(4)
+        ->get();
 
         $studentCount = $courses->sum(function ($course) {
             return $course->students->count();
@@ -36,31 +26,16 @@ class FrontController extends Controller
     public function course()
     {
 
-        // Get all categories
         $categories = Category::all();
-
-        // Initialize an array to store courses by category
         $coursesByCategory = [];
 
         foreach ($categories as $category) {
-            $query = Course::with(['category', 'teacher', 'students'])
+            $coursesByCategory[$category->id] = Course::with(['category', 'teacher', 'students'])
                 ->where('category_id', $category->id)
-                ->orderByDesc('id');
-
-            $user = Auth::user();
-
-            // Check if user is authenticated and has teacher role
-            if ($user && $user->hasRole('teacher')) {
-                $query->whereHas('teacher', function ($q) use ($user) {
-                    $q->where('user_id', $user->id);
-                });
-            }
-
-            // Store courses for this category
-            $coursesByCategory[$category->id] = $query->get();
+                ->orderByDesc('id')
+                ->get();
         }
 
-        // Calculate total student count
         $studentCount = collect($coursesByCategory)->flatten()->sum(function ($course) {
             return $course->students->count();
         });

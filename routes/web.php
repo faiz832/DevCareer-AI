@@ -46,6 +46,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/checkout', [FrontController::class, 'checkout'])->name('front.checkout')->middleware('role:student');
 });
 
+Route::get('/mycourses', [CourseStudentController::class, 'index'])
+    ->middleware(['auth', 'role:student'])
+    ->name('mycourses.index');
+
 Route::prefix('admin')->name('admin.')->group(function () {
     Route::resource('categories', CategoryController::class)
         ->middleware('role:owner'); // admin.categories.index

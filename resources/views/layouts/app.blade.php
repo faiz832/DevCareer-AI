@@ -20,6 +20,9 @@
     <link rel="stylesheet" href="{{ asset('css/table.css') }}">
     {{-- <link rel="stylesheet" href="https://cdn.datatables.net/2.1.7/css/dataTables.tailwindcss.css"> --}}
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/trix/1.3.1/trix.css">
+
+
     <style>
         /* Hide scrollbar in Chrome, Safari and Opera */
         ::-webkit-scrollbar {
@@ -41,6 +44,7 @@
 
     <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
     <script src="https://cdn.datatables.net/2.1.7/js/dataTables.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/trix/1.3.1/trix.js"></script>
     <script src="{{ asset('js/table.js') }}"></script>
     <script>
         new DataTable('#dataTable');

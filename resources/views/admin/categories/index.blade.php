@@ -99,9 +99,9 @@
                                         <th
                                             class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                             Category</th>
-                                        <th
+                                        {{-- <th
                                             class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                            Icon</th>
+                                            Icon</th> --}}
                                         <th
                                             class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                             Date</th>
@@ -119,11 +119,11 @@
                                             <td class="px-6 py-4 whitespace-nowrap">
                                                 <div class="text-sm">{{ $category->name }}</div>
                                             </td>
-                                            <td class="px-6 py-4 whitespace-nowrap">
+                                            {{-- <td class="px-6 py-4 whitespace-nowrap">
                                                 <img src="{{ Storage::url($category->icon) }}"
                                                     alt="{{ $category->name }}"
                                                     class="w-10 h-10 object-cover rounded-full">
-                                            </td>
+                                            </td> --}}
                                             <td class="px-6 py-4 whitespace-nowrap">
                                                 <div class="text-sm text-gray-900">
                                                     {{ $category->created_at->format('Y-m-d') }}</div>

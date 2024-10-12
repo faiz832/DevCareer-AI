@@ -15,6 +15,7 @@ class Course extends Model
         'slug',
         'path_trailer',
         'about',
+        'desc',
         'thumbnail',
         'category_id',
         'teacher_id',
