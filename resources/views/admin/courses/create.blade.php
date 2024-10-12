@@ -33,26 +33,18 @@
                         </div>
 
                         <div class="mb-4">
-                            <x-input-label for="about" :value="__('About')" />
-
-                            <input id="about" type="hidden" name="about" value="{{ old('about') }}">
-                            <trix-editor input="about"
+                            <x-input-label for="about" :value="'About'" />
+                            <textarea id="about" name="about"
                                 class="block mt-1 w-full rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-                                rows="4" required>
-                            </trix-editor>
+                                rows="4" required></textarea>
                         </div>
-
 
                         <div class="mb-4">
-                            <x-input-label for="desc" :value="__('Description')" />
-
-                            <input id="desc" type="hidden" name="desc" value="{{ old('desc') }}">
-                            <trix-editor input="desc"
+                            <x-input-label for="desc" :value="'Desc'" />
+                            <textarea id="desc" name="desc"
                                 class="block mt-1 w-full rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-                                rows="4" required>
-                            </trix-editor>
+                                rows="4" required></textarea>
                         </div>
-
 
                         <div class="mb-4">
                             <x-input-label for="thumbnail" :value="__('Thumbnail')" />

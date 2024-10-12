@@ -42,6 +42,13 @@
                         </div>
 
                         <div class="mb-4">
+                            <x-input-label for="desc" :value="__('Desc')" />
+                            <textarea id="desc" name="desc"
+                                class="block mt-1 w-full rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                                rows="4" required>{{ old('about', $course->desc) }}</textarea>
+                        </div>
+
+                        <div class="mb-4">
                             <x-input-label for="thumbnail" :value="__('Thumbnail')" />
                             <img src="{{ Storage::url($course->thumbnail) }}" alt="Current Thumbnail"
                                 class="w-32 h-32 object-cover mb-2">
