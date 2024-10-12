@@ -29,13 +29,14 @@
 
         <!-- Hero Section -->
         <div class="max-w-[1200px] mx-auto p-4 py-6 lg:py-8 mt-12 mb-20">
-            <div class="w-full flex lg:flex-col justify-center items-center">
-                <h1 class="text-4xl font-semibold text-center w-2/4">Subscribe to unlock all of our courses and use
+            <div class="w-full flex flex-col justify-center items-center">
+                <h1 class="text-4xl font-semibold text-center w-full md:w-2/4">Subscribe to unlock all of our courses
+                    and use
                     AI-Powered CV
                     Enhancements
                 </h1>
-                <div class="flex flex-col md:flex-row w-7/12 mt-20 h-[400px] border-2 rounded-lg">
-                    <div class="lg:w-1/2 p-6 space-y-6">
+                <div class="flex flex-col md:flex-row w-full md:w-7/12 mt-20 h-full md:h-[400px] border-2 rounded-lg">
+                    <div class="lg:w-1/2 p-6 space-y-6 border-b-2 md:border-b-0">
                         <div class="relative flex flex-col">
                             <div class="flex flex-col gap-1">
                                 <p class="flex items-center gap-2 text-xl font-semibold">
@@ -73,7 +74,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="lg:w-1/2 p-6 space-y-6 border-l-2">
+                    <div class="lg:w-1/2 p-6 space-y-6 md:border-l-2">
                         <div class="relative flex flex-col">
                             <div class="flex flex-col gap-1">
                                 <p class="flex items-center gap-2 text-xl font-semibold">

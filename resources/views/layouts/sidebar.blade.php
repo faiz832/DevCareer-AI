@@ -235,11 +235,11 @@
                 @role('owner')
                     <li>
                         <a href="{{ route('admin.subscribe_transactions.index') }}"
-                            class="flex items-center {{ Route::is('admin.subscribe_transactions.index') ? 'text-blue-500 relative' : 'text-slate-900' }}">
-                            @if (Route::is('admin.subscribe_transactions.index'))
+                            class="flex items-center {{ Route::is('admin.subscribe_transactions.index') || Route::is('admin.subscribe_transactions.show') ? 'text-blue-500 relative' : 'text-slate-900' }}">
+                            @if (Route::is('admin.subscribe_transactions.index') || Route::is('admin.subscribe_transactions.show'))
                                 <div class="absolute -left-6 h-full w-1 bg-blue-500"></div>
                             @endif
-                            <svg class="h-5 w-5 mr-3 {{ Route::is('admin.subscribe_transactions.index') ? 'text-blue-500' : 'text-slate-900' }}"
+                            <svg class="h-5 w-5 mr-3 {{ Route::is('admin.subscribe_transactions.index') || Route::is('admin.subscribe_transactions.show') ? 'text-blue-500' : 'text-slate-900' }}"
                                 xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                 stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"

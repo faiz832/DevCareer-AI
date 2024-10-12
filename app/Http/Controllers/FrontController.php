@@ -51,16 +51,7 @@ class FrontController extends Controller
         $course = Course::with(['category', 'teacher', 'students', 'course_videos'])
             ->findOrFail($id);
 
-        $user = Auth::user();
-        $isSubscribed = $user && $user->hasActiveSubscription();
-        $isEnrolled = $user && $course->students->contains($user->id);
-
-        // Jika user belum subscribe, batasi course_videos yang bisa diakses
-        if (!$isSubscribed) {
-            $course->course_videos = $course->course_videos->take(1);
-        }
-
-        return view('front.details', compact('course', 'isSubscribed', 'isEnrolled'));
+        return view('front.details', compact('course'));
     }
 
     public function enroll(Course $course)

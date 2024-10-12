@@ -198,20 +198,5 @@ class CompleteDataSeeder extends Seeder
                 ]);
             }
         }
-
-        // Subscribe Transactions
-        $students = User::role('student')->take(10)->get();
-        foreach ($students as $student) {
-            // Create multiple transactions for each student
-            for ($j = 0; $j < 3; $j++) { // Adjust the number of transactions here (e.g., 3)
-                SubscribeTransaction::create([
-                    'user_id' => $student->id,
-                    'total_amount' => 100000, // 100,000 IDR
-                    'is_paid' => 0, // Randomly paid or not
-                    'proof' => 'transactions/payment-proof.jpg',
-                    'subscription_start_date' => now()->subDays(rand(1, 30)),
-                ]);
-            }
-        }
     }
 }

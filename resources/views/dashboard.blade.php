@@ -199,17 +199,19 @@
                             class="bg-white bg-opacity-20 backdrop-filter backdrop-blur-sm rounded-lg p-4 sm:p-8 shadow-xl">
                             <div class="text-lg font-semibold text-gray-800">Teaching Activities</div>
                             <div class="space-y-6 mt-6">
-                                @if($courses->isEmpty())
+                                @if ($courses->isEmpty())
                                     <div class="flex border rounded justify-between items-center p-4">
                                         <div class="flex-col">
-                                            <div class="text-sm font-semibold text-gray-800">You are not teaching any courses.</div>
+                                            <div class="text-sm font-semibold text-gray-800">You are not teaching any
+                                                courses.</div>
                                         </div>
                                         <div class="mt-2">
-                                            <a href="{{ route('admin.courses.create') }}" class="text-blue-500">Create a new course</a>
+                                            <a href="{{ route('admin.courses.create') }}" class="text-blue-500">Create a
+                                                new course</a>
                                         </div>
                                     </div>
                                 @else
-                                    @foreach($courses as $course)
+                                    @foreach ($courses as $course)
                                         <div class="flex border rounded justify-between items-center p-4">
                                             <div class="flex-col">
                                                 <div class="text-sm font-semibold text-gray-800">Teaching</div>
@@ -218,7 +220,8 @@
                                             <form action="{{ route('admin.courses.destroy', $course) }}" method="POST">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button type="submit" class="text-sm font-semibold text-red-500">Stop Teaching</button>
+                                                <button type="submit" class="text-sm font-semibold text-red-500">Stop
+                                                    Teaching</button>
                                             </form>
                                         </div>
                                     @endforeach
@@ -250,21 +253,26 @@
                                             </svg>
                                         </div>
                                         <div class="text-start text-sm w-3/4 text-white">
-                                            @if($subscription)
+                                            @if ($subscription)
                                                 @php
                                                     // Hitung tanggal akhir langganan
-                                                    $endDate = \Carbon\Carbon::parse($subscription->subscription_start_date)->addMonth();
+                                                    $endDate = \Carbon\Carbon::parse(
+                                                        $subscription->subscription_start_date,
+                                                    )->addMonth();
                                                 @endphp
                                                 Your subscription is active until {{ $endDate->format('d M Y') }}.
                                             @else
-                                                You haven't subscribed to codecareer yet. Choose a subscription and start your journey to becoming a professional developer.
+                                                You haven't subscribed to codecareer yet. Choose a subscription and start
+                                                your journey to becoming a professional developer.
                                             @endif
                                         </div>
                                     </div>
-                                    @if($subscription)
-                                        <span class="bg-white rounded px-4 py-2 font-semibold text-sm text-blue-500">Active</span>
+                                    @if ($subscription)
+                                        <span
+                                            class="bg-white rounded px-4 py-2 font-semibold text-sm text-blue-500">Active</span>
                                     @else
-                                        <a href="{{ url('/pricing') }}" class="bg-white rounded px-4 py-2 font-semibold text-sm text-blue-500">Subscribe</a>
+                                        <a href="{{ url('/pricing') }}"
+                                            class="bg-white rounded px-4 py-2 font-semibold text-sm text-blue-500">Subscribe</a>
                                     @endif
                                 </div>
                             </div>
@@ -274,22 +282,24 @@
                         <div class="w-full rounded-lg bg-white shadow p-4 sm:p-8">
                             <div class="text-lg font-semibold text-gray-800">My Courses</div>
                             <div class="space-y-6 mt-6">
-                                @if($courses->isEmpty())
+                                @if ($courses->isEmpty())
                                     <div class="flex border rounded justify-between items-center p-4">
                                         <div class="flex-col">
-                                            <div class="text-sm font-semibold text-gray-800">You are not subscribed to any courses.</div>
+                                            <div class="text-sm font-semibold text-gray-800">You are not subscribed to any
+                                                courses.</div>
                                         </div>
                                     </div>
                                 @else
-                                @foreach($courses as $course)
-                                    <div class="flex border rounded justify-between items-center p-4">
-                                        <div class="flex-col">
-                                            <div class="text-sm font-semibold text-gray-800">Learning</div>
-                                            <div class="mt-2">{{ $course->name }}</div>
+                                    @foreach ($courses as $course)
+                                        <div class="flex border rounded justify-between items-center p-4">
+                                            <div class="flex-col">
+                                                <div class="text-sm font-semibold text-gray-800">Learning</div>
+                                                <div class="mt-2">{{ $course->name }}</div>
+                                            </div>
+                                            <a href="{{ route('front.details', $course->id) }}"
+                                                class="text-sm font-semibold text-blue-500 px-4 py-2">Continue</a>
                                         </div>
-                                        <a href="{{ route('front.details', $course->id) }}" class="text-sm font-semibold text-blue-500 px-4 py-2">Continue</a>
-                                    </div>
-                                @endforeach
+                                    @endforeach
                                 @endif
                             </div>
                         </div>

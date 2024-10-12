@@ -25,8 +25,7 @@ class DashboardController extends Controller
                 ->get();
 
             return view('dashboard', compact('teacherCount', 'studentCount', 'courseCount', 'subscriptionCount', 'revenueTotal', 'activities'));
-        }
-        elseif (auth()->user()->hasRole('teacher')) {
+        } elseif (auth()->user()->hasRole('teacher')) {
             $teacher = auth()->user()->teacher;
 
             if (!$teacher) {
@@ -47,8 +46,7 @@ class DashboardController extends Controller
                 'totalStudents' => $totalStudents,
                 'courseCount' => $courses->count()
             ]);
-        }
-        elseif (auth()->user()->hasRole('student')) {
+        } elseif (auth()->user()->hasRole('student')) {
             $student = auth()->user();
             $subscription = $student->hasActiveSubscription();
             $courses = $student->courses;
