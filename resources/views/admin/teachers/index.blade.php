@@ -124,9 +124,26 @@
                                             <td class="px-6 py-4 whitespace-nowrap">
                                                 <div class="flex items-center">
                                                     <div class="flex-shrink-0 h-10 w-10">
-                                                        <img class="h-10 w-10 rounded-full"
-                                                            src="{{ $teacher->user->avatar ?? asset('assets/images/profile1.png') }}"
-                                                            alt="">
+                                                        @php
+                                                            $avatarUrl = asset('assets/images/profile1.png'); // Default avatar URL
+
+                                                            if ($teacher->user->avatar) {
+                                                                if (
+                                                                    Str::startsWith($teacher->user->avatar, 'https://')
+                                                                ) {
+                                                                    $avatarUrl = $teacher->user->avatar;
+                                                                } elseif (
+                                                                    Str::startsWith($teacher->user->avatar, 'avatars/')
+                                                                ) {
+                                                                    $avatarUrl = Storage::url($teacher->user->avatar);
+                                                                }
+                                                            }
+                                                        @endphp
+
+                                                        <img id="avatar-preview"
+                                                            class="h-[36px] w-[36px] object-cover rounded-full"
+                                                            src="{{ $avatarUrl }}" alt="User Avatar"
+                                                            loading="lazy" />
                                                     </div>
                                                     <div class="ml-4">
                                                         <div class="text-sm font-medium text-gray-900">

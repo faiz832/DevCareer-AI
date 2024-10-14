@@ -21,8 +21,9 @@
                         </div>
                         <div class="">
                             <p class="text-sm font-medium text-gray-700">Thumbnail</p>
-                            <img src="{{ Storage::url($course->thumbnail) }}" alt=""
-                                class="rounded border object-cover w-[200px] h-[150px]">
+                            <img src="{{ $course->thumbnail ? Storage::url($course->thumbnail) : asset('assets/images/thumbnail.jpg') }}"
+                                alt="{{ $course->name }}" class="w-1/2 h-[250px] shadow-md object-cover rounded-lg mb-4"
+                                loading="lazy">
                         </div>
                         <div class="">
                             <h1 class="text-sm font-medium text-gray-700">Teacher</h1>

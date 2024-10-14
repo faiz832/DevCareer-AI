@@ -184,7 +184,7 @@ class CompleteDataSeeder extends Seeder
             for ($i = 1; $i <= 5; $i++) {
                 CourseVideo::create([
                     'name' => "Lesson $i: " . $course->name,
-                    'path_video' => "https://www.youtube.com/embed/dQw4w9WgXcQ", // Placeholder video
+                    'path_video' => "https://www.youtube.com/embed/qz0aGYrrlhU", // Placeholder video
                     'course_id' => $course->id,
                 ]);
             }

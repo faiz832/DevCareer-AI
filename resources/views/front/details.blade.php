@@ -163,9 +163,20 @@
                     <h1 class="text-2xl font-semibold mt-12 mb-4">Teacher</h1>
                     <div class="flex items-center">
                         <div class="flex-shrink-0 h-10 w-10">
-                            <img class="h-10 w-10 rounded-full"
-                                src="{{ $course->teacher->user->avatar ?? asset('assets/images/profile1.png') }}"
-                                alt="" loading="lazy">
+                            @php
+                                $avatarUrl = asset('assets/images/profile1.png'); // Default avatar URL
+
+                                if ($course->teacher->user->avatar) {
+                                    if (Str::startsWith($course->teacher->user->avatar, 'https://')) {
+                                        $avatarUrl = $course->teacher->user->avatar;
+                                    } elseif (Str::startsWith($course->teacher->user->avatar, 'avatars/')) {
+                                        $avatarUrl = Storage::url($course->teacher->user->avatar);
+                                    }
+                                }
+                            @endphp
+
+                            <img id="avatar-preview" class="h-10 w-10 object-cover rounded-full"
+                                src="{{ $avatarUrl }}" alt="User Avatar" loading="lazy" />
                         </div>
                         <div class="ml-4">
                             <div class="text-sm font-semibold text-gray-900">
