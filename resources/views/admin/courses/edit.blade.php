@@ -23,6 +23,20 @@
                         @method('PUT')
 
                         <div class="mb-4">
+                            <x-input-label for="category_id" :value="__('Category')" />
+                            <select id="category_id" name="category_id"
+                                class="block mt-1 w-full rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                                required>
+                                @foreach ($categories as $category)
+                                    <option value="{{ $category->id }}"
+                                        {{ $course->category_id == $category->id ? 'selected' : '' }}>
+                                        {{ $category->name }}
+                                    </option>
+                                @endforeach
+                            </select>
+                        </div>
+
+                        <div class="mb-4">
                             <x-input-label for="name" :value="__('Name')" />
                             <x-text-input id="name" class="block mt-1 w-full" type="text" name="name"
                                 :value="old('name', $course->name)" required autofocus />
@@ -50,23 +64,10 @@
 
                         <div class="mb-4">
                             <x-input-label for="thumbnail" :value="__('Thumbnail')" />
-                            <img src="{{ Storage::url($course->thumbnail) }}" alt="Current Thumbnail"
-                                class="w-32 h-32 object-cover mb-2">
+                            <img src="{{ $course->thumbnail ? Storage::url($course->thumbnail) : asset('assets/images/thumbnail.jpg') }}"
+                                alt="{{ $course->name }}"
+                                class="w-1/2 h-[250px] shadow-md object-cover rounded-lg mb-4">
                             <x-text-input id="thumbnail" class="block mt-1 w-full" type="file" name="thumbnail" />
-                        </div>
-
-                        <div class="mb-4">
-                            <x-input-label for="category_id" :value="__('Category')" />
-                            <select id="category_id" name="category_id"
-                                class="block mt-1 w-full rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-                                required>
-                                @foreach ($categories as $category)
-                                    <option value="{{ $category->id }}"
-                                        {{ $course->category_id == $category->id ? 'selected' : '' }}>
-                                        {{ $category->name }}
-                                    </option>
-                                @endforeach
-                            </select>
                         </div>
 
                         @role('owner')

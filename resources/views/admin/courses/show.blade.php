@@ -12,18 +12,12 @@
                     <!-- Course Detail Section -->
                     <div class="flex flex-col gap-4">
                         <div class="">
-                            <p class="text-sm font-medium text-gray-700">Course Name</p>
-                            <h1 class="text-xl font-bold text-gray-800">{{ $course->name }}</h1>
+                            <p class="text-sm font-medium text-gray-700">Name</p>
+                            <h1 class="text-slate-500">{{ $course->name }}</h1>
                         </div>
                         <div class="">
                             <p class="text-sm font-medium text-gray-700">Category</p>
                             <p class="text-slate-500 text-sm">{{ $course->category->name }}</p>
-                        </div>
-                        <div class="">
-                            <p class="text-sm font-medium text-gray-700">Thumbnail</p>
-                            <img src="{{ $course->thumbnail ? Storage::url($course->thumbnail) : asset('assets/images/thumbnail.jpg') }}"
-                                alt="{{ $course->name }}" class="w-1/2 h-[250px] shadow-md object-cover rounded-lg mb-4"
-                                loading="lazy">
                         </div>
                         <div class="">
                             <h1 class="text-sm font-medium text-gray-700">Teacher</h1>
@@ -32,6 +26,12 @@
                         <div class="">
                             <h1 class="text-sm font-medium text-gray-700">Student</h1>
                             <p class="text-slate-500 text-sm">{{ $course->students->count() }}</p>
+                        </div>
+                        <div class="">
+                            <p class="text-sm font-medium text-gray-700">Thumbnail</p>
+                            <img src="{{ $course->thumbnail ? Storage::url($course->thumbnail) : asset('assets/images/thumbnail.jpg') }}"
+                                alt="{{ $course->name }}" class="w-1/2 h-[250px] shadow-md object-cover rounded-lg mb-4"
+                                loading="lazy">
                         </div>
                     </div>
 
