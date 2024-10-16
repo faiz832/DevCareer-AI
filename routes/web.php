@@ -27,6 +27,7 @@ Route::get('/terms', [FrontController::class, 'terms'])->name('front.terms');
 Route::get('/privacy', [FrontController::class, 'privacy'])->name('front.privacy');
 Route::get('/404', [FrontController::class, '404'])->name('front.404');
 Route::get('/search', [SearchController::class, 'search'])->name('search');
+Route::get('/resume', [FrontController::class, 'resume'])->name('front.resume');
 
 
 // Route::get('/dashboard', function () {
