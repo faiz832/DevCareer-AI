@@ -70,11 +70,6 @@ class FrontController extends Controller
         return redirect()->route('front.details', $course->id)->with('info', 'You are already enrolled in this course.');
     }
 
-    public function resume()
-    {
-        return view('front.resume');
-    }
-
     public function pricing()
     {
         // if (Auth::user()->hasActiveSubscription()) {

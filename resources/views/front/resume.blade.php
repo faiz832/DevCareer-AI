@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Laravel</title>
+    <title>CV Optimization - DevCareer AI</title>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
@@ -29,31 +29,50 @@
 
         <!-- Content -->
         <div class="max-w-md mx-auto mt-24 min-h-screen p-4">
-            <div class="flex flex-col justify-center items-center gap-6 mx-1 sm:mx-6">
-                <h3 class="font-display font-bold text-typo m-0 text-4xl text-center">Upload an image to optimize your
+            <div class="flex flex-col justify-center items-center gap-6 sm:mx-6">
+                <h3 class="font-bold text-4xl text-center">Upload an image to optimize your
                     resume
                 </h3>
+
+                <!-- Tampilkan Pesan Error Jika Ada -->
+                @if ($errors->any())
+                    <div class="mb-4 p-4 text-red-700 bg-red-100 border border-red-300 rounded">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
 
                 @if (Route::has('login'))
                     @auth
                         <div id="uploadContainer"
                             class="w-full max-w-md px-6 py-12 bg-white border-2 border-dashed border-gray-300 rounded-lg text-center transition-all duration-300 ease-in-out">
-                            <input type="file" id="fileInput" class="hidden" accept="image/*">
-                            <button onclick="document.getElementById('fileInput').click()"
-                                class="mb-4 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded inline-flex items-center transition duration-300 ease-in-out">
-                                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z">
-                                    </path>
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                                </svg>
-                                Choose Photo
-                            </button>
-                            <p class="text-sm text-gray-600 mb-2">Max file size 5MB. <a href="#"
-                                    class="text-blue-500 hover:underline">Sign Up</a> for more</p>
-                            <p id="fileName" class="text-sm text-gray-500 mb-4"></p>
+                            <form action="{{ route('cv.optimize') }}" method="POST" enctype="multipart/form-data">
+                                @csrf
+                                <input type="file" name="cv_file" id="fileInput" class="hidden"
+                                    accept=".pdf,.doc,.docx,.jpg,.jpeg,.png" onchange="showFileName()">
+                                <button type="button" onclick="document.getElementById('fileInput').click()"
+                                    class="mb-4 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded inline-flex items-center transition duration-300 ease-in-out">
+                                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z">
+                                        </path>
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                    </svg>
+                                    Choose File
+                                </button>
+                                <p class="text-sm text-gray-600 mb-2">Supported formats: PDF, JPG, PNG. <br> Max file
+                                    size 5MB.</p>
+                                <p id="fileName" class="text-sm text-gray-500 mb-4"></p>
+                                <button type="submit"
+                                    class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-6 rounded transition duration-300 ease-in-out">
+                                    Upload & Optimize
+                                </button>
+                            </form>
                         </div>
                     @else
                         <div x-data="{ open: false }"
@@ -106,8 +125,8 @@
                                                 stroke-linejoin="round"></path>
                                             <path
                                                 d="M410.388 155.219C409.87 155.869 409.312 156.478 408.712 157.047C403.573 161.972 395.977 163.922 388.756 164.166C381.475 164.41 374.03 163.161 367.622 159.698C365.753 158.693 363.976 157.474 362.351 156.083C358.411 152.732 355.344 148.375 353.922 143.419C352.317 137.823 352.846 131.75 354.734 126.246C359.558 112.109 374.811 101.527 389.476 104.351C393.944 105.214 402.12 107.641 407.532 113.288C411.371 117.299 414.793 123.393 415.88 128.836C417.718 138.006 416.256 147.938 410.386 155.22L410.388 155.219Z"
-                                                fill="#2563eb" stroke="#010101" stroke-width="1.5" stroke-linecap="round"
-                                                stroke-linejoin="round"></path>
+                                                fill="#2563eb" stroke="#010101" stroke-width="1.5"
+                                                stroke-linecap="round" stroke-linejoin="round"></path>
                                             <path
                                                 d="M408.712 157.047C403.573 161.972 395.977 163.922 388.756 164.166C381.475 164.41 374.03 163.161 367.622 159.698C365.753 158.693 363.976 157.474 362.351 156.083C362.757 155.606 363.184 155.098 363.641 154.55C369.095 148.03 377.645 144.202 386.146 144.476C394.656 144.74 402.943 149.107 407.97 155.972C408.224 156.327 408.478 156.683 408.711 157.048L408.712 157.047Z"
                                                 fill="white" stroke="#010101" stroke-width="1.5"
@@ -402,6 +421,18 @@
         <!-- Footer -->
         @include('layouts.footer')
     </div>
+
+    <script>
+        function showFileName() {
+            const fileInput = document.getElementById('fileInput');
+            const fileNameDisplay = document.getElementById('fileName');
+            if (fileInput.files.length > 0) {
+                fileNameDisplay.textContent = `Selected file: ${fileInput.files[0].name}`;
+            } else {
+                fileNameDisplay.textContent = '';
+            }
+        }
+    </script>
 </body>
 
 </html>

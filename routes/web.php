@@ -10,6 +10,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SubscribeTransactionController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\SearchController;
+use App\Http\Controllers\CVOptimizationController;
 use Illuminate\Support\Facades\Route;
 
 // Route::get('/', function () {
@@ -27,7 +28,7 @@ Route::get('/terms', [FrontController::class, 'terms'])->name('front.terms');
 Route::get('/privacy', [FrontController::class, 'privacy'])->name('front.privacy');
 Route::get('/404', [FrontController::class, '404'])->name('front.404');
 Route::get('/search', [SearchController::class, 'search'])->name('search');
-Route::get('/resume', [FrontController::class, 'resume'])->name('front.resume');
+Route::get('/resume', [CVOptimizationController::class, 'index'])->name('cv.show');
 
 
 // Route::get('/dashboard', function () {
@@ -35,6 +36,8 @@ Route::get('/resume', [FrontController::class, 'resume'])->name('front.resume');
 // })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
+    Route::post('/resume/optimize', [CVOptimizationController::class, 'optimize'])->name('cv.optimize');
+
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
