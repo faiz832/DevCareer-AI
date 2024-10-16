@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Privacy Policy - CodeCareer</title>
+    <title>Privacy Policy - DevCareer AI</title>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
@@ -56,7 +56,7 @@
                                 [
                                     'title' => 'Cookies',
                                     'content' =>
-                                        'CodeCareer uses cookies to track user sessions, preferences, and improve platform functionality. You can disable cookies in your browser settings, but this may affect the platform\'s usability.',
+                                        'DevCareer AI uses cookies to track user sessions, preferences, and improve platform functionality. You can disable cookies in your browser settings, but this may affect the platform\'s usability.',
                                 ],
                                 [
                                     'title' => 'Data Security',
@@ -66,7 +66,7 @@
                                 [
                                     'title' => 'Third-Party Links',
                                     'content' =>
-                                        'Our platform may include links to third-party websites. CodeCareer is not responsible for the privacy practices or content of these external sites.',
+                                        'Our platform may include links to third-party websites. DevCareer AI is not responsible for the privacy practices or content of these external sites.',
                                 ],
                                 [
                                     'title' => 'Your Rights',
@@ -76,7 +76,7 @@
                                 [
                                     'title' => 'Changes to Privacy Policy',
                                     'content' =>
-                                        'CodeCareer reserves the right to modify this privacy policy. Any changes will be communicated to users via email or through platform updates.',
+                                        'DevCareer AI reserves the right to modify this privacy policy. Any changes will be communicated to users via email or through platform updates.',
                                 ],
                             ];
                         @endphp

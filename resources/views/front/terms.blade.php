@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Terms of Service - CodeCareer</title>
+    <title>Terms of Service - DevCareer AI</title>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
@@ -41,7 +41,7 @@
                                 [
                                     'title' => 'Acceptance of Terms',
                                     'content' =>
-                                        'By accessing and using the CodeCareer platform, you agree to comply with these terms. If you do not agree, please refrain from using the platform.',
+                                        'By accessing and using the DevCareer AI platform, you agree to comply with these terms. If you do not agree, please refrain from using the platform.',
                                 ],
                                 [
                                     'title' => 'Use of Services',
@@ -66,17 +66,17 @@
                                 [
                                     'title' => 'Content Ownership',
                                     'content' =>
-                                        'All content, courses, and materials provided on the platform are owned by CodeCareer or our licensors. Unauthorized reproduction or distribution is prohibited.',
+                                        'All content, courses, and materials provided on the platform are owned by DevCareer AI or our licensors. Unauthorized reproduction or distribution is prohibited.',
                                 ],
                                 [
                                     'title' => 'Modification of Terms',
                                     'content' =>
-                                        'CodeCareer reserves the right to update or modify these terms at any time. Changes will be effective upon posting, and continued use of the platform implies acceptance of the revised terms.',
+                                        'DevCareer AI reserves the right to update or modify these terms at any time. Changes will be effective upon posting, and continued use of the platform implies acceptance of the revised terms.',
                                 ],
                                 [
                                     'title' => 'Termination',
                                     'content' =>
-                                        'CodeCareer may terminate or suspend your account if you violate any of these terms. Termination may result in loss of access to content and services.',
+                                        'DevCareer AI may terminate or suspend your account if you violate any of these terms. Termination may result in loss of access to content and services.',
                                 ],
                             ];
                         @endphp

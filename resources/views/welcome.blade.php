@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>CodeCareer</title>
+    <title>DevCareer AI</title>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
@@ -335,7 +335,7 @@
                             AI-powered CV optimization tool to stand out in the job market.
                         </p>
                         <ul class="list-disc ml-5 mb-[2.25rem]">
-                            <li class="mb-2">Unlimited access to all of CodeCareer's most popular courses, anytime,
+                            <li class="mb-2">Unlimited access to all of DevCareer AI's most popular courses, anytime,
                                 anywhere
                             </li>
                             <li class="mb-2">Get certified in technology</li>

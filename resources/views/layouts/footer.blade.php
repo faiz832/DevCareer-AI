@@ -6,7 +6,7 @@
                 <!-- Logo and Description -->
                 <div class="mb-6 md:mb-0">
                     <a href="{{ url('/') }}" class="flex items-center w-max">
-                        <span class="self-center text-2xl font-semibold whitespace-nowrap">CodeCareer</span>
+                        <span class="self-center text-2xl font-semibold whitespace-nowrap">DevCareer AI</span>
                     </a>
                     <p class="mt-2 text-sm text-gray-600 max-w-md">Jl. Kyai Moch. Syafei Gg 1 No.2450, RT.04/RW.08,
                         Kebondalem, Purwokerto Lor, Kec. Purwokerto Tim., Kabupaten Banyumas, Jawa Tengah 53114</p>
@@ -104,7 +104,7 @@
             <!-- Bottom Section -->
             <div class="flex flex-col md:flex-row items-center justify-center md:justify-between">
                 <span class="text-sm text-gray-500 text-center">© 2024 <a href="{{ url('/') }}"
-                        class="hover:underline">CodeCareer™</a>. All Rights Reserved.</span>
+                        class="hover:underline">DevCareer AI™</a>. All Rights Reserved.</span>
                 <div class="flex items-center">
                     <a href="{{ url('/terms') }}" target="_blank"
                         class="text-sm text-gray-500 text-center hover:underline">Terms</a>

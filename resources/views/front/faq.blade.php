@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>FAQ - CodeCareer</title>
+    <title>FAQ - DevCareer AI</title>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
@@ -40,9 +40,9 @@
                 @php
                     $faqs = [
                         [
-                            'question' => 'What is CodeCareer?',
+                            'question' => 'What is DevCareer AI?',
                             'answer' =>
-                                'CodeCareer is a career empowerment platform offering skill courses and AI-powered CV optimization to help you succeed in the job market.',
+                                'DevCareer AI is a career empowerment platform offering skill courses and AI-powered CV optimization to help you succeed in the job market.',
                         ],
                         [
                             'question' => 'How does the CV optimization feature work?',

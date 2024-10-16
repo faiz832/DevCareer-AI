@@ -32,7 +32,7 @@
                             x-transition:leave-end="transform opacity-0 -translate-x-full" style="display: none;"
                             class="fixed top-0 left-0 h-screen w-2/4 max-w-[212px] bg-white shadow-lg z-50 md:hidden">
                             <div class="py-6 px-4">
-                                <a href="{{ url('/') }}" class="text-2xl font-bold mr-4">CodeCareer</a>
+                                <a href="{{ url('/') }}" class="text-2xl font-bold mr-4">DevCareer AI</a>
                                 <div class="border-t border-slate-300 my-4"></div>
                                 <div class="pt-1">
                                     <x-search-bar />
@@ -47,7 +47,7 @@
                 </div>
 
                 <!-- Brand Name -->
-                <a href="{{ url('/') }}" class="text-2xl font-semibold mr-4">CodeCareer</a>
+                <a href="{{ url('/') }}" class="text-2xl font-semibold mr-4">DevCareer AI</a>
             </div>
 
             <!-- Search Input (visible on larger screens) -->

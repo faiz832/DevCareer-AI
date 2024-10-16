@@ -262,7 +262,7 @@
                                                 @endphp
                                                 Your subscription is active until {{ $endDate->format('d M Y') }}.
                                             @else
-                                                You haven't subscribed to codecareer yet. Choose a subscription and start
+                                                You haven't subscribed to DevCareer AI yet. Choose a subscription and start
                                                 your journey to becoming a professional developer.
                                             @endif
                                         </div>
