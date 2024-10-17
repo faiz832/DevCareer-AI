@@ -27,8 +27,83 @@
         <!-- Navbar -->
         @include('layouts.navbar')
 
+        <!-- Header -->
+        <div class="py-12 bg-white">
+            <div class="max-w-7xl mx-auto p-4 sm:px-6 lg:px-8">
+                <h1
+                    class="text-6xl text-center font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-700 to-blue-400 mb-8 mt-12">
+                    {{ $course->name }}
+                </h1>
+                <p class="text-center text-gray-500 mb-12">Last updated: {{ date('F d, Y') }}</p>
+            </div>
+        </div>
+
+        <!-- Course Section -->
+        <section class="max-w-[1200px] mx-auto p-4 py-6 lg:py-8">
+            <div class="flex flex-col lg:flex-row gap-6">
+                <div class="w-full lg:w-8/12">
+                    {{-- <div class="rounded-lg overflow-hidden w-full h-full max-h-[431.63px] relative"
+                        style="padding-top: 56.25%;">
+                        <iframe id="mainVideoPlayer" class="absolute top-0 left-0 w-full h-full"
+                            src="{{ $course->path_trailer ?? 'https://www.youtube.com/embed/T1TR-RGf2Pw' }}"
+                            title="YouTube video player" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen></iframe>
+                    </div> --}}
+                    <div id="mainVideoContainer" class="aspect-video rounded-lg overflow-hidden w-full h-full relative">
+                        <iframe id="mainVideoPlayer" class="w-full h-full"
+                            src="{{ $course->path_trailer ?? 'https://www.youtube.com/embed/T1TR-RGf2Pw' }}"
+                            title="YouTube video player" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen></iframe>
+                    </div>
+                </div>
+                <div class="w-full lg:w-4/12 relative">
+                    <div class="rounded-lg border w-full px-4 flex flex-col mb-12">
+                        <div class="flex justify-between py-4">
+                            <h1>Introduction</h1>
+                            <button
+                                onclick="document.getElementById('mainVideoPlayer').src = '{{ $course->path_trailer ?? 'https://www.youtube.com/embed/T1TR-RGf2Pw' }}';"
+                                class="hover:underline text-blue-500">Preview
+                            </button>
+                        </div>
+                        <div>
+                            @if ($course->course_videos && $course->course_videos->count() > 0)
+                                @foreach ($course->course_videos as $index => $video)
+                                    <div class="flex justify-between items-center py-4 border-t border-gray-200">
+                                        <h1 class="max-w-[250px]">{{ $video->name }}</h1>
+
+                                        <!-- Play button for each video -->
+                                        <div class="relative overflow-hidden rounded-lg flex">
+                                            @if (Route::has('login'))
+                                                @auth
+                                                    @if (Auth::user()->hasActiveSubscription())
+                                                        <button
+                                                            onclick="document.getElementById('mainVideoPlayer').src = '{{ $video->path_video ?? '' }}';"
+                                                            class="hover:underline text-blue-500">Play
+                                                        </button>
+                                                    @endif
+                                                @endauth
+                                                @guest
+                                                    <div class=""></div>
+                                                @endguest
+                                            @endif
+                                        </div>
+                                    </div>
+                                @endforeach
+                            @else
+                                <div class="text-gray-500 italic py-4 border-t border-gray-200">
+                                    No lessons available for this course yet.
+                                </div>
+                            @endif
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- Hero Section -->
-        <div class="max-w-[1200px] mx-auto p-4 py-6 lg:py-8">
+        {{-- <div class="max-w-[1200px] mx-auto p-4 py-6 lg:py-8">
             <div class="bg-gradient-to-br from-blue-700 to-blue-400 rounded-lg h-max md:h-[400px]">
                 <div class="flex flex-col md:flex-row md:items-center gap-8 md:gap-12 w-full h-full p-8 md:p-12">
                     <div class="relative overflow-hidden rounded-lg flex" x-data="{ open: false, videoSrc: '{{ $course->path_trailer ?? 'https://www.youtube.com/embed/T1TR-RGf2Pw' }}' }"
@@ -92,7 +167,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
 
         <!-- Earn Section -->
         <section class="max-w-[1200px] mx-auto p-4 py-6 lg:py-8">
@@ -156,7 +231,7 @@
 
         <!-- Info Section -->
         <section class="max-w-[1200px] mx-auto p-4 py-6 lg:py-8">
-            <div class="flex flex-col-reverse md:flex-row gap-4">
+            <div class="flex flex-col-reverse lg:flex-row gap-8">
                 <div class="w-full lg:w-8/12">
                     <h1 class="text-2xl font-semibold mb-4">Description</h1>
                     <p class="text-gray-600 leading-10 text-justify">{{ $course->desc }}</p>
@@ -188,96 +263,63 @@
                         </div>
                     </div>
                     <div class="text-2xl font-semibold mt-16 mb-4">What you will learn?</div>
-                    <div class="rounded border w-full px-4 flex flex-col mb-12">
+                    <div class="rounded-lg border w-full px-4 flex flex-col mb-12">
                         <div class="flex justify-between py-4">
                             <h1>Introduction</h1>
-                            <div class="relative overflow-hidden rounded-lg flex" x-data="{ open: false, videoSrc: '{{ $course->path_trailer ?? 'https://www.youtube.com/embed/T1TR-RGf2Pw' }}' }"
-                                @click.away="open = false">
-                                <button
-                                    @click="open = !open; if (!open) { videoSrc = ''; } else { videoSrc = '{{ $course->path_trailer ?? 'https://www.youtube.com/embed/T1TR-RGf2Pw' }}'; }"
-                                    class="hover:underline text-blue-500">Preview
-                                </button>
-                                <div x-show="open" x-transition:enter="transition ease-out duration-200"
-                                    x-transition:enter-start="transform opacity-0 -translate-x-full"
-                                    x-transition:enter-end="transform opacity-100 translate-x-0"
-                                    x-transition:leave="transition ease-in duration-75"
-                                    x-transition:leave-start="transform opacity-100 translate-x-0"
-                                    x-transition:leave-end="transform opacity-0 -translate-x-full"
-                                    style="display: none;"
-                                    class="fixed inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center z-50 transition-opacity duration-300 ease-in-out"
-                                    @click.away="open = false; videoSrc = ''">
-
-                                    <!-- Modal Content -->
-                                    <div class="bg-white flex flex-col items-center rounded-lg shadow-lg p-6"
-                                        @click.away="open = false; videoSrc = ''">
-                                        <iframe class="w-full h-full md:w-[560px] md:h-[315px]" :src="videoSrc"
-                                            title="YouTube video player" frameborder="0"
-                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                            allowfullscreen></iframe>
-                                    </div>
-                                </div>
-                            </div>
+                            <button
+                                onclick="document.getElementById('mainVideoPlayer').src = '{{ $course->path_trailer ?? 'https://www.youtube.com/embed/T1TR-RGf2Pw' }}';"
+                                class="hover:underline text-blue-500">Preview
+                            </button>
                         </div>
-                        @if ($course->course_videos && $course->course_videos->count() > 0)
-                            @foreach ($course->course_videos as $index => $video)
-                                <div class="flex justify-between items-center py-4 border-t border-gray-200">
-                                    <h1>{{ $video->name }}</h1>
+                        <div>
+                            @if ($course->course_videos && $course->course_videos->count() > 0)
+                                @foreach ($course->course_videos as $index => $video)
+                                    <div class="flex justify-between items-center py-4 border-t border-gray-200">
+                                        <h1 class="max-w-[250px]">{{ $video->name }}</h1>
 
-                                    <!-- Play button for each video -->
-                                    <div class="relative overflow-hidden rounded-lg flex" x-data="{ open: false, videoSrc: '{{ $video->path_video ?? '' }}' }"
-                                        @click.away="open = false">
-                                        @if (Route::has('login'))
-                                            @auth
-                                                @if (Auth::user()->hasActiveSubscription())
-                                                    <button
-                                                        @click="open = !open; if (!open) { videoSrc = ''; } else { videoSrc = '{{ $video->path_video ?? '' }}'; }"
-                                                        class="hover:underline text-blue-500">Play
-                                                    </button>
-                                                    <div x-show="open"
-                                                        x-transition:enter="transition ease-out duration-200"
-                                                        x-transition:enter-start="transform opacity-0 -translate-x-full"
-                                                        x-transition:enter-end="transform opacity-100 translate-x-0"
-                                                        x-transition:leave="transition ease-in duration-75"
-                                                        x-transition:leave-start="transform opacity-100 translate-x-0"
-                                                        x-transition:leave-end="transform opacity-0 -translate-x-full"
-                                                        style="display: none;"
-                                                        class="fixed inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center z-50 transition-opacity duration-300 ease-in-out"
-                                                        @click.away="open = false; videoSrc = ''">
-
-                                                        <!-- Modal Content -->
-                                                        <div class="bg-white flex flex-col items-center rounded-lg shadow-lg p-6"
-                                                            @click.away="open = false; videoSrc = ''">
-                                                            <iframe class="w-full h-full md:w-[560px] md:h-[315px]"
-                                                                :src="videoSrc" title="Video player"
-                                                                frameborder="0"
-                                                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                                                allowfullscreen></iframe>
-                                                        </div>
-                                                    </div>
-                                                @endif
-                                            @endauth
-                                            @guest
-                                                <div class=""></div>
-                                            @endguest
-                                        @endif
+                                        <!-- Play button for each video -->
+                                        <div class="relative overflow-hidden rounded-lg flex">
+                                            @if (Route::has('login'))
+                                                @auth
+                                                    @if (Auth::user()->hasActiveSubscription())
+                                                        <button
+                                                            onclick="document.getElementById('mainVideoPlayer').src = '{{ $video->path_video ?? '' }}';"
+                                                            class="hover:underline text-blue-500">Play
+                                                        </button>
+                                                    @endif
+                                                @endauth
+                                                @guest
+                                                    <div class=""></div>
+                                                @endguest
+                                            @endif
+                                        </div>
                                     </div>
+                                @endforeach
+                            @else
+                                <div class="text-gray-500 italic py-4 border-t border-gray-200">
+                                    No lessons available for this course yet.
                                 </div>
-                            @endforeach
-                        @else
-                            <div class="text-gray-500 italic py-4 border-t border-gray-200">
-                                No lessons available for this course yet.
-                            </div>
-                        @endif
+                            @endif
+                        </div>
                     </div>
                 </div>
                 <div class="w-full lg:w-4/12 relative">
-                    <div class="pb-8 md:p-4 sticky top-24">
+                    <div class="pb-8 sticky top-24">
                         <div class="rounded-lg border p-4 space-y-4">
-                            <div class="overflow-hidden rounded w-full h-[200px] shadow-md">
+                            {{-- <div class="overflow-hidden rounded w-full h-[200px] shadow-md">
                                 <img src="{{ $course->thumbnail ? Storage::url($course->thumbnail) : asset('assets/images/thumbnail.jpg') }}"
                                     alt="{{ $course->name }}" class="w-full h-full object-cover object-center"
                                     loading="lazy">
+                            </div> --}}
+
+                            {{-- <div class="overflow-hidden rounded w-full h-[200px] shadow-md"> --}}
+                            {{-- <iframe id="fixedVideoPlayer" class="w-full h-full hidden" src=""
+                                    title="YouTube video player" frameborder="0"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                    allowfullscreen></iframe> --}}
+                            <div id="fixedVideoPlayer" class="overflow-hidden rounded w-full h-[200px] shadow-md">
                             </div>
+                            {{-- </div> --}}
 
                             @if (Route::has('login'))
                                 @auth
@@ -310,6 +352,35 @@
         <!-- Footer -->
         @include('layouts.footer')
     </div>
+
+    <script>
+        // Elements
+        const mainVideoContainer = document.getElementById('mainVideoContainer');
+        const mainVideoPlayer = document.getElementById('mainVideoPlayer');
+        const fixedVideoContainer = document.getElementById('fixedVideoPlayer');
+
+        // Variable to track if the video has been moved
+        let videoMoved = false;
+
+        // Track scrolling
+        window.addEventListener('scroll', () => {
+            const mainVideoRect = mainVideoContainer.getBoundingClientRect();
+
+            // Check if the main video has scrolled out of view (entirely out of the viewport)
+            if (mainVideoRect.bottom <= 0 && !videoMoved) {
+                // Move video to fixed container
+                fixedVideoContainer.appendChild(mainVideoPlayer);
+                fixedVideoContainer.classList.remove('hidden');
+                videoMoved = true;
+            } else if (mainVideoRect.bottom > 0 && videoMoved) {
+                // Restore the video to the original container if it's scrolled back into view
+                mainVideoContainer.appendChild(mainVideoPlayer);
+                fixedVideoContainer.classList.add('hidden');
+                videoMoved = false;
+            }
+        });
+    </script>
+
 </body>
 
 </html>
