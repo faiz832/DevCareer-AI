@@ -34,7 +34,40 @@
                     class="text-6xl text-center font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-700 to-blue-400 mb-8 mt-12">
                     {{ $course->name }}
                 </h1>
-                <p class="text-center text-gray-500 mb-12">Last updated: {{ date('F d, Y') }}</p>
+                <p class="text-center text-gray-500 mb-4">Last updated: {{ date('F d, Y') }}</p>
+            </div>
+
+            <div class="max-w-lg mx-auto p-4 sm:px-6 lg:px-8 flex justify-between">
+                <!-- Category -->
+                <div class="flex gap-2 items-center">
+                    <svg class="h-8 w-8" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z" />
+                    </svg>
+                    <span class="text-sm">{{ $course->category->name }}</span>
+                </div>
+                <!-- Students -->
+                <div class="flex gap-2 items-center">
+                    <svg class="h-8 w-8" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                    </svg>
+                    <span class="text-sm">{{ $course->students->count() }} Students</span>
+                </div>
+                <!-- Teachers -->
+                <div class="flex gap-2 items-center">
+                    <svg class="h-8 w-8" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path d="M12 14l9-5-9-5-9 5 9 5z" />
+                        <path
+                            d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222" />
+                    </svg>
+                    <span class="text-sm">{{ $course->teacher->user->name }}</span>
+                </div>
             </div>
         </div>
 
@@ -103,7 +136,7 @@
         </section>
 
         <!-- Hero Section -->
-        {{-- <div class="max-w-[1200px] mx-auto p-4 py-6 lg:py-8">
+        <div class="max-w-[1200px] mx-auto p-4 py-6 lg:py-8">
             <div class="bg-gradient-to-br from-blue-700 to-blue-400 rounded-lg h-max md:h-[400px]">
                 <div class="flex flex-col md:flex-row md:items-center gap-8 md:gap-12 w-full h-full p-8 md:p-12">
                     <div class="relative overflow-hidden rounded-lg flex" x-data="{ open: false, videoSrc: '{{ $course->path_trailer ?? 'https://www.youtube.com/embed/T1TR-RGf2Pw' }}' }"
@@ -146,8 +179,8 @@
                         <h1 class="text-3xl font-semibold">{{ $course->name }}</h1>
                         <!-- Category -->
                         <div class="flex gap-2 items-center">
-                            <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                stroke="currentColor">
+                            <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z" />
                             </svg>
@@ -155,8 +188,8 @@
                         </div>
                         <!-- Students -->
                         <div class="flex gap-2 items-center">
-                            <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                stroke="currentColor">
+                            <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                             </svg>
@@ -167,7 +200,7 @@
                     </div>
                 </div>
             </div>
-        </div> --}}
+        </div>
 
         <!-- Earn Section -->
         <section class="max-w-[1200px] mx-auto p-4 py-6 lg:py-8">
