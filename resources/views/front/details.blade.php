@@ -75,14 +75,6 @@
         <section class="max-w-[1200px] mx-auto p-4 py-6 lg:py-8">
             <div class="flex flex-col lg:flex-row gap-6">
                 <div class="w-full lg:w-8/12">
-                    {{-- <div class="rounded-lg overflow-hidden w-full h-full max-h-[431.63px] relative"
-                        style="padding-top: 56.25%;">
-                        <iframe id="mainVideoPlayer" class="absolute top-0 left-0 w-full h-full"
-                            src="{{ $course->path_trailer ?? 'https://www.youtube.com/embed/T1TR-RGf2Pw' }}"
-                            title="YouTube video player" frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            allowfullscreen></iframe>
-                    </div> --}}
                     <div id="mainVideoContainer" class="aspect-video rounded-lg overflow-hidden w-full h-full relative">
                         <iframe id="mainVideoPlayer" class="w-full h-full"
                             src="{{ $course->path_trailer ?? 'https://www.youtube.com/embed/T1TR-RGf2Pw' }}"
@@ -259,10 +251,21 @@
                                             @if (Route::has('login'))
                                                 @auth
                                                     @if (Auth::user()->hasActiveSubscription())
-                                                        <button
-                                                            onclick="document.getElementById('mainVideoPlayer').src = '{{ $video->path_video ?? '' }}';"
-                                                            class="hover:underline text-blue-500">Play
-                                                        </button>
+                                                        @if ($isEnrolled)
+                                                            <button
+                                                                onclick="document.getElementById('mainVideoPlayer').src = '{{ $video->path_video ?? '' }}';"
+                                                                class="hover:underline text-blue-500">Play
+                                                            </button>
+                                                        @else
+                                                            <form action="{{ route('enroll.course', $course) }}"
+                                                                method="POST">
+                                                                @csrf
+                                                                <button type="submit"
+                                                                    class="hover:underline text-blue-500">
+                                                                    Play
+                                                                </button>
+                                                            </form>
+                                                        @endif
                                                     @endif
                                                 @endauth
                                                 @guest
@@ -283,17 +286,6 @@
                 <div class="w-full lg:w-4/12 relative">
                     <div class="pb-8 sticky top-24">
                         <div class="rounded-lg border p-4 space-y-4">
-                            {{-- <div class="overflow-hidden rounded w-full h-[200px] shadow-md">
-                                <img src="{{ $course->thumbnail ? Storage::url($course->thumbnail) : asset('assets/images/thumbnail.jpg') }}"
-                                    alt="{{ $course->name }}" class="w-full h-full object-cover object-center"
-                                    loading="lazy">
-                            </div> --}}
-
-                            {{-- <div class="overflow-hidden rounded w-full h-[200px] shadow-md"> --}}
-                            {{-- <iframe id="fixedVideoPlayer" class="w-full h-full hidden" src=""
-                                    title="YouTube video player" frameborder="0"
-                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                    allowfullscreen></iframe> --}}
                             <div id="fixedVideoPlayer" class="overflow-hidden rounded w-full h-[200px] shadow-md">
                             </div>
                             {{-- </div> --}}
