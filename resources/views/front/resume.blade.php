@@ -19,6 +19,47 @@
         ::-webkit-scrollbar {
             display: none;
         }
+
+        .loading-spinner {
+            display: none;
+            width: 18px;
+            height: 18px;
+            vertical-align: text-bottom;
+        }
+
+        .loading-spinner::after {
+            content: "";
+            display: block;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            border: 2px solid #ffffff;
+            border-color: #ffffff transparent #ffffff transparent;
+            animation: loading-spinner 1.2s linear infinite;
+        }
+
+        @keyframes loading-spinner {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .button-loading .button-text {
+            display: none;
+        }
+
+        .button-loading .loading-spinner {
+            display: inline-block;
+        }
+
+        .button-loading {
+            cursor: not-allowed;
+            opacity: 0.6;
+        }
     </style>
 </head>
 
@@ -72,9 +113,10 @@
                                     <p class="text-sm text-gray-600 mb-2">Supported formats: PDF, JPG, PNG. <br> Max file
                                         size 5MB.</p>
                                     <p id="fileName" class="text-sm text-gray-500 mb-4"></p>
-                                    <button type="submit"
+                                    <button type="submit" id="optimizeButton"
                                         class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-6 mb-4 rounded transition duration-300 ease-in-out">
-                                        Upload & Optimize
+                                        <span class="button-text">Optimize</span>
+                                        <span class="loading-spinner"></span>
                                     </button>
                                     <p class="text-sm text-gray-600">Your Token: {{ Auth::user()->ai_token ?? '0' }}
                                     </p>
@@ -439,6 +481,23 @@
                 fileNameDisplay.textContent = '';
             }
         }
+
+        const optimizeButton = document.getElementById('optimizeButton');
+        const form = optimizeButton.closest('form');
+
+        form.addEventListener('submit', function(e) {
+            // Ubah tombol menjadi mode loading
+            optimizeButton.classList.add('button-loading');
+
+            // Nonaktifkan tombol untuk mencegah double-submit
+            optimizeButton.disabled = true;
+
+            // Simulasi proses loading (ganti dengan kode submit form yang sebenarnya)
+            setTimeout(() => {
+                optimizeButton.classList.remove('button-loading');
+                optimizeButton.disabled = false;
+            }, 30000);
+        });
     </script>
 </body>
 
