@@ -68,7 +68,8 @@ class User extends Authenticatable
     }
 
     // satu pengguna dapat langganan berkali-kali
-    public function subscribe_transactions(){
+    public function subscribe_transactions()
+    {
         return $this->hasMany(SubscribeTransaction::class);
     }
 
@@ -88,6 +89,13 @@ class User extends Authenticatable
         $subscriptionEndDate = Carbon::parse($latestSubscription->subscription_start_date)->addMonth();
 
         if (Carbon::now()->lessThanOrEqualTo($subscriptionEndDate)) {
+            // Cek apakah user sudah mendapatkan tambahan token sebelumnya
+            if ($latestSubscription->added_token == false) {
+                $this->increment('ai_token', 5);
+                // Update status agar tidak menambah lagi
+                $latestSubscription->added_token = true;
+                $latestSubscription->save();
+            }
             return $latestSubscription;
         }
 

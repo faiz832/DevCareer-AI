@@ -19,6 +19,13 @@ class CVOptimizationController extends Controller
             'cv_file' => 'required|file|mimes:pdf,jpg,png|max:5120',
         ]);
 
+        $user = auth()->user(); // Get the authenticated user
+
+        // Check if the user has enough tokens
+        if ($user->ai_token < 1) {
+            return back()->withErrors('Token is not enough. Please try again.');
+        }
+
         $file = $request->file('cv_file');
         $filePath = $file->getPathname();
         $fileMimeType = $file->getClientMimeType();
@@ -68,6 +75,10 @@ class CVOptimizationController extends Controller
                 Log::warning('No text found in API response');
                 return back()->withErrors('No optimization suggestions returned. Please try again.');
             }
+
+            // Reduce the user's token by 1
+            $user->ai_token -= 1;
+            $user->save();
 
             $formattedResult = $this->formatResult($resultText);
 

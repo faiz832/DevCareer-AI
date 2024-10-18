@@ -76,7 +76,7 @@
                                         class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-6 mb-4 rounded transition duration-300 ease-in-out">
                                         Upload & Optimize
                                     </button>
-                                    <p class="text-sm text-gray-600">Your Token: {{ Auth::user()->token ?? '0' }}
+                                    <p class="text-sm text-gray-600">Your Token: {{ Auth::user()->ai_token ?? '0' }}
                                     </p>
                                 </form>
                             </div>

@@ -285,7 +285,7 @@
                                 @if ($courses->isEmpty())
                                     <div class="flex border rounded justify-between items-center p-4">
                                         <div class="flex-col">
-                                            <div class="text-sm font-semibold text-gray-800">You are not subscribed to any
+                                            <div class="text-sm font-semibold text-gray-800">You haven't attended any
                                                 courses.</div>
                                         </div>
                                     </div>
