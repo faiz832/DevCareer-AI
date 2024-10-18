@@ -105,15 +105,13 @@
                                                     @if (Auth::user()->hasActiveSubscription())
                                                         @if ($isEnrolled)
                                                             <button
-                                                                onclick="document.getElementById('mainVideoPlayer').src = '{{ $video->path_video ?? '' }}';"
+                                                                onclick="playVideo('{{ $video->id }}', '{{ $video->path_video ?? '' }}');"
                                                                 class="hover:underline text-blue-500">Play
                                                             </button>
                                                         @else
-                                                            <form action="{{ route('enroll.course', $course) }}"
-                                                                method="POST">
+                                                            <form action="{{ route('enroll.course', $course) }}" method="POST">
                                                                 @csrf
-                                                                <button type="submit"
-                                                                    class="hover:underline text-blue-500">
+                                                                <button type="submit" class="hover:underline text-blue-500">
                                                                     Play
                                                                 </button>
                                                             </form>
@@ -129,34 +127,30 @@
                                 @endforeach
                                 @if (Route::has('login'))
                                     @auth
-                                        @if (Auth::user()->hasActiveSubscription())
-                                            @if ($isCompleted)
-                                                <div class="py-4 border-t border-gray-200">
-                                                    <button
-                                                        class="w-full flex items-center justify-center gap-2 text-white rounded p-2 bg-gradient-to-br from-green-600 to-green-500">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4"
-                                                            fill="#ffffff" viewBox="0 0 256 256">
-                                                            <path
-                                                                d="M128,140a12,12,0,0,1-12,12H72a12,12,0,0,1,0-24h44A12,12,0,0,1,128,140ZM116,88H72a12,12,0,0,0,0,24h44a12,12,0,0,0,0-24Zm120,79.14V228a12,12,0,0,1-17.95,10.42L196,225.82,174,238.42A12,12,0,0,1,156,228V204H40a20,20,0,0,1-20-20V56A20,20,0,0,1,40,36H216a20,20,0,0,1,20,20V88.86a55.87,55.87,0,0,1,0,78.28ZM196,160a32,32,0,1,0-32-32A32,32,0,0,0,196,160Zm-40,20V167.14a56,56,0,0,1,56-92.8V60H44V180Zm56,27.32V181.66a55.87,55.87,0,0,1-32,0v25.66l10.05-5.74a12,12,0,0,1,11.9,0Z">
-                                                            </path>
-                                                        </svg>
-                                                        <h1>Certificate</h1>
-                                                    </button>
-                                                </div>
-                                            @else
-                                                <div class="py-4 border-t border-gray-200">
-                                                    <button disabled style="cursor:not-allowed;"
-                                                        class="w-full flex items-center justify-center gap-2 text-white rounded p-2 bg-gradient-to-br from-green-600 to-green-500">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4"
-                                                            fill="#ffffff" viewBox="0 0 256 256">
-                                                            <path
-                                                                d="M128,140a12,12,0,0,1-12,12H72a12,12,0,0,1,0-24h44A12,12,0,0,1,128,140ZM116,88H72a12,12,0,0,0,0,24h44a12,12,0,0,0,0-24Zm120,79.14V228a12,12,0,0,1-17.95,10.42L196,225.82,174,238.42A12,12,0,0,1,156,228V204H40a20,20,0,0,1-20-20V56A20,20,0,0,1,40,36H216a20,20,0,0,1,20,20V88.86a55.87,55.87,0,0,1,0,78.28ZM196,160a32,32,0,1,0-32-32A32,32,0,0,0,196,160Zm-40,20V167.14a56,56,0,0,1,56-92.8V60H44V180Zm56,27.32V181.66a55.87,55.87,0,0,1-32,0v25.66l10.05-5.74a12,12,0,0,1,11.9,0Z">
-                                                            </path>
-                                                        </svg>
-                                                        <h1>Certificate</h1>
-                                                    </button>
-                                                </div>
-                                            @endif
+                                        @if (Auth::user()->hasActiveSubscription() && $isEnrolled)
+                                        <div class="py-4 border-t border-gray-200">
+                                            {{-- @if ($isCompleted) --}}
+                                                <a href="{{ route('course.download-certificate', $course) }}"
+                                                class="w-full flex items-center justify-center gap-2 text-white rounded p-2 bg-gradient-to-br from-green-600 to-green-500">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4"
+                                                        fill="#ffffff" viewBox="0 0 256 256">
+                                                        <path d="M128,140a12,12,0,0,1-12,12H72a12,12,0,0,1,0-24h44A12,12,0,0,1,128,140ZM116,88H72a12,12,0,0,0,0,24h44a12,12,0,0,0,0-24Zm120,79.14V228a12,12,0,0,1-17.95,10.42L196,225.82,174,238.42A12,12,0,0,1,156,228V204H40a20,20,0,0,1-20-20V56A20,20,0,0,1,40,36H216a20,20,0,0,1,20,20V88.86a55.87,55.87,0,0,1,0,78.28ZM196,160a32,32,0,1,0-32-32A32,32,0,0,0,196,160Zm-40,20V167.14a56,56,0,0,1,56-92.8V60H44V180Zm56,27.32V181.66a55.87,55.87,0,0,1-32,0v25.66l10.05-5.74a12,12,0,0,1,11.9,0Z">
+                                                        </path>
+                                                    </svg>
+                                                    <span>Download Certificate</span>
+                                                </a>
+                                            {{-- @else
+                                                <button disabled style="cursor:not-allowed;"
+                                                        class="w-full flex items-center justify-center gap-2 text-white rounded p-2 bg-gradient-to-br from-green-600 to-green-500 opacity-50">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4"
+                                                        fill="#ffffff" viewBox="0 0 256 256">
+                                                        <path d="M128,140a12,12,0,0,1-12,12H72a12,12,0,0,1,0-24h44A12,12,0,0,1,128,140ZM116,88H72a12,12,0,0,0,0,24h44a12,12,0,0,0,0-24Zm120,79.14V228a12,12,0,0,1-17.95,10.42L196,225.82,174,238.42A12,12,0,0,1,156,228V204H40a20,20,0,0,1-20-20V56A20,20,0,0,1,40,36H216a20,20,0,0,1,20,20V88.86a55.87,55.87,0,0,1,0,78.28ZM196,160a32,32,0,1,0-32-32A32,32,0,0,0,196,160Zm-40,20V167.14a56,56,0,0,1,56-92.8V60H44V180Zm56,27.32V181.66a55.87,55.87,0,0,1-32,0v25.66l10.05-5.74a12,12,0,0,1,11.9,0Z">
+                                                        </path>
+                                                    </svg>
+                                                    <span>Complete Course to Download Certificate</span>
+                                                </button>
+                                            @endif --}}
+                                        </div>
                                         @endif
                                     @endauth
                                     @guest
@@ -384,6 +378,31 @@
                 videoMoved = false;
             }
         });
+
+        function playVideo(videoId, videoPath) {
+        // Set video player source
+        document.getElementById('mainVideoPlayer').src = videoPath;
+
+        // Send AJAX request to mark video as watched
+        fetch(`{{ url('course/'.$course->id.'/video') }}/${videoId}/watch`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': '{{ csrf_token() }}'
+            },
+            body: JSON.stringify({ course_id: '{{ $course->id }}', video_id: videoId })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                console.log('Video marked as watched');
+                // Optionally update UI or provide user feedback
+            }
+        })
+        .catch(error => {
+            console.error('Error marking video as watched:', error);
+        });
+    }
     </script>
 
 </body>
