@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\CourseStudent;
 use App\Models\Course;
+use App\Models\CourseVideo;
+use App\Services\PdfService;
 use Illuminate\Http\Request;
 
 class CourseStudentController extends Controller
@@ -45,11 +47,12 @@ class CourseStudentController extends Controller
     public function downloadCertificate(Course $course)
     {
         $user = auth()->user();
-        $courseStudent = CourseStudent::where('user_id', $user->id)
-            ->where('course_id', $course->id)
-            ->first();
 
-        if ($courseStudent && $courseStudent->is_completed) {
+        if ($user->hasActiveSubscription() && $user->courses->contains($course->id)) {
+            $courseStudent = CourseStudent::where('user_id', $user->id)
+                ->where('course_id', $course->id)
+                ->first();
+
             $certificatePath = $this->generateCertificate($user, $course, $courseStudent);
             $courseStudent->certificate_path = $certificatePath;
             $courseStudent->save();
@@ -57,7 +60,7 @@ class CourseStudentController extends Controller
             return response()->download($certificatePath, "{$course->name} - Certificate.pdf");
         }
 
-        return redirect()->back()->with('error', 'You have not completed the course yet.');
+        return redirect()->back()->with('error', 'You must have an active subscription and be enrolled in the course to download the certificate.');
     }
 
     private function generateCertificate($user, $course, $courseStudent)
@@ -70,7 +73,8 @@ class CourseStudentController extends Controller
             'completionDate' => $courseStudent->completed_at,
         ])->render();
 
-        $pdf = \App\Services\PdfService::generateFromHtml($html, $certificatePath);
+        // Use the imported PdfService here
+        $pdf = PdfService::generateFromHTML($html, $certificatePath);
 
         return $certificatePath;
     }
