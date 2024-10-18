@@ -15,16 +15,22 @@ class FrontController extends Controller
 {
     public function index()
     {
-        $courses = Course::with(['category', 'teacher', 'students'])
-            ->orderByDesc('id')
-            ->take(4)
-            ->get();
+        $categories = Category::all();
+        $coursesByCategory = [];
 
-        $studentCount = $courses->sum(function ($course) {
+        foreach ($categories as $category) {
+            $coursesByCategory[$category->id] = Course::with(['category', 'teacher', 'students'])
+                ->where('category_id', $category->id)
+                ->orderByDesc('id')
+                ->take(1)
+                ->get();
+        }
+
+        $studentCount = collect($coursesByCategory)->flatten()->sum(function ($course) {
             return $course->students->count();
         });
 
-        return view('welcome', compact('courses', 'studentCount'));
+        return view('welcome', compact('categories', 'coursesByCategory', 'studentCount'));
     }
 
     public function course()

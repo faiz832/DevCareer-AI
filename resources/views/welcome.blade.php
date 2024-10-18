@@ -130,34 +130,42 @@
                 </a>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6" data-aos="fade-up">
-                @foreach ($courses as $course)
-                    <div
-                        class="bg-white border rounded-lg p-3 hover:shadow-lg hover:-translate-y-2 transition duration-300 ease-in-out flex flex-col justify-between">
-                        <img src="{{ $course->thumbnail ? Storage::url($course->thumbnail) : asset('assets/images/thumbnail.jpg') }}"
-                            alt="{{ $course->name }}" class="w-full h-48 shadow-md object-cover rounded-lg mb-4"
-                            loading="lazy">
-                        <div class="flex flex-col flex-grow">
-                            <h3 class="font-semibold text-xl mb-2">{{ $course->name }}</h3>
-                            <div class="flex flex-col justify-between h-full">
-                                <p class="text-md text-gray-600 min-h-16">{{ $course->about }}</p>
-                                <p class="text-sm text-gray-600 mb-2">By {{ $course->teacher->user->name }}</p>
-                            </div>
-                            <div class="flex items-center justify-between mt-auto">
-                                <div class="flex items-center">
-                                    <svg class="h-4 w-4 mr-2 text-gray-800" xmlns="http://www.w3.org/2000/svg"
-                                        fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                                    </svg>
-                                    <span class="text-xs text-gray-800">{{ $studentCount }} Students</span>
+                @foreach ($categories as $index => $category)
+                    @foreach ($coursesByCategory[$category->id] as $course)
+                        <div
+                            class="bg-white border rounded-lg p-3 hover:shadow-lg hover:-translate-y-2 transition duration-300 ease-in-out transform flex flex-col justify-between">
+                            <img src="{{ $course->thumbnail ? Storage::url($course->thumbnail) : asset('assets/images/thumbnail.jpg') }}"
+                                alt="{{ $course->name }}" class="w-full h-48 shadow-md object-cover rounded-lg mb-4"
+                                loading="lazy">
+
+                            <div class="flex flex-col flex-grow">
+                                <h1 class="font-semibold text-xl mb-2">{{ $course->name }}</h1>
+
+                                <div class="flex flex-col justify-between h-full">
+                                    <p class="text-md text-gray-600 min-h-16">{{ $course->about }}</p>
+                                    <p class="text-sm text-gray-600 mb-2">By
+                                        {{ $course->teacher->user->name }}</p>
                                 </div>
-                                <a href="{{ route('front.details', $course->id) }}"
-                                    class="text-center font-semibold bg-blue-500 text-sm hover:bg-blue-600 text-white px-4 py-2 rounded transition duration-300 ease-in-out w-1/2">
-                                    Learn Now
-                                </a>
+
+                                <div class="flex items-center justify-between mt-auto">
+                                    <div class="flex items-center">
+                                        <svg class="h-4 w-4 mr-2 text-gray-800" xmlns="http://www.w3.org/2000/svg"
+                                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                                        </svg>
+                                        <span class="text-xs text-gray-800">{{ $course->students->count() }}
+                                            Students</span>
+                                    </div>
+
+                                    <a href="{{ route('front.details', $course->id) }}"
+                                        class="text-center font-semibold bg-blue-500 text-sm hover:bg-blue-600 text-white px-4 py-2 rounded transition duration-300 ease-in-out w-1/2">
+                                        Learn Now
+                                    </a>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    @endforeach
                 @endforeach
             </div>
         </section>
