@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\StoreSubscribeTransactionRequest;
+use App\Models\CourseStudent;
 use App\Models\SubscribeTransaction;
 
 class FrontController extends Controller
@@ -51,7 +52,14 @@ class FrontController extends Controller
         $course = Course::with(['category', 'teacher', 'students', 'course_videos'])
             ->findOrFail($id);
 
-        return view('front.details', compact('course'));
+        $isEnrolled = false;
+        if (Auth::check()) {
+            $isEnrolled = CourseStudent::where('user_id', Auth::id())
+                ->where('course_id', $course->id)
+                ->exists();
+        }
+
+        return view('front.details', compact('course', 'isEnrolled'));
     }
 
     public function enroll(Course $course)
@@ -59,15 +67,15 @@ class FrontController extends Controller
         $user = Auth::user();
 
         if (!$user->hasActiveSubscription()) {
-            return redirect()->route('front.pricing')->with('error', 'You need to subscribe to enroll in courses.');
+            return redirect()->route('front.pricing')->with('error', 'You need an active subscription to enroll in courses.');
         }
 
-        if (!$course->students->contains($user->id)) {
-            $course->students()->attach($user->id);
-            return redirect()->route('front.details', $course->id)->with('success', 'You have successfully enrolled in this course.');
-        }
+        CourseStudent::firstOrCreate([
+            'user_id' => $user->id,
+            'course_id' => $course->id,
+        ]);
 
-        return redirect()->route('front.details', $course->id)->with('info', 'You are already enrolled in this course.');
+        return redirect()->route('front.details', $course->id)->with('success', 'You have successfully enrolled in this course.');
     }
 
     public function pricing()
