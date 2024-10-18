@@ -188,15 +188,6 @@ class CompleteDataSeeder extends Seeder
                     'course_id' => $course->id,
                 ]);
             }
-
-            // Course Students
-            $students = User::role('student')->take(5)->get();
-            foreach ($students as $student) {
-                CourseStudent::create([
-                    'user_id' => $student->id,
-                    'course_id' => $course->id,
-                ]);
-            }
         }
     }
 }
