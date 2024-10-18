@@ -51,6 +51,10 @@ Route::middleware('auth')->group(function () {
     Route::post('/enroll/{course}', [FrontController::class, 'enroll'])->name('enroll.course')->middleware('auth');
 });
 
+Route::post('/courses/{course}/videos/{video}/watch', [CourseStudentController::class, 'markVideoAsWatched'])
+    ->name('course.video.watch')
+    ->middleware('auth');
+
 Route::get('/mycourses', [CourseStudentController::class, 'index'])
     ->middleware(['auth', 'role:student'])
     ->name('mycourses.index');

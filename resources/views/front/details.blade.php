@@ -111,10 +111,19 @@
                                             @if (Route::has('login'))
                                                 @auth
                                                     @if (Auth::user()->hasActiveSubscription())
-                                                        <button
-                                                            onclick="document.getElementById('mainVideoPlayer').src = '{{ $video->path_video ?? '' }}';"
-                                                            class="hover:underline text-blue-500">Play
-                                                        </button>
+                                                        @if ($isEnrolled)
+                                                            <button
+                                                                onclick="document.getElementById('mainVideoPlayer').src = '{{ $video->path_video ?? '' }}';"
+                                                                class="hover:underline text-blue-500">Play
+                                                            </button>
+                                                        @else
+                                                            <form action="{{ route('enroll.course', $course) }}" method="POST">
+                                                                @csrf
+                                                                <button type="submit" class="hover:underline text-blue-500">
+                                                                    Play
+                                                                </button>
+                                                            </form>
+                                                        @endif
                                                     @endif
                                                 @endauth
                                                 @guest

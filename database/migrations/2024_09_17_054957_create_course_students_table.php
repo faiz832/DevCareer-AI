@@ -15,6 +15,10 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->foreignId('course_id')->constrained()->onDelete('cascade');
+            $table->integer('videos_completed')->default(0);
+            $table->boolean('is_completed')->default(false);
+            $table->timestamp('completed_at')->nullable();
+            $table->string('certificate_path')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

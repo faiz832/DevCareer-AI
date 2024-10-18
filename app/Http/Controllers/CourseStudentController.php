@@ -21,51 +21,56 @@ class CourseStudentController extends Controller
         return view('front.mycourses', compact('courses'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+    public function markVideoAsWatched(Request $request, Course $course, CourseVideo $video)
     {
-        //
+        $user = auth()->user();
+        $courseStudent = CourseStudent::firstOrCreate([
+            'user_id' => $user->id,
+            'course_id' => $course->id,
+        ]);
+
+        $courseStudent->videos_completed++;
+        $courseStudent->save();
+
+        if ($courseStudent->videos_completed == $course->course_videos->count()) {
+            $courseStudent->is_completed = true;
+            $courseStudent->completed_at = now();
+            $courseStudent->save();
+        }
+
+        return response()->json(['message' => 'Video marked as watched']);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
+    public function downloadCertificate(Course $course)
     {
-        //
+        $user = auth()->user();
+        $courseStudent = CourseStudent::where('user_id', $user->id)
+            ->where('course_id', $course->id)
+            ->first();
+
+        if ($courseStudent && $courseStudent->is_completed) {
+            $certificatePath = $this->generateCertificate($user, $course, $courseStudent);
+            $courseStudent->certificate_path = $certificatePath;
+            $courseStudent->save();
+
+            return response()->download($certificatePath, "{$course->name} - Certificate.pdf");
+        }
+
+        return redirect()->back()->with('error', 'You have not completed the course yet.');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(CourseStudent $courseStudent)
+    private function generateCertificate($user, $course, $courseStudent)
     {
-        //
-    }
+        $certificatePath = public_path('certificates/' . $user->id . '_' . $course->id . '.pdf');
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(CourseStudent $courseStudent)
-    {
-        //
-    }
+        $html = view('certificates.course-certificate', [
+            'user' => $user,
+            'course' => $course,
+            'completionDate' => $courseStudent->completed_at,
+        ])->render();
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, CourseStudent $courseStudent)
-    {
-        //
-    }
+        $pdf = \App\Services\PdfService::generateFromHtml($html, $certificatePath);
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(CourseStudent $courseStudent)
-    {
-        //
+        return $certificatePath;
     }
 }

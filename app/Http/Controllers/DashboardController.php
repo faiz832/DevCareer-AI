@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Spatie\Activitylog\Models\Activity;
 use App\Models\User;
 use App\Models\Course;
+use App\Models\CourseStudent;
 use App\Models\SubscribeTransaction;
 
 class DashboardController extends Controller
@@ -49,12 +50,15 @@ class DashboardController extends Controller
         } elseif (auth()->user()->hasRole('student')) {
             $student = auth()->user();
             $subscription = $student->hasActiveSubscription();
-            $courses = $student->courses;
+            $enrolledCourses = CourseStudent::where('user_id', $student->id)
+                ->with('course.teacher.user', 'course.category')
+                ->get()
+                ->pluck('course');
 
             return view('dashboard', [
                 'subscription' => $subscription,
-                'courses' => $courses,
-                'courseCount' => $courses->count()
+                'courses' => $enrolledCourses,
+                'courseCount' => $enrolledCourses->count()
             ]);
         }
 

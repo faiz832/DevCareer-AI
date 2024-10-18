@@ -62,7 +62,8 @@ class User extends Authenticatable
 
     // user memiliki banyak courses
     // pada model course berada di pivotable course_students
-    public function courses(){
+    public function courses()
+    {
         return $this->belongsToMany(Course::class, 'course_students')->withTimestamps();
     }
 
