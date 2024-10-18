@@ -30,8 +30,8 @@
         <!-- Header -->
         <div class="py-12 bg-white">
             <div class="max-w-7xl mx-auto p-4 sm:px-6 lg:px-8">
-                <h1
-                    class="text-6xl text-center font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-700 to-blue-400 mb-8 mt-12">
+                <h1 class="text-6xl text-center font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-700 to-blue-400 mb-8 mt-12"
+                    style="line-height: inherit">
                     {{ $course->name }}
                 </h1>
                 <p class="text-center text-gray-500 mb-4">Last updated: {{ date('F d, Y') }}</p>
@@ -117,9 +117,11 @@
                                                                 class="hover:underline text-blue-500">Play
                                                             </button>
                                                         @else
-                                                            <form action="{{ route('enroll.course', $course) }}" method="POST">
+                                                            <form action="{{ route('enroll.course', $course) }}"
+                                                                method="POST">
                                                                 @csrf
-                                                                <button type="submit" class="hover:underline text-blue-500">
+                                                                <button type="submit"
+                                                                    class="hover:underline text-blue-500">
                                                                     Play
                                                                 </button>
                                                             </form>
